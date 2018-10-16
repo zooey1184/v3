@@ -5,18 +5,18 @@
         <div slot='content_0'>
           <card v-model='showPane0'>
             <div slot='contain'>
-              <ul>
-                <li v-for='(item, index) in 10' :key='index'>{{item}}</li>
-              </ul>
+
             </div>
           </card>
         </div>
-        <div slot='content_1' @click='showPane1=!showPane1'>
+        <div slot='content_1'  @click='showPane1=!showPane1'>
           <card v-model='showPane1'>
             <div slot='contain'>
-              <ul>
-                <li v-for='(item, index) in 10' :key='index'>{{item}}</li>
-              </ul>
+              <form-list :width='120'>
+                <form-item title='hello'>
+                  <input type="text" name="" value="">
+                </form-item>
+              </form-list>
             </div>
           </card>
         </div>
@@ -54,14 +54,16 @@
 
 <script>
 import card from '@/components/foldPane/index.vue'
-import step from '@/components/step/index.vue'
 import vStep from '@/components/step/h-step.vue'
+import formList from '@/components/formList/formList.vue'
+import formItem from '@/components/formList/formItem.vue'
 
 export default {
   components: {
     card,
-    step,
-    vStep
+    vStep,
+    formList,
+    formItem
   },
   data: () => ({
     showPane0: true,
