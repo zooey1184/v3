@@ -1,6 +1,17 @@
 <template>
   <div>
-    <div class="card_wrap">
+    <div class="step_wrap">
+      <v-step>
+        <card v-model='showPane'>
+        <div slot='contain'>
+          <ul>
+            <li v-for='(item, index) in 10' :key='index'>{{item}}</li>
+          </ul>
+        </div>
+      </card>
+      </v-step>
+    </div>
+    <!-- <div class="card_wrap">
       <card v-model='showPane'>
         <div slot='contain'>
           <ul>
@@ -17,16 +28,20 @@
           </ul>
         </div>
       </card>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 import card from '@/components/foldPane/index.vue'
+import step from '@/components/step/index.vue'
+import vStep from '@/components/step/h-step.vue'
 
 export default {
   components: {
-    card
+    card,
+    step,
+    vStep
   },
   data: () => ({
     showPane: true
@@ -52,5 +67,10 @@ export default {
   position: relative;
   display: block;
   margin: 10px auto;
+}
+.step_wrap {
+  position: relative;
+  width: 100%;
+  background: #e64210;
 }
 </style>

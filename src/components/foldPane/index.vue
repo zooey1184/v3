@@ -67,6 +67,7 @@ export default {
   height: 100%;
   box-shadow: 0 0 5px #eee;
   border-radius: 5px;
+  background: #fff;
   .hide {
     position: absolute;
     width: 0;

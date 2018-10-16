@@ -5,7 +5,7 @@
       <div class="outborder" :class="{active_border: active>=index}">
         <div class="inset_circle" v-if='active>=index'></div>
       </div>
-      <p class="text">{{item}}</p>
+      <!-- <p class="text">{{item}}</p> -->
     </div>
   </div>
 </template>
@@ -16,7 +16,7 @@ export default {
     iteminfo: {
       width: '50%'
     },
-    list: ['Informasi pribadi', 'Informasi Tambahan', 'Sertifikasi foto ', 'informasi bank', 'selesai']
+    list: ['1', '2', '3', '4', '5']
   }),
   props: {
     active: {

@@ -91,7 +91,7 @@ module.exports = {
   configureWebpack: config => {
     // webpack配置，值位对象时会合并配置，为方法时会改写配置
 
-    console.log(config.plugins);
+    // console.log(config.plugins);
     if(decoratorFn(process.env.pro).header=='custom') {
       if (process.env.NODE_ENV === 'production') {
         // 生产开发配置
