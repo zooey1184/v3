@@ -40,7 +40,7 @@ export default {
         this.getRect()
       }else {
         this.showPane = false
-        // this.getRect()
+        this.getRect()
       }
     }
   },
@@ -67,6 +67,7 @@ export default {
   height: 100%;
   box-shadow: 0 0 5px #eee;
   border-radius: 5px;
+  overflow: hidden;
   background: #fff;
   .hide {
     position: absolute;
@@ -94,7 +95,7 @@ export default {
   .slideItem--content {
     position: relative;
     overflow: hidden;
-    transition: all 0.3s ease-out;
+    transition: all 0.4s ease-out;
     box-sizing: border-box;
     background: #fff;
     .contain_loan {

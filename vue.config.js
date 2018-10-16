@@ -1,7 +1,7 @@
 /* eslint-disable */
 const fs = require('fs')
 const path = require('path')
-// const vuxLoader = require('vux-loader')
+const chalk = require('chalk')
 // 修饰符
 function decoratorFn(s) {
   if(s.match(/@.*\[.*\]/g)) {
@@ -33,8 +33,9 @@ function entryFn () {
   let p = pro_name()
   let t = process.env.NODE_ENV === 'production' ? `正在打包：${p}`: `正在运行：${p}`
   console.log('=======\n\n');
-  console.dir('运行项目：set pro=xxx&&npm run serve');
-  console.dir(`${t}`);
+  console.log(chalk.green(`运行项目：set pro=xxx&&npm run serve`));
+  console.log(chalk.green(`${t}`));
+  console.log(chalk.red(`修饰符：@${decoratorFn(process.env.pro).header}`));
   console.log('\n\n=======')
   return `./src/pages/${p}/main.js`
 }
@@ -90,7 +91,6 @@ module.exports = {
   },
   configureWebpack: config => {
     // webpack配置，值位对象时会合并配置，为方法时会改写配置
-
     // console.log(config.plugins);
     if(decoratorFn(process.env.pro).header=='custom') {
       if (process.env.NODE_ENV === 'production') {
@@ -110,7 +110,7 @@ module.exports = {
         // config.plugins[8].options.filename = `./pages/${middle}/app.html`
       }
     }
-    // config.plugins.push('vux-ui')
+
   },
   // 输出文件目录
   outputDir: 'dist',

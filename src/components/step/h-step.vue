@@ -1,12 +1,14 @@
 <template>
   <div class="c-Hstep_wrap" ref='step'>
-    <div class="left">
-      <div class="line_t line"></div>
-      <div class="circle"></div>
-      <div class="line_b line"></div>
-    </div>
-    <div class="right" ref='content'>
-      <slot></slot>
+    <div class="step_item" v-for='(item, index) in len' :key='index'>
+      <div class="left">
+        <div class="line_t line" :style='{borderLeftColor: index>0? "#eee":"rgba(0,0,0,0)"}'></div>
+        <div class="circle"></div>
+        <div class="line_b line" :style='{borderLeftColor: (index<len-1)? "#eee":"rgba(0,0,0,0)"}'></div>
+      </div>
+      <div class="right" ref='content'>
+        <slot :name='`content_${index}`'></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -26,11 +28,6 @@ export default {
     cal_c: function() {
       return this.len*2-1
     }
-  },
-  mounted() {
-    let c = this.$refs.content
-    let r = c.getBoundingClientRect()
-    console.log(r)
   }
 }
 </script>
@@ -40,8 +37,11 @@ export default {
   position: relative;
   width: 100%;
   padding: 10px;
-  display: flex;
-  align-items: center;
+  .step_item {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
   .left {
     width: 10%;
     display: flex;
@@ -60,7 +60,7 @@ export default {
       position: relative;
       flex-grow: 1;
       height: 100%;
-      border-left: 2px dashed #eee;
+      border-left: 1px dashed #eee;
     }
     .line_b {
       margin-top: 5px;
@@ -74,8 +74,7 @@ export default {
     min-height: 45px;
     position: relative;
     left: 10%;
+    padding: 5px 0;
   }
-  
 }
-
 </style>

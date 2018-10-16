@@ -2,13 +2,33 @@
   <div>
     <div class="step_wrap">
       <v-step>
-        <card v-model='showPane'>
-        <div slot='contain'>
-          <ul>
-            <li v-for='(item, index) in 10' :key='index'>{{item}}</li>
-          </ul>
+        <div slot='content_0'>
+          <card v-model='showPane0'>
+            <div slot='contain'>
+              <ul>
+                <li v-for='(item, index) in 10' :key='index'>{{item}}</li>
+              </ul>
+            </div>
+          </card>
         </div>
-      </card>
+        <div slot='content_1' @click='showPane1=!showPane1'>
+          <card v-model='showPane1'>
+            <div slot='contain'>
+              <ul>
+                <li v-for='(item, index) in 10' :key='index'>{{item}}</li>
+              </ul>
+            </div>
+          </card>
+        </div>
+        <div slot='content_2' @click='showPane2=!showPane2'>
+          <card v-model='showPane2'>
+            <div slot='contain'>
+              <ul>
+                <li v-for='(item, index) in 10' :key='index'>{{item}}</li>
+              </ul>
+            </div>
+          </card>
+        </div>
       </v-step>
     </div>
     <!-- <div class="card_wrap">
@@ -44,7 +64,9 @@ export default {
     vStep
   },
   data: () => ({
-    showPane: true
+    showPane0: true,
+    showPane1: true,
+    showPane2: true,
   }),
   methods: {
     open() {
@@ -53,7 +75,7 @@ export default {
   },
   mounted() {
     setTimeout(()=> {
-      this.showPane = false
+      this.showPane0 = false
     }, 3000)
     // this.showPane = true
   }
