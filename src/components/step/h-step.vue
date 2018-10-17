@@ -2,12 +2,12 @@
   <div class="c-Hstep_wrap" ref='step'>
     <div class="step_item" v-for='(item, index) in len' :key='index'>
       <div class="left">
-        <div class="line_t line" :style='{borderLeftColor: index>0? "#eee":"rgba(0,0,0,0)"}'></div>
+        <div class="line_t line" :style='{borderLeft: index>0 ? (active>=index? "1px solid #4da9ec" : "1px dashed #eee" ) : "rgba(0,0,0,0)"}'></div>
         <div class="circle" :style="{background: (active==index)? '#4da9ec' : '#fff', color: (active==index)? '#fff' : '#999'}">
           <p v-if='active<=index'>{{index+1}}</p>
           <img v-else src="./img/checked.png" alt="">
         </div>
-        <div class="line_b line" :style='{borderLeftColor: (index<len-1)? "#eee":"rgba(0,0,0,0)"}'></div>
+        <div class="line_b line" :style='{borderLeft: (index<len-1)?  (active>index? "1px solid #4da9ec" : "1px dashed #eee" ):"rgba(0,0,0,0)"}'></div>
       </div>
       <div class="right" ref='content'>
         <slot :name='`content_${index}`'></slot>
@@ -18,18 +18,14 @@
 
 <script>
 export default {
-  data: ()=> ({
-    len: 5,
-    active: 0,
-  }),
-  computed: {
-    cal_w: function () {
-      let l = this.len
-      let w = 100/l
-      return w
+  props: {
+    len: {
+      type: Number,
+      default: 4
     },
-    cal_c: function() {
-      return this.len*2-1
+    active: {
+      type: Number,
+      default: 0
     }
   }
 }
@@ -71,7 +67,7 @@ export default {
       position: relative;
       flex-grow: 1;
       height: 100%;
-      border-left: 1px dashed #eee;
+      border-left: 1px dashed #999;
     }
     .line_b {
       margin-top: 5px;
