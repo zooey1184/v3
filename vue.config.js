@@ -32,11 +32,13 @@ function pro_name () {
 function entryFn () {
   let p = pro_name()
   let t = process.env.NODE_ENV === 'production' ? `正在打包：${p}`: `正在运行：${p}`
-  console.log('=======\n\n');
-  console.log(chalk.green(`运行项目：set pro=xxx&&npm run serve`));
-  console.log(chalk.green(`${t}`));
-  console.log(chalk.red(`修饰符：@${decoratorFn(process.env.pro).header}`));
-  console.log('\n\n=======')
+  console.log(chalk.green(`
+    \n==============
+    \n运行项目：set pro=xxx&&npm run serve
+    \n${t}
+    \n修饰符：@${decoratorFn(process.env.pro).header}
+    \n==============`
+  ));
   return `./src/pages/${p}/main.js`
 }
 // 模板
@@ -48,9 +50,11 @@ function templateHtml() {
     return fs.exists(p, function(e) {
       tpl = e ? `src/pages/${pro}/index.html` : 'public/index.html'
       if(!e) {
-        console.log('\n==========================================\n');
-        console.dir(`不存在${pro}.html模板，默认使用index.html`);
-        console.log('\n==========================================')
+        console.log(chalk.red(`
+          \n=============================
+          \n不存在${pro}.html模板，默认使用index.html
+          \n=============================`
+        ));
       }
       resolve(tpl)
     })
@@ -85,6 +89,7 @@ module.exports = {
     if (process.env.NODE_ENV === 'production') {
       // 生产开发配置
       // console.log(config.module.rules.store.stylus)
+      config.plugins.delete(`prefetch-index`);
     } else {
       // 本地开发配置
     }

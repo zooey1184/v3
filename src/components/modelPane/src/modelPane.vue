@@ -80,7 +80,7 @@ export default {
 .contain--full {
   .flex;
   .full;
-  color: @color-w;
+  // color: @color-w;
   overflow: hidden;
   z-index: 999;
 }

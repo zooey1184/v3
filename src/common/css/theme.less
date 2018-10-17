@@ -1,0 +1,17 @@
+@color_w: #fff;
+@color_t: rgba(0,0,0,0);
+@theme: #3574FA; // 主题色 蓝色
+@theme_1: #5b8fff;  // 弱主题色
+@low_c: #E5E5E5;
+@dis: #EBEBEB;
+@font_c: #2C3946;
+@font_low_c: #76849A;
+@font_dis: #A0ACC1;
+
+.trans(@left: #ff7458, @right: #f72f53) {
+  background: @left;
+  background: -webkit-linear-gradient(left, @left , @right);
+  background: -o-linear-gradient(right, @left, @right);
+  background: -moz-linear-gradient(right, @left, @right);
+  background: linear-gradient(to right, @left, @right);
+}

@@ -46,9 +46,11 @@ export default {
   },
   methods: {
     getRect() {
-      let f = this.$refs.contain
-      let r = f.getBoundingClientRect()
-      this.containH = r.height+10
+      setTimeout(()=> {
+        let f = this.$refs.contain
+        let r = f.getBoundingClientRect()
+        this.containH = r.height+10
+      }, 50)
     }
   },
   mounted() {
@@ -98,10 +100,18 @@ export default {
     transition: all 0.4s ease-out;
     box-sizing: border-box;
     background: #fff;
+    width: 100%;
     .contain_loan {
       box-sizing: border-box;
       padding: 0 15px;
       color: #333;
+      position: relative;
+      width: 100%;
+      &>div {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
       // font-size: 15px;
     }
   }

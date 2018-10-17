@@ -1,11 +1,13 @@
 <template>
-  <div class="c-form_ceil" ref='ceil' :style='{height: `${c_height}px`}'>
-    <div class="left" :style='{width: `${width}px`}'>{{title}}</div>
-    <div class="middle" :style='{left: `${width}px`, width: `${middle_width}px`}'>
-      <slot></slot>
-    </div>
-    <div class="right" :style='{width: `${r_width}px`}'>
-      <slot name='right'></slot>
+  <div class="c-form_ceil" :class='{underlineF: showUnderline}' ref='ceil' :style='{height: `${c_height}px`}'>
+    <div>
+      <div class="left" :style='{width: `${left_width}px`, height: `${size+10}px`, fontSize: `${size}px`}'>{{title}}</div>
+      <div class="middle"  :style='{ width: `${middle_width}px`, fontSize: `${size}px`}'>
+        <slot></slot>
+      </div>
+      <div class="right_item" :style='{width: `${r_width}px`, height: `${size+10}px`, fontSize: `${size}px`}'>
+        <slot name='right'></slot>
+      </div>
     </div>
   </div>
 </template>
@@ -27,7 +29,7 @@ export default {
     },
     r_width: {
       type: Number,
-      default: 0,
+      default: 30,
     },
     title: {
       type: String,
@@ -36,6 +38,14 @@ export default {
     height: {
       type: Number,
       default: 48,
+    },
+    size: {
+      type: Number,
+      default: 16,
+    },
+    showUnderline: {
+      type: Boolean,
+      default: true,
     }
   },
   methods: {
@@ -55,30 +65,58 @@ export default {
 </script>
 
 <style lang="less">
-.middle_align {
-  display: inline-block;
-  vertical-align: bottom;
-}
 .c-form_ceil {
   position: relative;
+  .middle_align {
+    display: inline-block;
+    vertical-align: bottom;
+    height: 100%;
+    position: relative;
+  }
+  position: relative;
   width: 100%;
-  display: flex;
-  align-items: center;
+  height: 40px;
+  &>div {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+  }
   .left {
     .middle_align;
-    width: 20%;
-    height: 16px;
   }
   .middle {
     .middle_align;
-    width: 100%;
-    height: 100%;
-    position: relative;
     input {
       width: 100%;
-      height: 100%;
+      height: 80%;
       position: relative;
+      top: 20%;
+      font-size: 16px;
+      outline: none;
+      border: none;
     }
   }
+  .right_item {
+    .middle_align;
+  }
+}
+/* 下划线 */
+.underlineF {
+  position: relative;
+}
+.underlineF::after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  right: 0;
+  -webkit-transform: scaleY(0.7);
+          transform: scaleY(0.7);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  background: #ededed;
 }
 </style>

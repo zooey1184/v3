@@ -3,7 +3,10 @@
     <div class="step_item" v-for='(item, index) in len' :key='index'>
       <div class="left">
         <div class="line_t line" :style='{borderLeftColor: index>0? "#eee":"rgba(0,0,0,0)"}'></div>
-        <div class="circle"></div>
+        <div class="circle" :style="{background: (active==index)? '#4da9ec' : '#fff', color: (active==index)? '#fff' : '#999'}">
+          <p v-if='active<=index'>{{index+1}}</p>
+          <img v-else src="./img/checked.png" alt="">
+        </div>
         <div class="line_b line" :style='{borderLeftColor: (index<len-1)? "#eee":"rgba(0,0,0,0)"}'></div>
       </div>
       <div class="right" ref='content'>
@@ -17,7 +20,7 @@
 export default {
   data: ()=> ({
     len: 5,
-    active: 3,
+    active: 0,
   }),
   computed: {
     cal_w: function () {
@@ -50,11 +53,19 @@ export default {
     position: absolute;
     height: 100%;
     .circle {
-      width: 15px;
-      height: 15px;
+      width: 20px;
+      height: 20px;
       border-radius: 20px;
-      background: #ddd;
+      background: #fff;
       flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-size: 16px;
+      img {
+        width: 100%;
+      }
     }
     .line {
       position: relative;
