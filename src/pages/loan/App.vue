@@ -9,10 +9,10 @@
             </div>
           </card>
         </div>
-        <div slot='content_1'  @click='showPane1=!showPane1'>
+        <div slot='content_1'>
           <card v-model='showPane1'>
             <div slot='contain'>
-              <form-list :width='120'>
+              <form-list :height='40' :width='80'>
                 <form-item title='hello'>
                   <input type="text" name="" value="">
                 </form-item>
@@ -56,7 +56,7 @@
 import card from '@/components/foldPane/index.vue'
 import vStep from '@/components/step/h-step.vue'
 import formList from '@/components/formList/formList.vue'
-import formItem from '@/components/formList/formItem.vue'
+import formItem from '@/components/formList/ceil.vue'
 
 export default {
   components: {
