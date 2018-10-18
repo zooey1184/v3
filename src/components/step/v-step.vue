@@ -2,7 +2,7 @@
   <div class="c-step_wrap" ref='step'>
     <div 
       v-for='(item, index) in cal_c' 
-      :class="{circle: index%2==0, line: index%2==1, circle_active: active*2==index, line_active: (active*2>index && index%2==1)}" 
+      :class="{circle: index%2==0, line: index%2==1, have_active: active*2>index, circle_active: active*2==index, line_active: (active*2>index && index%2==1)}" 
       :key='index'>
       <img v-if='(active*2>index && index%2==0)' src="./img/check.png" alt="">
     </div>
@@ -52,6 +52,9 @@ export default {
   }
   .circle_active {
     background: rgba(255, 255, 255, 1);
+  }
+  .have_active {
+    background: rgba(255, 255, 255, 0);
   }
   .line {
     flex-grow: 1;
