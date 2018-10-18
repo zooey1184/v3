@@ -12,10 +12,16 @@
 <script>
 export default {
   name: 'v-step',
-  data: ()=> ({
-    len: 5,
-    active: 3,
-  }),
+  props: {
+    len: {
+      type: Number,
+      default: 5
+    },
+    active: {
+      type: Number,
+      default: 0
+    }
+  },
   computed: {
     cal_w: function () {
       let l = this.len
@@ -37,8 +43,8 @@ export default {
   align-items: center;
   justify-content: space-between;
   .circle {
-    width: 15px;
-    height: 15px;
+    width: 14px;
+    height: 14px;
     border-radius: 10px;
     background: rgba(255, 255, 255, .7);
     position: relative;

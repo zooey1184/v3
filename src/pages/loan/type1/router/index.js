@@ -19,11 +19,17 @@ const router = new Router({
     {
       path: '/home',
       name: 'home',
+      meta: {
+        title: '贷贷贷'
+      },
       component: () => import('../views/home.vue')
     },
     {
       path: '/basic',
       name: 'basic',
+      meta: {
+        title: '基本信息'
+      },
       component: () => import('../views/basic.vue')
     }
   ]

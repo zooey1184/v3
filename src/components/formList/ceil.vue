@@ -1,7 +1,7 @@
 <template>
   <div class="c-form_ceil" :class='{underlineF: showUnderline}' ref='ceil' :style='{height: `${c_height}px`}'>
     <div>
-      <div class="left" :style='{width: `${left_width}px`, height: `${size+10}px`, fontSize: `${size}px`}'>{{title}}</div>
+      <div class="left" :style='{width: `${left_width}px`, height: `${size+12}px`, fontSize: `${size}px`}'>{{title}}</div>
       <div class="middle"  :style='{ width: `${middle_width}px`, fontSize: `${size}px`}'>
         <slot></slot>
       </div>
@@ -43,7 +43,7 @@ export default {
     },
     size: {
       type: Number,
-      default: 16,
+      default: 15,
     },
     showUnderline: {
       type: Boolean,
@@ -90,12 +90,12 @@ export default {
   }
   .middle {
     .middle_align;
-    input {
+    &>input {
       width: 100%;
-      height: 80%;
+      height: 70%;
       position: relative;
-      top: 20%;
-      font-size: 16px;
+      top: 30%;
+      font-size: 15px;
       outline: none;
       border: none;
     }
