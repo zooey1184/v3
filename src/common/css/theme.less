@@ -8,10 +8,10 @@
 @font_low_c: #76849A;
 @font_dis: #A0ACC1;
 
-.trans(@left: #ff7458, @right: #f72f53) {
-  background: @left;
-  background: -webkit-linear-gradient(left, @left , @right);
-  background: -o-linear-gradient(right, @left, @right);
-  background: -moz-linear-gradient(right, @left, @right);
-  background: linear-gradient(to right, @left, @right);
+.gradient(@val, @left: #ff7458, @right: #f72f53) {
+  @{val}: @left;
+  @{val}: -webkit-linear-gradient(left, @left , @right);
+  @{val}: -o-linear-gradient(right, @left, @right);
+  @{val}: -moz-linear-gradient(right, @left, @right);
+  @{val}: linear-gradient(to right, @left, @right);
 }

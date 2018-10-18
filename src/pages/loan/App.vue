@@ -65,9 +65,8 @@ export default {
 <style lang="less">
 @import url('../../common/css/transition.less');
 @import url('../../common/css/reset.less');
-* {
-  -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
-}
+@import url('../../common/css/page.less');
+@import url('../../common/css/theme.less');
 #app {
   position: absolute;
   top: 0;
@@ -82,34 +81,16 @@ export default {
     overflow: hidden;
   }
 }
-.pre(@style,@value){
-    -webkit-@{style}: @value;
-    -ms-@{style}: @value;
-            @{style}: @value;
+.bg1 {
+  .gradient(background, #ffa100, #f0710a)
 }
-.animation(@value){
-    .pre(animation,@value);
+.border1 {
+  .gradient(border, #ffa100, #f0710a)
 }
-.transition(@arg){
-    .pre(transition,@arg);
+.bg2 {
+  .gradient(background, #55b7ee, #0aabf0)
 }
-.transform(@arg){
-    .pre(transform,@arg);
-}
-.page-forward-enter-active,
-.page-backward-enter-active,
-.page-forward-leave-active,
-.page-backward-leave-active
-{
-  .transition(transform 0.4s);
-  position: absolute;
-}
-.page-forward-enter,
-.page-backward-leave-active
-{
-  .transform(translate(100%));
-}
-.page-forward-enter,.page-backward-leave-active,.page-forward-enter-to,.page-backward-leave-to{
-  z-index: 2 !important;
+.border2 {
+  .gradient(border, #55b7ee, #0aabf0)
 }
 </style>

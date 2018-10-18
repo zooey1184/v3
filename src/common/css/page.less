@@ -1,0 +1,32 @@
+// 页面层级的动画
+.pre(@style, @value){
+  -webkit-@{style}: @value;
+  -ms-@{style}: @value;
+  @{style}: @value;
+}
+.animation(@value){
+  .pre(animation, @value);
+}
+.transition(@arg){
+  .pre(transition, @arg);
+}
+.transform(@arg){
+  .pre(transform, @arg);
+}
+.page-forward-enter-active,
+.page-backward-enter-active,
+.page-forward-leave-active,
+.page-backward-leave-active {
+  .transition(transform 0.4s);
+  position: absolute;
+}
+.page-forward-enter,
+.page-backward-leave-active {
+  .transform(translate(100%));
+}
+.page-forward-enter,
+.page-backward-leave-active,
+.page-forward-enter-to,
+.page-backward-leave-to {
+  z-index: 2 !important;
+}

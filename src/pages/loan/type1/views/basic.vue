@@ -1,7 +1,7 @@
 <template>
   <page>
     <div>
-      <div class="top_page">
+      <div class="top_page bg1">
         <v-step></v-step>
       </div>
     </div>
@@ -26,4 +26,3 @@ export default {
   background: rgb(172, 56, 56);
 }
 </style>
-
