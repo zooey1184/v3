@@ -1,9 +1,7 @@
 <template>
   <div class="c-alertContain">
     <img class="icon_close" @click='closeFn' src="./img/close.png" alt="">
-    <slot>
-
-    </slot>
+    <slot></slot>
     <div class='btn__group' v-if='btn.length>0'>
       <p v-for='(item, index) in btn' :class='{ lastBtn: showBtnLine(index), cancle_btn: item.type=="cancle"}' @click='actionFn(item.type)' :key='item.type'>{{item.text}}</p>
     </div>
@@ -13,9 +11,6 @@
 <script>
 export default {
   name: 'alert-contain',
-  data: ()=> ({
-
-  }),
   props: {
     btn: {
       type: Array,
@@ -62,7 +57,6 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
-  // padding: 10px;
   min-height: 40px;
   border-radius: 5px;
   background: #fff;

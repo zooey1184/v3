@@ -18,6 +18,7 @@
 
 <script>
 export default {
+  name: 'card',
   data: ()=> ({
     showPane: false,
     containH: 40
@@ -112,7 +113,6 @@ export default {
         width: 100%;
         height: 100%;
       }
-      // font-size: 15px;
     }
   }
 }

@@ -18,6 +18,7 @@
 
 <script>
 export default {
+  name: 'h-step',
   props: {
     len: {
       type: Number,

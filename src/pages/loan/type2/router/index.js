@@ -1,8 +1,10 @@
+
 import Vue from 'vue'
-import Router from 'vue-router'
+import Router from '@/common/js/router-esm'
+import store from '../store/index.js'
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     // {
     //   path: '*',
@@ -22,3 +24,11 @@ export default new Router({
     }
   ]
 })
+router.beforeEach((to, from, next) => {
+  store.commit('SET_ROUTER', window.directionPage)
+  setTimeout(() => {
+    next()
+  }, 20)
+})
+
+export default router

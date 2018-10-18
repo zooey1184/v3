@@ -1,8 +1,8 @@
 <template>
   <div class="c-step_wrap" ref='step'>
-    <div 
-      v-for='(item, index) in cal_c' 
-      :class="{circle: index%2==0, line: index%2==1, have_active: active*2>index, circle_active: active*2==index, line_active: (active*2>index && index%2==1)}" 
+    <div
+      v-for='(item, index) in cal_c'
+      :class="{circle: index%2==0, line: index%2==1, have_active: active*2>index, circle_active: active*2==index, line_active: (active*2>index && index%2==1)}"
       :key='index'>
       <img v-if='(active*2>index && index%2==0)' src="./img/check.png" alt="">
     </div>
@@ -11,6 +11,7 @@
 
 <script>
 export default {
+  name: 'v-step',
   data: ()=> ({
     len: 5,
     active: 3,
@@ -67,4 +68,3 @@ export default {
 }
 
 </style>
-

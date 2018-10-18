@@ -5,7 +5,7 @@
       <div class="middle"  :style='{ width: `${middle_width}px`, fontSize: `${size}px`}'>
         <slot></slot>
       </div>
-      <div class="right_item" :style='{width: `${r_width}px`, height: `${size+10}px`, fontSize: `${size}px`}'>
+      <div class="right_item" v-if='r_width>0' :style='{width: `${r_width}px`, height: `${size+10}px`, fontSize: `${size}px`}'>
         <slot name='right'></slot>
       </div>
     </div>
@@ -14,7 +14,9 @@
 
 <script>
 import mixins from '@/common/mixins/list_tpl.js'
+
 export default {
+  name: 'ceil',
   data: ()=> ({
     state: false,
     left_width: 60,
@@ -29,7 +31,7 @@ export default {
     },
     r_width: {
       type: Number,
-      default: 30,
+      default: 0,
     },
     title: {
       type: String,
