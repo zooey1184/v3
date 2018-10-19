@@ -93,4 +93,39 @@ export default {
 .border2 {
   .gradient(border, #55b7ee, #0aabf0)
 }
+.top_page {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 160px;
+  padding: 10px 30px;
+  .title {
+    margin: 8px 0;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+  }
+}
+.card_wrap {
+  position: relative;
+  display: block;
+  width: 90%;
+  margin: 20px auto;
+  margin-top: 100px;
+}
+.btn {
+    width: 98%;
+    display: block;
+    margin: 10px auto;
+    height: 40px;
+    border: none;
+    border-radius: 30px;
+    color:#fff;
+    font-size: 16px;
+    outline: none;
+    &:active {
+      opacity: 0.8
+    }
+  }
 </style>

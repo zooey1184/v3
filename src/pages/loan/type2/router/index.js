@@ -6,21 +6,30 @@ Vue.use(Router)
 
 const router = new Router({
   routes: [
-    // {
-    //   path: '*',
-    //   name: 'NotFound',
-    //   component: ()=> import ('../view/NotFound.vue')
-    // },
+    {
+      path: '*',
+      name: 'NotFound',
+      component: () => import('../../notFound.vue')
+    },
     {
       path: '/',
+      name: 'h',
+      redirect: '/home'
+    },
+    {
+      path: '/index',
       name: 'index',
-      redirect: '/home',
-      component: () => import('../views/home.vue')
+      redirect: '/home'
     },
     {
       path: '/home',
       name: 'home',
       component: () => import('../views/home.vue')
+    },
+    {
+      path: '/verify',
+      name: 'verify',
+      component: () => import('../views/verify.vue')
     }
   ]
 })

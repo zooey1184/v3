@@ -5,16 +5,20 @@ Vue.use(Router)
 
 const router = new Router({
   routes: [
-    // {
-    //   path: '*',
-    //   name: 'NotFound',
-    //   component: ()=> import ('../view/NotFound.vue')
-    // },
+    {
+      path: '*',
+      name: 'NotFound',
+      component: () => import('../../notFound.vue')
+    },
     {
       path: '/',
+      name: 'h',
+      redirect: '/home'
+    },
+    {
+      path: '/index',
       name: 'index',
-      redirect: '/home',
-      component: () => import('../views/home.vue')
+      redirect: '/home'
     },
     {
       path: '/home',
@@ -31,6 +35,22 @@ const router = new Router({
         title: '基本信息'
       },
       component: () => import('../views/basic.vue')
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      meta: {
+        title: '联系人信息'
+      },
+      component: () => import('../views/contact.vue')
+    },
+    {
+      path: '/zhima',
+      name: 'zhima',
+      meta: {
+        title: '芝麻信用'
+      },
+      component: () => import('../views/zhima.vue')
     }
   ]
 })

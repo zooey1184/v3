@@ -1,125 +1,79 @@
 <template>
-<div class="">
-  <div>
-    <div class="step_wrap">
-      <v-step>
-        <div slot='content_0'>
-          <card v-model='showPane0'>
-            <div slot='contain'>
-              dasas
-            </div>
-          </card>
+<page bgWrap='#fff'>
+  <div class="home_page">
+    <img class="home_img" src="../../assets/type2_index.jpg" alt="">
+    <div class="login_pane">
+      <div class="item flex align_items_center">
+        <input class='full' type="text" placeholder='请输入手机号' v-model='pageData.phone'>
+      </div>
+      <div class="item flex align_items_center">
+        <input type="text" class='part' placeholder='请输入验证码' v-model='pageData.code'>
+        <div class="count bg2 btn">
+          <count-down></count-down>
         </div>
-        <!-- <div >
-
-        </div> -->
-        <card v-model='showPane1' slot='content_1'>
-          <form-list :height='40' :width='60'  slot='contain'>
-            <form-item title='hello' :r_width='50'>
-              <input type="text" name="" value="">
-              <div slot='right'>
-                sasd
-              </div>
-            </form-item>
-          </form-list>
-        </card>
-        <div slot='content_2' @click='showPane2=!showPane2'>
-          <card v-model='showPane2'>
-            <div slot='contain'>
-              dadasdas
-            </div>
-          </card>
-        </div>
-      </v-step>
-      <card v-model='showPane1' slot='content_1' @click.native='showPane1=!showPane1'>
-        <form-list :height='40' :width='80'  slot='contain'>
-          <form-item title='hello'>
-            <input type="text" name="" value="">
-          </form-item>
-        </form-list>
-      </card>
+      </div>
+      <div class="item flex align_items_center">
+        <button class="full bg2 border2 btn" @click='$router.push("/verify")'>qianwng</button>
+      </div>
     </div>
-    <!-- <div class="card_wrap">
-      <card v-model='showPane'>
-        <div slot='contain'>
-          <ul>
-            <li v-for='(item, index) in 10' :key='index'>{{item}}</li>
-          </ul>
-        </div>
-      </card>
-    </div>
-    <div class="card_wrap">
-      <card v-model='showPane' title='hefdfsdfsd'>
-        <div slot='contain'>
-          <ul>
-            <li v-for='(item, index) in 10' :key='index'>{{item}}</li>
-          </ul>
-        </div>
-      </card>
-    </div> -->
   </div>
-  <model-pane v-model='showPane2'>
-    <div style="width: 240px;">
-      <alert-contain @close='showPane2=false' :btn='[{text: "cancle", type: "cancle"}, {text: "ddd", type: "confirm"}]'>
-        <div class="">
-          <p>hello</p>
-          <p>hello</p>
-          <p>hello</p>
-          <p>hello</p>
-        </div>
-      </alert-contain>
-    </div>
-  </model-pane>
-</div>
+</page>
 </template>
 
 <script>
-import card from '@/components/foldPane/index.vue'
-import vStep from '@/components/step/h-step.vue'
-import formList from '@/components/formList/formList.vue'
-import formItem from '@/components/formList/ceil.vue'
-import modelPane from '@/components/modelPane/src/modelPane.vue'
-import alertContain from '@/components/alertContain/alertContain.vue'
+import countDown from '@/components/countdown'
 
 export default {
-  components: {
-    card,
-    vStep,
-    formList,
-    formItem,
-    modelPane,
-    alertContain
-  },
-  data: () => ({
-    showPane0: true,
-    showPane1: true,
-    showPane2: true,
-  }),
-  methods: {
-    open() {
-      console.log(1212);
+  name: 'home-page',
+  data: ()=> ({
+    pageData: {
+      phone: '',
+      code: ''
     }
-  },
-  mounted() {
-    setTimeout(()=> {
-      this.showPane0 = false
-    }, 3000)
-    // this.showPane = true
+  }),
+  components: {
+    countDown
   }
 }
 </script>
 
-<style lang="less">
-// @import '../../common/css/reset.less';
-.card_wrap {
-  width: 80%;
-  position: relative;
-  display: block;
-  margin: 10px auto;
-}
-.step_wrap {
-  position: relative;
+<style lang='less'>
+.home_img {
   width: 100%;
-  background: #e64210;
+}
+.count {
+  padding: 5px 10px;
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+.item {
+  width: 80%;
+  margin: 15px 0;
+  position: relative;
+  left: 10%;
+  height: 40px;
+  .radius {
+    border-radius: 30px;
+  }
+  .full {
+    width: 100%;
+    height: 100%;
+  }
+  .part {
+    width: 60%;
+    height: 100%
+  }
+  input {
+    .radius;
+    border: 1px solid #eee;
+    outline: none;
+    box-shadow: 0 2px 5px #eee;
+    padding: 0 10px;
+    font-size: 15px;
+  }
 }
 </style>

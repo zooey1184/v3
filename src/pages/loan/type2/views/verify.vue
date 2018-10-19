@@ -1,13 +1,9 @@
 <template>
   <page>
     <div>
-      <div class="top_page bg1">
-        <p class="title">hei</p>
-        <v-step></v-step>
-      </div>
-      <div class="basic_wrap card_wrap">
-        <card v-model='card' title='基本信息' ref='card'>
-          <div slot='contain'>
+      <h-step>
+        <card v-model='card' slot='content_0'  title='基本信息' ref='card'>
+          <div slot='contain' class="basic_wrap">
             <form-list :width='80' slot='contain'>
               <ceil title='真实姓名'>
                 <input type="text" placeholder='请输入本人姓名' v-model='pageData.name'>
@@ -40,11 +36,31 @@
             </form-list>
           </div>
         </card>
-        <button class="basic_btn bg1 border1 btn" @click='$router.push("/contact")'>下一步</button>
-      </div>
+        <card slot='content_1' title='紧急联系人'>
+          <div slot='contain'> 
+            heloo
+          </div>
+        </card>
+        <card slot='content_2' title='芝麻信用授权'>
+          <div slot='contain'> 
+            heloo
+          </div>
+        </card>
+        <card slot='content_3' title='运营商'>
+          <div slot='contain'> 
+            heloo
+          </div>
+        </card>
+        <card slot='content_4' title='身份证拍照'>
+          <div slot='contain'> 
+            heloo
+          </div>
+        </card>
+      </h-step>
     </div>
   </page>
 </template>
+
 
 <script>
 import formList from '@/components/formList/formList.vue'

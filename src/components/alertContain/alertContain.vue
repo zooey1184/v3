@@ -1,6 +1,6 @@
 <template>
   <div class="c-alertContain">
-    <img class="icon_close" @click='closeFn' src="./img/close.png" alt="">
+    <img class="icon_close" v-if='showClose' @click='closeFn' src="./img/close.png" alt="">
     <slot></slot>
     <div class='btn__group' v-if='btn.length>0'>
       <p v-for='(item, index) in btn' :class='{ lastBtn: showBtnLine(index), cancle_btn: item.type=="cancle"}' @click='actionFn(item.type)' :key='item.type'>{{item.text}}</p>
@@ -14,7 +14,11 @@ export default {
   props: {
     btn: {
       type: Array,
-      default: ()=> []
+      default: ()=> [{text:'取消', type: 'cancle'}, {text: '确定', type: 'confirm'}]
+    },
+    showClose: {
+      type: Boolean,
+      default: true
     }
   },
   methods: {

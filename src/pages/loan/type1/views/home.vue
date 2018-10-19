@@ -1,7 +1,7 @@
 <template>
 <page bgWrap='#fff'>
   <div class="home_page">
-    <!-- <img class="home_img" src="../../assets/type1_index.jpg" alt=""> -->
+    <img class="home_img" src="../../assets/type1_index.jpg" alt="">
     <div class="login_pane">
       <div class="item flex align_items_center">
         <input class='full' type="text" placeholder='请输入手机号' v-model='pageData.phone'>
@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="item flex align_items_center">
-        <button class="full bg1 border1 btn">qianwng</button>
+        <button class="full bg1 border1 btn" @click='$router.push("/basic")'>qianwng</button>
       </div>
     </div>
   </div>
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import countDown from '@/components/countDown'
+import countDown from '@/components/countdown'
 
 export default {
   name: 'home-page',
@@ -74,16 +74,6 @@ export default {
     box-shadow: 0 2px 5px #eee;
     padding: 0 10px;
     font-size: 15px;
-  }
-  .btn {
-    .radius;
-    color: #fff;
-    box-shadow: 0 1px 3px rgb(255, 237, 181);
-    font-size: 15px;
-    outline: none;
-    &:active {
-      opacity: .8
-    }
   }
 }
 </style>
