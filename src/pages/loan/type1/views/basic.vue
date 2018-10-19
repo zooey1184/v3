@@ -1,44 +1,13 @@
 <template>
   <page>
     <div>
-      <div class="top_page bg1">
+      <!-- <div class="top_page bg1">
         <p class="title">hei</p>
         <v-step></v-step>
-      </div>
+      </div> -->
       <div class="basic_wrap card_wrap">
         <card v-model='card' title='基本信息' ref='card'>
-          <div slot='contain'>
-            <form-list :width='80' slot='contain'>
-              <ceil title='真实姓名'>
-                <input type="text" placeholder='请输入本人姓名' v-model='pageData.name'>
-              </ceil>
-              <ceil title='身份证号'>
-                <input type="text" placeholder='请输入本人身份证号' v-model='pageData.name'>
-              </ceil>
-              <ceil title='欲借金额'>
-                <input type="text" placeholder='请输入欲借金额' v-model='pageData.name'>
-              </ceil>
-              <p>选填信息</p>
-              <ceil title='有无工作'>
-                <div class="work">
-                  <span>有工作
-                    <input type="radio" name="" value="1" v-model="pick">
-                  </span>
-                  <span>没工作
-                    <input type="radio" name="" value="0" v-model="pick">
-                  </span>
-                </div>
-              </ceil>
-            </form-list>
-            <form-list :width='80' v-if='pick==1'>
-              <ceil title='身份证号'>
-                <input type="text" placeholder='请输入本人身份证号' v-model='pageData.name'>
-              </ceil>
-              <ceil title='欲借金额'>
-                <input type="text" placeholder='请输入欲借金额' v-model='pageData.name'>
-              </ceil>
-            </form-list>
-          </div>
+          <basic-content slot='contain' @change='reGetRect'></basic-content>
         </card>
         <button class="basic_btn bg1 border1 btn" @click='$router.push("/contact")'>下一步</button>
       </div>
@@ -47,25 +16,17 @@
 </template>
 
 <script>
-import formList from '@/components/formList/formList.vue'
-import ceil from '@/components/formList/ceil.vue'
+import basicContent from '../../contain/basic.vue'
 
 export default {
   components: {
-    formList,
-    ceil
+    basicContent
   },
   data: ()=> ({
     card: false,
-    pageData: {
-      name: '',
-      work: 0
-    },
-    pick: ''
   }),
-  watch: {
-    pick: function(n) {
-      console.log(n);
+  methods: {
+    reGetRect() {
       let card = this.$refs.card
       card.getRect()
     }
@@ -74,40 +35,6 @@ export default {
     setTimeout(()=> {
       this.card = true
     }, 500)
-    setTimeout(()=> {
-      this.pageData.work = 1
-
-    }, 3000)
   }
 }
 </script>
-
-<style lang="less">
-
-.basic_wrap {
-  .work {
-    height: 100%;
-    display: flex;
-    align-items: flex-end;
-    padding-bottom: 6px;
-    input {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      top: 0;
-    }
-    span {
-      margin-right: 10px;
-      border: 1px solid #ddd;
-      border-radius: 20px;
-      padding: 2px 10px;
-      position: relative;
-    }
-  }
-  
-}
-</style>

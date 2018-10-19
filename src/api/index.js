@@ -22,4 +22,5 @@ export function uploadImg(base64, type = '', filename = 'xx.png') {
 			}
 		}
 	})
+
 }

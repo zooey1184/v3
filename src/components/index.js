@@ -1,16 +1,23 @@
 
 import ModelPane from '@/components/modelPane/index.js'
 import Card from '@/components/foldPane/index.vue'
+import VStep from '@/components/step/v-step.vue'
 import HStep from '@/components/step/h-step.vue'
 import Load from '@/components/load/index.js'
 import PageWrap from '@/components/pageWrap/page.vue'
 import Toast from '@/components/Toast/index.js'
 import VReg from '@/components/VReg/index.js'
+import formList from '@/components/formList/formList.vue'
+import ceil from '@/components/formList/ceil.vue'
+import actionSheet from '@/components/ActionSheet'
 
 const components = [
   ModelPane,
   PageWrap,
   Card,
+  VStep,
+  formList,
+  ceil,
   HStep
 ]
 
@@ -26,6 +33,7 @@ const install = function (Vue) {
   // 插件
   Vue.use(Load)
   Vue.use(Toast)
+  Vue.use(actionSheet)
   // 指令
   VReg(Vue)
 }
@@ -37,10 +45,13 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   install,
   Card,
-  HStep,
   ModelPane,
   Load,
   PageWrap,
-  VReg
+  VStep,
+  VReg,
+  formList,
+  ceil,
+  HStep
   // WaveNumber
 }

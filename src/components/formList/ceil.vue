@@ -1,11 +1,11 @@
 <template>
   <div class="c-form_ceil" :class='{underlineF: showUnderline}' ref='ceil' :style='{height: `${c_height}px`}'>
     <div>
-      <div class="left" :style='{width: `${left_width}px`, height: `${size+12}px`, fontSize: `${size}px`}'>{{title}}</div>
+      <div class="left" :style='{width: `${left_width}px`, height: `${size}px`, fontSize: `${size}px`}'>{{title}}</div>
       <div class="middle"  :style='{ width: `${middle_width}px`, fontSize: `${size}px`}'>
         <slot></slot>
       </div>
-      <div class="right_item" v-if='r_width>0' :style='{width: `${r_width}px`, height: `${size+10}px`, fontSize: `${size}px`}'>
+      <div class="right_item" v-if='r_width>0' :style='{width: `${r_width}px`, height: r_height? `${r_height}px`: `${size}px`, fontSize: `${size}px`}'>
         <slot name='right'></slot>
       </div>
     </div>
@@ -21,7 +21,7 @@ export default {
     state: false,
     left_width: 60,
     middle_width: 200,
-    c_height: 48
+    c_height: 40
   }),
   mixins: [mixins],
   props: {
@@ -33,13 +33,17 @@ export default {
       type: Number,
       default: 0,
     },
+    r_height: {
+      type: Number,
+      default: 0,
+    },
     title: {
       type: String,
       default: 'title',
     },
     height: {
       type: Number,
-      default: 48,
+      default: 36,
     },
     size: {
       type: Number,
@@ -71,9 +75,14 @@ export default {
   position: relative;
   .middle_align {
     display: inline-block;
-    vertical-align: bottom;
+    vertical-align: middle;
     height: 100%;
     position: relative;
+  }
+  .v-center {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
   }
   position: relative;
   width: 100%;
@@ -92,11 +101,13 @@ export default {
     .middle_align;
     &>input {
       width: 100%;
-      height: 70%;
+      .v-center;
       position: relative;
-      top: 30%;
-      font-size: 15px;
+      height: 100%;
+      line-height: 100%;
+      padding-top: 5px;
       outline: none;
+      font-size: 15px;
       border: none;
     }
   }
@@ -111,7 +122,7 @@ export default {
 .underlineF::after {
   position: absolute;
   content: "";
-  bottom: 0;
+  bottom: 2px;
   left: 0;
   height: 1px;
   right: 0;

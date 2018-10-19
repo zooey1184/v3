@@ -81,17 +81,26 @@ export default {
     overflow: hidden;
   }
 }
+.sub_title {
+  color: #ABC5D9;
+  margin-top: 10px;
+  font-size: 15px;
+}
 .bg1 {
-  .gradient(background, #ffa100, #f0710a)
+  .gradient(background, #ffa100, #f0710a);
+  color: #fff;
+  border-color: #ffa100;
 }
 .border1 {
-  .gradient(border, #ffa100, #f0710a)
+  border: 1px solid #ffa100;
 }
 .bg2 {
-  .gradient(background, #55b7ee, #0aabf0)
+  .gradient(background, #55b7ee, #0aabf0);
+  color: #fff;
+  border-color: #55b7ee;
 }
 .border2 {
-  .gradient(border, #55b7ee, #0aabf0)
+  border: 1px solid #55b7ee;
 }
 .top_page {
   position: absolute;

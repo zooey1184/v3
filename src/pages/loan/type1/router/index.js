@@ -51,6 +51,14 @@ const router = new Router({
         title: '芝麻信用'
       },
       component: () => import('../views/zhima.vue')
+    },
+    {
+      path: '/operator',
+      name: 'operator',
+      meta: {
+        title: '运营商'
+      },
+      component: () => import('../views/operation.vue')
     }
   ]
 })

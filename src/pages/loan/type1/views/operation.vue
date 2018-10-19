@@ -4,18 +4,18 @@
     <div>
       <div class="top_page bg1">
         <p class="title">hei</p>
-        <v-step :len='5' :active='3'></v-step>
+        <v-step :len='5' :active='2'></v-step>
       </div>
       <div class="card_wrap">
-        <card title='芝麻信用授权' v-model='card'>
-          <zhima slot='contain'></zhima>
+        <card title='运营商' v-model='card'>
+          <operation slot='contain'></operation>
         </card>
-        <button class="btn bg1" @click='$router.push("/operator")'>下一步</button>
+        <button class="btn bg1">下一步</button>
       </div>
     </div>
   </page>
   <model-pane v-model='showPane'>
-    <div class="zhima_contain">
+    <div class="yys_contain">
       <alert-contain :showClose='false' @cancle='showPane=false'>
         <div>
           <p>ssss</p>
@@ -30,12 +30,12 @@
 
 <script>
 import alertContain from '@/components/alertContain/alertContain.vue'
-import zhima from '../../contain/zhima.vue'
+import operation from '../../contain/operator.vue'
 
 export default {
   components: {
     alertContain,
-    zhima
+    operation
   },
   data: ()=> ({
     showPane: false,
@@ -50,9 +50,8 @@ export default {
 </script>
 
 <style lang='less'>
-.zhima_contain {
+.yys_contain {
   width: 70%;
   min-height: 100px;
-
 }
 </style>

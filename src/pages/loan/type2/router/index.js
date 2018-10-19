@@ -29,6 +29,9 @@ const router = new Router({
     {
       path: '/verify',
       name: 'verify',
+      meta: {
+        title: '认证授权'
+      },
       component: () => import('../views/verify.vue')
     }
   ]

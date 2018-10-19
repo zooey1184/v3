@@ -19,6 +19,7 @@
     "@vue/eslint-config-standard": "^3.0.5",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
+    "vue-cropper": "^0.4.4",
     "vue-template-compiler": "^2.5.17",
     "vux": "^2.9.2",
     "vux-loader": "^1.2.9"
