@@ -1,4 +1,4 @@
-
+import Alert from '@/components/Alert'
 import ModelPane from '@/components/modelPane/index.js'
 import Card from '@/components/foldPane/index.vue'
 import VStep from '@/components/step/v-step.vue'
@@ -35,6 +35,7 @@ const install = function (Vue) {
   Vue.use(Load)
   Vue.use(Toast)
   Vue.use(cropper)
+  Vue.use(Alert)
   // 指令
   VReg(Vue)
 }

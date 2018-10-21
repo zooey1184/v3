@@ -8,9 +8,9 @@
       </div>
       <div class="card_wrap">
         <card title='芝麻信用授权' v-model='card'>
-          <zhima slot='contain'></zhima>
+          <zhima slot='contain' ref='zhima'></zhima>
         </card>
-        <button class="btn bg1" @click='$router.push("/operator")'>下一步</button>
+        <button class="btn bg1" @click='submitFn'>下一步</button>
       </div>
     </div>
   </page>
@@ -41,6 +41,15 @@ export default {
     showPane: false,
     card: true
   }),
+  methods: {
+    submitFn() {
+      let zhima = this.$refs.zhima
+      let callback = ()=> {
+        this.$router.push('/operator')
+      }
+      zhima.onSubmit(callback)
+    }
+  },
   mounted() {
     setTimeout(()=> {
       this.card = true

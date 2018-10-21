@@ -42,8 +42,8 @@ export default {
   top: 50%;
   left: 50%;
   padding: 12px;
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   overflow: hidden;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
