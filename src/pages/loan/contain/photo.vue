@@ -1,6 +1,6 @@
 <template>
   <div class="photo__wrap flex align-items-center">
-    <div class="left">
+    <div class="photo_left">
       <div class="top">
         <clip-img></clip-img>
       </div>
@@ -8,7 +8,7 @@
         <clip-img></clip-img>
       </div>
     </div>
-    <div class="right">
+    <div class="photo_right">
       <clip-img></clip-img>
     </div>
   </div>
@@ -28,22 +28,29 @@ export default {
 .photo__wrap {
   position: relative;
   width: 100%;
-  .left {
-    width: 45%;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  .photo_left {
+    width: 47%;
     position: relative;
+    margin-right: 3%;
     .top {
       width: 100%;
-      height: 100px;
+      height: 80px;
+      position: relative;
+      margin-bottom: 10px;
     }
     .bottom {
       width: 100%;
-      height: 100px;
+      height: 80px;
+      position: relative;
     }
   }
-  .right {
-    width: 45%;
+  .photo_right {
+    width: 47%;
     position: relative;
-    height: 200px
+    height: 170px;
+    margin-left: 0;
   }
 }
 </style>

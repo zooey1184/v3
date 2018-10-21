@@ -1,3 +1,3 @@
-import clipper from './vue-img-clipper.vue'
+import clipper from './clipImg.vue'
 
 export default clipper

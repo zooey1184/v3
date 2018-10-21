@@ -1,32 +1,33 @@
 <template>
   <page>
     <div>
+      <div class="type2_nav_pane bg2 flex align_items_center">贷贷贷</div>
       <h-step :len='5' :active='active'>
         <card v-model='showModel_0' slot='content_0'  title='基本信息' ref='card'>
           <basic-content slot='contain' bg='bg2' @change='reGetRect'>
-            <div class="">
-              <button @click='nextFn(1)'>xiayibu</button>
+            <div class="btn_type2_pane flex">
+              <button class="bg2" @click='nextFn(1)'>xiayibu</button>
             </div>
           </basic-content>
         </card>
         <card slot='content_1' v-model='showModel_1' title='紧急联系人'>
           <contact slot='contain'>
-            <div class="">
-              <button @click='nextFn(2)'>xiayibu</button>
+            <div class="btn_type2_pane flex">
+              <button class="bg2" @click='nextFn(2)'>xiayibu</button>
             </div>
           </contact>
         </card>
         <card slot='content_2' v-model='showModel_2' title='芝麻信用授权'>
           <zhima slot='contain'>
-            <div class="">
-              <button @click='nextFn(3)'>xiayibu</button>
+            <div class="btn_type2_pane flex">
+              <button class="bg2" @click='nextFn(3)'>xiayibu</button>
             </div>
           </zhima>
         </card>
         <card slot='content_3' v-model='showModel_3' title='运营商'>
           <operation slot='contain'>
-            <div class="">
-              <button @click='nextFn(4)'>xiayibu</button>
+            <div class="btn_type2_pane flex">
+              <button class="bg2" @click='nextFn(4)'>xiayibu</button>
             </div>
           </operation>
         </card>
@@ -108,30 +109,20 @@ export default {
 </script>
 
 <style lang="less">
-.basic_wrap {
-  .work {
-    height: 100%;
-    display: flex;
-    align-items: flex-end;
-    padding-bottom: 6px;
-    input {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      top: 0;
-    }
-    span {
-      margin-right: 10px;
-      border: 1px solid #ddd;
-      border-radius: 20px;
-      padding: 2px 10px;
-      position: relative;
+.type2_nav_pane {
+  padding: 12px 0;
+}
+
+.btn_type2_pane {
+  padding: 20px 0;
+  justify-content: flex-end;
+  button {
+    border-radius: 30px;
+    padding: 6px 15px;
+    outline: none;
+    &:active {
+      opacity: .7;
     }
   }
-
 }
 </style>

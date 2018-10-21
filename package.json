@@ -8,20 +8,25 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "querystring": "^0.2.0",
     "vue": "^2.5.17",
+    "vue-cropper": "^0.4.0",
+    "vue-cropperjs": "^2.2.2",
+    "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vux": "^2.9.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0",
     "@vue/cli-plugin-eslint": "^3.0.0",
     "@vue/cli-service": "^3.0.0",
     "@vue/eslint-config-standard": "^3.0.5",
+    "co": "^4.6.0",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
-    "vue-cropper": "^0.4.4",
+    "md5": "^2.2.1",
     "vue-template-compiler": "^2.5.17",
-    "vux": "^2.9.2",
     "vux-loader": "^1.2.9"
   }
 }

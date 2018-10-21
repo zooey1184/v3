@@ -19,27 +19,7 @@ export default {
     ])
   },
   methods: {
-    backFn() {
-      if(Bridge) {
-        const self = this
-        // Bridge.onBack(function() {
-        //   let isBack = true
-        //   let h = window.sessionStorage.getItem('HISTORY')
-        //   if(h) {
-        //     const arr = JSON.parse(h)
-        //     if(arr.length && arr.length>0) {
-        //       isBack = true
-        //     }else {
-        //       isBack = false
-        //     }
-        //   }else {
-        //     isBack = false
-        //   }
-        //   self.$router.back()
-        //   return isBack
-				// });
-      }
-    }
+
   },
   watch: {
     '$route'(to, from) {
@@ -53,11 +33,6 @@ export default {
       }
       document.title = this.$route.meta.title
     }
-  },
-  mounted() {
-    // setTimeout(()=> {
-    //   this.backFn()
-    // }, 100)
   }
 }
 </script>
@@ -89,7 +64,7 @@ export default {
 .bg1 {
   .gradient(background, #ffa100, #f0710a);
   color: #fff;
-  border-color: #ffa100;
+  border: 1px solid #ffa100 !important;
 }
 .border1 {
   border: 1px solid #ffa100;
@@ -97,7 +72,7 @@ export default {
 .bg2 {
   .gradient(background, #55b7ee, #0aabf0);
   color: #fff;
-  border-color: #55b7ee;
+  border: 1px solid #55b7ee !important;
 }
 .border2 {
   border: 1px solid #55b7ee;
@@ -124,17 +99,20 @@ export default {
   margin-top: 100px;
 }
 .btn {
-    width: 98%;
-    display: block;
-    margin: 10px auto;
-    height: 40px;
-    border: none;
-    border-radius: 30px;
-    color:#fff;
-    font-size: 16px;
-    outline: none;
-    &:active {
-      opacity: 0.8
-    }
+  width: 98%;
+  display: block;
+  margin: 10px auto;
+  height: 40px;
+  border: none;
+  border-radius: 30px;
+  color:#fff;
+  font-size: 16px;
+  outline: none;
+  &:active {
+    opacity: 0.8
   }
+  &:hover {
+    opacity: 0.8
+  }
+}
 </style>

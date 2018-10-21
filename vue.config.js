@@ -119,7 +119,16 @@ module.exports = {
   },
   // 输出文件目录
   outputDir: 'dist',
-  lintOnSave: false
+  lintOnSave: false,
+  devServer: {
+    proxy: {
+      "/api/v6": {
+        target: 'https://www.newkouzi.com',
+        // target: 'http://localhost:4321',
+        changeOrigin: true,
+      },
+    }
+  }
 }
 
 // module.exports = config_extra

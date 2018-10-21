@@ -4,7 +4,7 @@
     <img class="home_img" src="../../assets/type2_index.jpg" alt="">
     <div class="login_pane">
       <div class="item flex align_items_center">
-        <input class='full' type="text" placeholder='请输入手机号' v-model='pageData.phone'>
+        <input class='full_item' type="text" placeholder='请输入手机号' v-model='pageData.phone'>
       </div>
       <div class="item flex align_items_center">
         <input type="text" class='part' placeholder='请输入验证码' v-model='pageData.code'>
@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="item flex align_items_center">
-        <button class="full bg2 border2 btn" @click='$router.push("/verify")'>qianwng</button>
+        <button class="full_item bg2 border2 btn" @click='$router.push("/verify")'>立即借钱</button>
       </div>
     </div>
   </div>
@@ -59,7 +59,7 @@ export default {
   .radius {
     border-radius: 30px;
   }
-  .full {
+  .full_item {
     width: 100%;
     height: 100%;
   }
@@ -72,6 +72,7 @@ export default {
     border: 1px solid #eee;
     outline: none;
     box-shadow: 0 2px 5px #eee;
+    background: #fff;
     padding: 0 10px;
     font-size: 15px;
   }

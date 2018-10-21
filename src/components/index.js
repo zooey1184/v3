@@ -9,7 +9,8 @@ import Toast from '@/components/Toast/index.js'
 import VReg from '@/components/VReg/index.js'
 import formList from '@/components/formList/formList.vue'
 import ceil from '@/components/formList/ceil.vue'
-import actionSheet from '@/components/ActionSheet'
+// import actionSheet from '@/components/ActionSheet'
+import cropper from '@/components/clipImg/clip.js'
 
 const components = [
   ModelPane,
@@ -33,7 +34,7 @@ const install = function (Vue) {
   // 插件
   Vue.use(Load)
   Vue.use(Toast)
-  Vue.use(actionSheet)
+  Vue.use(cropper)
   // 指令
   VReg(Vue)
 }

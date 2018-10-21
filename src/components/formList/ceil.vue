@@ -43,7 +43,7 @@ export default {
     },
     height: {
       type: Number,
-      default: 36,
+      default: 40,
     },
     size: {
       type: Number,

@@ -10,7 +10,7 @@
         <card title='运营商' v-model='card'>
           <operation slot='contain'></operation>
         </card>
-        <button class="btn bg1">下一步</button>
+        <button class="btn bg1" @click='$router.push("/photo")'>下一步</button>
       </div>
     </div>
   </page>

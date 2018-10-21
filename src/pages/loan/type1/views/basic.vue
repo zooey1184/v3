@@ -1,10 +1,10 @@
 <template>
   <page>
     <div>
-      <!-- <div class="top_page bg1">
+      <div class="top_page bg1">
         <p class="title">hei</p>
         <v-step></v-step>
-      </div> -->
+      </div>
       <div class="basic_wrap card_wrap">
         <card v-model='card' title='基本信息' ref='card'>
           <basic-content slot='contain' @change='reGetRect'></basic-content>
