@@ -18,24 +18,25 @@
 
 <script>
 import countDown from '@/components/countdown'
+import { mapState } from 'vuex'
+import api from '../api'
 
 export default {
   components: {
     countDown
   },
   data: ()=> ({
-    pageData: {
-
-    }
+    token: '',
+    vcode: '',
+    sendTiming: '',
+    vcode1Sended: '',
+    checkBody: '',
+    btnTip: ''
   }),
   props: {
     bg: {
       type: String,
       default: 'bg1'
-    },
-    border: {
-      type: String,
-      default: 'border1'
     }
   },
   methods: {

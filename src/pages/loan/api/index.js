@@ -25,7 +25,7 @@ http.interceptors.push((req, next) => {
 	next (res => {
 		var body = res.body
 		if (!res.ok) {
-			Vue.$load.hide()
+			window.vload.$load.hide()
 			console.log(body)
 			if (res.status == 401) {
 				// router.push('/')
@@ -40,7 +40,7 @@ http.interceptors.push((req, next) => {
 					// 	content: body.msg,
 					// })
 				} else {
-					Vue.$toast.show(body.msg)
+					window.vm.$toast.show(body.msg)
 				}
 			}
 		}

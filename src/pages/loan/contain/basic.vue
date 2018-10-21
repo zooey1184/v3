@@ -14,10 +14,10 @@
       <ceil title='有无工作'>
         <div class="work">
           <span :class="{[bg]: pick==1}">有工作
-            <input type="radio" @change='change' value="1" v-model="pick">
+            <input type="radio" @change='change' :value="1" v-model="pick">
           </span>
           <span :class="{[bg]: pick=='0'}">没工作
-            <input type="radio" @change='change' value="0" v-model="pick">
+            <input type="radio" @change='change' :value="0" v-model="pick">
           </span>
         </div>
       </ceil>
@@ -70,7 +70,7 @@ export default {
     change() {
       this.$emit('change', this.pick)
     },
-    onSubmit() {
+    onSubmit(callback=()=> {}) {
 			this.form.refer = Param.refer
 
 			let msg = checkInput(this.form, this.rules)
@@ -93,17 +93,19 @@ export default {
 					msg = '请输入正确金额（1千-5万）'
 				}
 			}
-			
+
 			if(msg && !Param.test) return this.$toast.show(msg)
 
-			
+
 
 			const sexMat = /(\d)\S$/.exec(this.form.idcard)
-			
+
       this.form.sex = sexMat[1]%2 == 0 ? 0 : 1
-      this.form.hasJob = this.pick || '0'
+      this.form.hasJob = this.pick || 0
 			console.log(this.form)
-			
+      if(callback) {
+        callback()
+      }
 
 			// if(this.progress == 1) {
 			// 	if(!this.idcardImgUrl_1) msg = '请上传身份证正面照'
@@ -111,7 +113,7 @@ export default {
 			// 	else if(!this.idcardImgUrl_3) msg = '请上传手持身份证照'
 			// 	if(msg && !Param.test) return this.$toast(msg)
 			// 	this.form.idcardImg = [this.idcardImgUrl_1, this.idcardImgUrl_2, this.idcardImgUrl_3].join(' ')
-				
+
 			// 	const ageOut = (this.form.age > 45 || this.form.age < 19) && !this.h5Config.cid
 			// 	this.form.note = `完成1(基础信息)`
 			// 	if(ageOut) {
@@ -128,7 +130,7 @@ export default {
 			// 	localStorage.loanForm = JSON.stringify(this.form)
 			// 	return true
 			// }
-			
+
 			// this.progress = 1
 			// if(this.form.idcard == this.myIdcard) {
 			// 	const arr = this.form.idcardImg.split(/\s/)

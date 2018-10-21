@@ -2,7 +2,7 @@
   <page>
     <div>
       <div class="top_page bg1">
-        <p class="title">hei</p>
+        <p class="title">贷贷贷</p>
         <v-step></v-step>
       </div>
       <div class="basic_wrap card_wrap">
@@ -32,7 +32,11 @@ export default {
     },
     submitFn() {
       let card = this.$refs.basic
-      card.onSubmit()
+      const self = this
+      function nextF() {
+        self.$router.push('/contact')
+      }
+      card.onSubmit(nextF)
     }
   },
   mounted() {

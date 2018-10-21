@@ -3,8 +3,8 @@
   <page>
     <div>
       <div class="top_page bg1">
-        <p class="title">hei</p>
-        <v-step :len='5' :active='3'></v-step>
+        <p class="title">贷贷贷</p>
+        <v-step :len='5' :active='2'></v-step>
       </div>
       <div class="card_wrap">
         <card title='芝麻信用授权' v-model='card'>
