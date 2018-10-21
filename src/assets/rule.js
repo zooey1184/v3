@@ -1,4 +1,4 @@
-//正则表
+/* eslint-disable */
 export const ruleMap = {
 	imgcode: /^[0-9a-zA-Z]{4,6}$/,
 	vcode: /^\d{3,6}$/,
@@ -9,18 +9,18 @@ export const ruleMap = {
 	zwname: /^[\u4e00-\u9fa5 ]{2,10}$/,
 	cardnum: /^\d{10,19}$/,
 	mail: /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/,
-	qq: /^[1-9]\d{4,14}$/,
+	qq: /^[1-9]\d{4,14}$/
 }
 
 export const defRules = {
-	mobile: {
+	mobile:	{
 		label: '手机号',
 		reg: ruleMap.mobile,
 	},
 	vcode: {
 		label: '验证码',
 		reg: ruleMap.vcode,
-	},
+}
 }
 
 export function checkInput(form, rules = defRules) {

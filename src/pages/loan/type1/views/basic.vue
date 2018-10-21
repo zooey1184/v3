@@ -7,9 +7,9 @@
       </div>
       <div class="basic_wrap card_wrap">
         <card v-model='card' title='基本信息' ref='card'>
-          <basic-content slot='contain' @change='reGetRect'></basic-content>
+          <basic-content slot='contain' @change='reGetRect' ref='basic'></basic-content>
         </card>
-        <button class="basic_btn bg1 border1 btn" @click='$router.push("/contact")'>下一步</button>
+        <button class="basic_btn bg1 border1 btn" @click='submitFn'>下一步</button>
       </div>
     </div>
   </page>
@@ -29,6 +29,10 @@ export default {
     reGetRect() {
       let card = this.$refs.card
       card.getRect()
+    },
+    submitFn() {
+      let card = this.$refs.basic
+      card.onSubmit()
     }
   },
   mounted() {

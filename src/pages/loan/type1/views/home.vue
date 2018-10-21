@@ -35,10 +35,6 @@ import { mapState } from 'vuex'
 export default {
   name: 'home-page',
   data: ()=> ({
-    // form: {
-    //   mobile: '',
-    //   vcode: '',
-    // }
     isHome: true
   }),
   computed: {
@@ -75,7 +71,10 @@ export default {
 			// await this.$store.dispatch('user/getInfo')
 			localStorage.mobile = this.form.mobile
 			this.$load.hide()
-			this.$toast.show('验证成功')
+			this.$toast.show({
+        msg: '验证成功',
+        bg: 'rgba(255,255,255,.7)'
+      })
 			this.onLoginSuc()
     },
     onLoginSuc() {

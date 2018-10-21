@@ -2,7 +2,7 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 // import { md5 } from 'vux'
-import router from '../router'
+// import router from '../router'
 
 Vue.use(VueResource)
 
@@ -28,7 +28,12 @@ http.interceptors.push((req, next) => {
 			Vue.$load.hide()
 			console.log(body)
 			if (res.status == 401) {
-				router.push('/')
+				// router.push('/')
+				try {
+					this.$router.push("/")
+				} catch (error) {
+					window.history.back()
+				}
 			} else if (body.msg && res.status != 404) {
 				if(body.msg.length > 10) {
 					// Vue.$vux.alert.show({
