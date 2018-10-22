@@ -59,8 +59,8 @@ export default {
 			this.$load.show('发送中')
 			const res = await this.$http.get('v6/verify/phone/sendSms', {
 				params: {
-          // phone: this.form.mobile,
-          phone: '15960018047',
+          phone: this.form.mobile,
+          // phone: '15960018047',
 					token: this.token,
 				}
 			})

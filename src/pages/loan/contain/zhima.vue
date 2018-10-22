@@ -106,30 +106,6 @@ export default {
 			this.$alert.show({
 				title: `请输入${extra.title}`,
 				msg: content,
-				// onShow: () => {
-				// 	if(extra.vcode) this.$vux.confirm.setInputValue(extra.vcode)
-				// },
-				// onConfirm: async code => {
-				// 	if(code.length < 4) {
-				// 		extra.vcode = code
-				// 		this.promptVcode2(extra)
-				// 		this.$toast.show('请输入正确的验证码')
-				// 		return
-				// 	}
-				// 	this.$load.show('更新中')
-				// 	const res = await this.$http.post('v6/verify/zms/smsCode', {
-				// 		token: this.token,
-				// 		code,
-				// 	})
-				// 	this.$load.hide()
-				// 	const body = res.body
-				// 	if(body.err) {
-        //     this.$toast.show(body.err)
-        //   } else {
-        //     this.checkState()
-        //   }
-        //
-				// },
         cancleFn: ()=> {
           this.$alert.hide()
         },
@@ -166,8 +142,8 @@ export default {
 			if(this.vcode1.length < 4) return this.$toast('请输入正确的验证码')
 			this.$load.show('验证中')
 			const res = await this.$http.post('v6/verify/zms/submitSms', {
-				// phone: this.form.mobile,
-        phone: '15960018047',
+				phone: this.form.mobile,
+        // phone: '15960018047',
 				token: this.token,
 				code: this.vcode1,
 			})
@@ -193,8 +169,8 @@ export default {
 			this.$load.show('发送中')
 			const res = await this.$http.get('v6/verify/zms/sendSms', {
 				params: {
-					// phone: this.form.mobile,
-          phone: '15960018047',
+					phone: this.form.mobile,
+          // phone: '15960018047',
 					token: this.token,
 				}
 			})
@@ -211,13 +187,13 @@ export default {
 			const params = init ? {
 				sysId,
 				cid,
-				// name: this.form.realName,
-				// phone: this.form.mobile,
-				// idcard: this.form.idcard,
+				name: this.form.realName,
+				phone: this.form.mobile,
+				idcard: this.form.idcard,
 
-        name: '张应颖',
-        phone: '15960018047',
-				idcard: '350921199101200012',
+        // name: '张应颖',
+        // phone: '15960018047',
+				// idcard: '350921199101200012',
 			} : {
 				token: this.token,
 			}

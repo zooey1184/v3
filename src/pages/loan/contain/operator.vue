@@ -182,12 +182,12 @@ export default {
 				params: {
 					sysId,
 					cid,
-					// name: this.form.realName,
-					// phone: this.form.mobile,
-          // idcard: this.form.idcard,
-          name: '张应颖',
-					phone: '15960018047',
-					idcard: '350921199101200012',
+					name: this.form.realName,
+					phone: this.form.mobile,
+          idcard: this.form.idcard,
+          // name: '张应颖',
+					// phone: '15960018047',
+					// idcard: '350921199101200012',
 				}
 			})
 			this.$load.hide()
