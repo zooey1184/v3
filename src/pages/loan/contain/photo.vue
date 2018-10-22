@@ -16,6 +16,7 @@
 
 <script>
 import clipImg from '@/components/clipImg'
+import warning from '@/pages/loan/assets/warning.png'
 
 export default {
   data: ()=> ({
@@ -56,7 +57,24 @@ export default {
 					this.form.id = res.body.id
 				})
 				if(ageOut) {
-					return this.$toast.show('初审未通过：年龄不符')
+          // return this.$toast.show('初审未通过：年龄不符')
+          this.$mark.show({
+            title: '',
+            btn: [],
+            msg: `
+              <div class='c-mark-content'>
+                <img class='title_img' src=${warning} alt='warning'/>
+                <p class='desc_tip'>
+                  初审未通过：年龄不符
+                </p>
+                
+              </div>
+            `,
+            closeFn: ()=> {
+              this.$mark.hide()
+            }
+          })
+          return 
 				}
 				localStorage.loanForm = JSON.stringify(this.form)
         if(callback) {

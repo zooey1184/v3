@@ -20,6 +20,7 @@
 import countDown from '@/components/countdown'
 import { mapState } from 'vuex'
 import api from '../api'
+import warning from '@/pages/loan/assets/warning.png'
 
 export default {
   components: {
@@ -282,7 +283,24 @@ export default {
 					note: '完成2(芝麻分不足)',
 					state: -3,
 				})
-				return this.$toast.show('很抱歉，因条件不符合，初审被拒。')
+				// return this.$toast.show('很抱歉，因条件不符合，初审被拒。')
+				this.$mark.show({
+					title: '',
+					btn: [],
+					msg: `
+						<div class='c-mark-content'>
+							<img class='title_img' src=${warning} alt='warning'/>
+							<p class='desc_tip'>
+								很抱歉，因条件不符合，初审被拒
+							</p>
+							
+						</div>
+					`,
+					closeFn: ()=> {
+						this.$mark.hide()
+					}
+				})
+				return 
 			}
 			// if(!(score > 350 && score < 950)) return this.$toast('请输入正确的芝麻分')
 			api.postOrder({
