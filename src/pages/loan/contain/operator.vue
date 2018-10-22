@@ -1,18 +1,10 @@
 <template>
   <form-list :width='100'>
-    <!-- <ceil title='手机号'>
-      <input type="text" placeholder="请输入本人手机号">
-    </ceil>
-    <ceil title='服务密码'>
-      <input type="text" placeholder="请输入服务密码">
-    </ceil> -->
-
-
     <p v-if="authAt || yysLoading" title="验证状态">
 			{{ authAt ? '已完成' : '认证中，可进入下一步' }}
     </p>
     <template v-else>
-      <ceil :title="item.fieldName" :r_width='item.fieldExtraConfig?90:0' 
+      <ceil :title="item.fieldName" :r_width='item.fieldExtraConfig?90:0'
         :r_height='(item.fieldExtraConfig && item.fieldExtraConfig.fieldExtraType !="SMS")?40:16'
         v-for="(item, i) in fields" :key="i">
         <input type="text" :disabled="item.field == 'username'" v-model="loginForm[item.field]" :placeholder="item.fieldExtraConfig ? '' : ('请输入' + item.fieldName)">
@@ -26,7 +18,7 @@
     </template>
 
 
-    <ceil :title="lastAction == 'NEED_IMAGE' ? '图片验证码' :  '短信验证码'" :r_width='80' :r_height='20' v-if='showPop'>
+    <ceil :title="lastAction == 'NEED_IMAGE' ? '图片验证码' :  '短信验证码'" :r_width='80' :r_height='20' v-show='showPop'>
       <input type="text" placeholder="请输入验证码">
       <gxb-yys-vcode v-if="lastAction == 'NEED_IMAGE'" slot="right"
         :img-data="imgData"
@@ -86,17 +78,13 @@ export default {
 					id: this.form.id,
 					note: '完成3(运营商认证)',
 				})
-			} 
+			}
 		},
 	},
   props: {
     bg: {
       type: String,
       default: 'bg1'
-    },
-    border: {
-      type: String,
-      default: 'border1'
     }
   },
   methods: {
@@ -146,6 +134,7 @@ export default {
 			if(/NEED/.test(action)) {
 				this.vcode2 = ''
 				this.showPop = true
+        this.$emit('reGetRect')
 				if(action == 'NEED_IMAGE') this.imgData = extra.remark
 				return
 			}
@@ -174,7 +163,7 @@ export default {
 			if(res.body.err) return this.$toast.show(res.body.err)
 			this.checkState()
 		},
-		
+
 		async initData() {
 			this.$load.show()
 			const { sysId, cid } = this.h5Config

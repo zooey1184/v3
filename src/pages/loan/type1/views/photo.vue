@@ -7,9 +7,9 @@
       </div>
       <div class="card_wrap">
         <card title='身份证拍照' v-model='card'>
-          <photo slot='contain'></photo>
+          <photo slot='contain' ref='photo'></photo>
         </card>
-        <button class="btn bg1" @click='$router.push("/zhima")'>下一步</button>
+        <button class="btn bg1" @click='submitFn'>下一步</button>
       </div>
     </div>
   </page>
@@ -24,6 +24,15 @@ export default {
   },
   data: ()=> ({
     card: true
-  })
+  }),
+  methods: {
+    submitFn() {
+      let photo = this.$refs.photo
+      let callback = ()=> {
+        this.$router.push("/zhima")
+      }
+      photo.onSubmit(callback)
+    }
+  }
 }
 </script>

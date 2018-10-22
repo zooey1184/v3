@@ -46,6 +46,14 @@ const router = [
       title: '身份证拍照'
     },
     component: () => import('../type1/views/photo.vue')
+  },
+  {
+    path: '/fail',
+    name: 'fail',
+    meta: {
+      title: '认证结果'
+    },
+    component: () => import('../type1/views/fail.vue')
   }
 ]
 export default router

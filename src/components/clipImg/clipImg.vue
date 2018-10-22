@@ -16,7 +16,7 @@
         <i class='icon iconfont icon-close'></i>
       </span>
     </div>
-    
+
   </div>
 </template>
 
@@ -51,6 +51,7 @@ export default {
     },
     delImgFn() {
       this.img = null
+      this.$emit('change', this.img)
       this.showModel = false
     },
     cutImgFn() {
@@ -59,6 +60,7 @@ export default {
         img: self.img,
         doneFn: (e)=> {
           this.img = e
+          this.$emit('change', this.img)
           this.$cropper.hide()
           this.showModel = false
         }
@@ -73,7 +75,7 @@ export default {
       }, 2000)
     }
   },
-  
+
 }
 </script>
 
@@ -137,4 +139,3 @@ export default {
   left: 0;
 }
 </style>
-

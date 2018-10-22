@@ -106,38 +106,6 @@ export default {
       if(callback) {
         callback()
       }
-
-			// if(this.progress == 1) {
-			// 	if(!this.idcardImgUrl_1) msg = '请上传身份证正面照'
-			// 	else if(!this.idcardImgUrl_2) msg = '请上传身份证背面照'
-			// 	else if(!this.idcardImgUrl_3) msg = '请上传手持身份证照'
-			// 	if(msg && !Param.test) return this.$toast(msg)
-			// 	this.form.idcardImg = [this.idcardImgUrl_1, this.idcardImgUrl_2, this.idcardImgUrl_3].join(' ')
-
-			// 	const ageOut = (this.form.age > 45 || this.form.age < 19) && !this.h5Config.cid
-			// 	this.form.note = `完成1(基础信息)`
-			// 	if(ageOut) {
-			// 		this.form.note = '完成1(年龄不符)'
-			// 		this.form.state = -3
-			// 	}
-			// 	if(!this.form.id) api.postOrder(this.form).then(res => {
-			// 		console.log(res.body)
-			// 		this.form.id = res.body.id
-			// 	})
-			// 	if(ageOut) {
-			// 		return this.$alert('初审未通过：年龄不符')
-			// 	}
-			// 	localStorage.loanForm = JSON.stringify(this.form)
-			// 	return true
-			// }
-
-			// this.progress = 1
-			// if(this.form.idcard == this.myIdcard) {
-			// 	const arr = this.form.idcardImg.split(/\s/)
-			// 	this.idcardImgUrl_1 = arr[0]
-			// 	this.idcardImgUrl_2 = arr[1]
-			// 	this.idcardImgUrl_3 = arr[2]
-			// }
 		},
   },
   mounted() {

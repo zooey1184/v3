@@ -115,4 +115,29 @@ export default {
     opacity: 0.8
   }
 }
+.c-mark-content {
+  padding: 10px;
+  .title_img {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    padding: 5px;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-bottom: 20px;
+    background: #fff;
+    border-radius: 40px;
+  }
+  .desc_tip {
+    padding-top: 40px;
+    padding-bottom: 10px;
+  }
+  .mark-img-full {
+    width: 100%;
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
 </style>
