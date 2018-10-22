@@ -3,14 +3,14 @@
   <page>
     <div>
       <div class="top_page bg1">
-        <p class="title">hei</p>
-        <v-step :len='5' :active='2'></v-step>
+        <p class="title">贷贷贷</p>
+        <v-step :len='5' :active='3'></v-step>
       </div>
       <div class="card_wrap">
-        <card title='运营商' v-model='card'>
-          <operation slot='contain'></operation>
+        <card title='运营商' v-model='card' ref='card'>
+          <operation slot='contain' @reGetRect='reGetRect' ref='operator'></operation>
         </card>
-        <button class="btn bg1" @click='$router.push("/photo")'>下一步</button>
+        <button class="btn bg1" @click='submitFn'>下一步</button>
       </div>
     </div>
   </page>
@@ -39,12 +39,26 @@ export default {
   },
   data: ()=> ({
     showPane: false,
-    card: true
+    card: false
   }),
-  mounted() {
-    setTimeout(()=> {
+  methods: {
+    reGetRect() {
+      let card = this.$refs.card
+      // card.getRect()
       this.card = true
-    }, 500)
+    },
+    submitFn() {
+      let operation = this.$refs.operator
+      let callback = ()=> {
+        this.$router.push("/photo")
+      }
+      operation.onSubmit(callback)
+    }
+  },
+  mounted() {
+    // setTimeout(()=> {
+    //   this.card = true
+    // }, 500)
   }
 }
 </script>

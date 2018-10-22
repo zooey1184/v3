@@ -2,8 +2,8 @@
   <page>
     <div>
       <div class="top_page bg1">
-        <p class="title">hei</p>
-        <v-step :len='5' :active='1'></v-step>
+        <p class="title">贷贷贷</p>
+        <v-step :len='5' :active='4'></v-step>
       </div>
       <div class="card_wrap">
         <card title='身份证拍照' v-model='card'>
