@@ -14,17 +14,6 @@
       </div>
     </div>
   </page>
-  <model-pane v-model='showPane'>
-    <div class="yys_contain">
-      <alert-contain :showClose='false' @cancle='showPane=false'>
-        <div>
-          <p>ssss</p>
-          <p>ssss</p>
-          <p>ssss</p>
-        </div>
-      </alert-contain>
-    </div>
-  </model-pane>
 </div>
 </template>
 

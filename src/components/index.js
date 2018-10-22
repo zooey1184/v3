@@ -4,6 +4,7 @@ import Card from '@/components/foldPane/index.vue'
 import VStep from '@/components/step/v-step.vue'
 import HStep from '@/components/step/h-step.vue'
 import Load from '@/components/load/index.js'
+import Mark from '@/components/mark'
 import PageWrap from '@/components/pageWrap/page.vue'
 import Toast from '@/components/Toast/index.js'
 import VReg from '@/components/VReg/index.js'
@@ -36,6 +37,7 @@ const install = function (Vue) {
   Vue.use(Toast)
   Vue.use(cropper)
   Vue.use(Alert)
+  Vue.use(Mark)
   // 指令
   VReg(Vue)
 }
