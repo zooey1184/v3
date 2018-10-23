@@ -9,8 +9,11 @@
           <h4 class="content__title" v-if='title'>{{title}}</h4>
           <img class="icon_close" v-if='showClose' @click='closeFn' src="./close.png" alt="">
           <p class='content__desc' v-html='msg'></p>
-          <div class='btn__group' v-if='btnFn'>
+          <!-- <div class='btn__group' v-if='btnFn'>
             <p v-for='(item, index) in btn' :class='{ lastBtn: showBtnLine(index)}' @click='actionFn(item, index)' :key='index'>{{item}}</p>
+          </div> -->
+          <div class='btn__group' v-if='btn.length>0'>
+            <p v-for='(item, index) in btn' :class='{ lastBtn: showBtnLine(index), cancle_btn: item.type=="cancle"}' @click='actionFn(item.type)' :key='item.type'>{{item.text}}</p>
           </div>
         </div>
       </div>
@@ -53,20 +56,11 @@ export default {
     },
   },
   methods: {
-    actionFn(item, index) {
-      if(item.match(/(cancle|取消|关闭|放弃|no)/g)) {
+    actionFn(item) {
+      if(item && item=='cancle') {
         this.cancleFn()
       }else {
-        if(item.match(/(confirm|确定|提交|确认|yes)/g)) {
-          this.confirmFn()
-          return
-        }else if(index===0 && this.btn.length>1) {
-          this.cancleFn()
-          return
-        }else{
-          this.confirmFn()
-          return
-        }
+        this.confirmFn()
       }
       navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
       if (navigator.vibrate) {
@@ -82,13 +76,15 @@ export default {
       return b
     },
     cancleFn() {
-      console.log('this is from vue');
+      console.log('this is from cancle vue');
+      this.$emit('cancle')
     },
     confirmFn() {
       console.log('this is from confirmFn');
+      this.$emit('confirm')
     },
-    touchEntFn(d) {
-      this.touchindex = d
+    closeFn() {
+      this.$emit('close')
     },
     closeFn() {
       console.log('close')
@@ -152,6 +148,7 @@ export default {
       line-height: 18px;
       margin: 15px 0;
       padding: 0;
+      padding-top: 30px;
     }
     .icon_close {
       position: absolute;
@@ -172,7 +169,7 @@ export default {
       display: flex;
       position: relative;
       width: 100%;
-      height: 40px;
+      height: 45px;
       font-size: 16px;
       align-items: center;
       &:before {

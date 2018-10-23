@@ -1,6 +1,6 @@
 <template>
 	<div class="bd-round">
-		<div v-if="isDone" class="ta-c" style="padding: 30px 0;">
+		<!-- <div v-if="isDone" class="ta-c" style="padding: 30px 0;">
 			<img src="https://xinkouzi.oss-cn-shanghai.aliyuncs.com/65d9dde0-858d-11e8-a65b-d3fc43d7a229.png?240_240"
 				style="width: 80px;">
 			<div class="fz-30 mt-10">资料提交成功！</div>
@@ -10,44 +10,31 @@
 				<p>请耐心等待审核通知，</p>
 				<p>借款服务将由商家提供。</p>
 			</div>
-		</div>
+		</div> -->
 
-		<div v-else-if="customers.length">
+		<div v-if="customers.length">
 			<div class="ta-c">
 				借款成功率：<span style="font-size: 30px;">{{ sucPerc || initPerc }}%</span>
 			</div>
-			<!-- <group title="请选择申请平台(多选)" label-width="90px">
-				<cell v-for="(item, i) in customers" :key="i" @click.native="checkItem(item)" style="padding-right: 0;">
+			<p>根据所提供的资料，已匹配以下产品</p>
+			<div class="loan_item" v-for="(item, i) in customers" :key="i" @click.native="checkItem(item)" style="padding-right: 0;">
+				<div class="item_left_img">
 					<img :src="item.imgUrl.toWidth(150)" class="max-img d-b" slot="icon" style="margin-right: 10px;">
-					<div slot="title">{{ item.title }}</div>
+				</div>
+				<div class="item_middle_text">
+					{{item.title}}
+				</div>
+				<div class="item_right_check">
 					<img :src="item.check ? 'https://xinkouzi.oss-cn-shanghai.aliyuncs.com/cd720040-8592-11e8-a65b-d3fc43d7a229.png' : 'https://xinkouzi.oss-cn-shanghai.aliyuncs.com/c294c810-8592-11e8-a65b-d3fc43d7a229.png?36_36'" style="width: 20px;">
-				</cell>
-			</group> -->
-		</div>
-		<div v-else>
-      <model-pane v-model='card'>
-        <alert-contain>
-          <form-list :width='90'>
-            <ceil title='借款人'>
-              <input type="text" readonly :value="form.realName">
-            </ceil>
-            <ceil title='欲借额度'>
-              <input type="text" readonly :value="form.loanYuan + '元'">
-            </ceil>
-            <ceil title='芝麻分'>
-              <input type="text" readonly :value="form.zhimaScore">
-            </ceil>
-          </form-list>
-        </alert-contain>
-      </model-pane>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import alertContain from '@/components/alertContain/alertContain.vue'
-import api from '@/api'
+import api from '../api'
 
 export default {
 	computed: {
@@ -68,22 +55,22 @@ export default {
       card: true
 		}
 	},
-  watch: {
-    isDone: function(n) {
-      if(!n && !this.customers.length) {
-        this.card = true
-      }else {
-        this.card = false
-      }
-    },
-    'customers.length'(n) {
-      if(!n && !this.isDone) {
-        this.card = true
-      }else {
-        this.card = false
-      }
-    }
-  },
+  // watch: {
+  //   isDone: function(n) {
+  //     if(!n && !this.customers.length) {
+  //       this.card = true
+  //     }else {
+  //       this.card = false
+  //     }
+  //   },
+  //   'customers.length'(n) {
+  //     if(!n && !this.isDone) {
+  //       this.card = true
+  //     }else {
+  //       this.card = false
+  //     }
+  //   }
+  // },
   components: {
     alertContain
   },
@@ -107,9 +94,55 @@ export default {
 			api.postOrder(this.form).then(res => {
 				this.$load.hide()
 				this.isDone = true
+				this.$mark.show({
+					title: '',
+					btn: [{text: '确定', type: 'confirm'}],
+					msg: `
+						<div class='mark_content_confirm'>
+							<img class='title_img' src='https://xinkouzi.oss-cn-shanghai.aliyuncs.com/65d9dde0-858d-11e8-a65b-d3fc43d7a229.png?240_240' alt=''/>
+							<h4 class='title_heder'>您的申请已成功</h4>
+              <p>24小时放款，短信通知到账</p>
+						</div>
+					`,
+					closeFn: ()=> {
+						this.$mark.hide()
+          },
+          confirmFn: ()=> {
+            console.log('confirm')
+            this.$mark.hide()
+            this.$router.push('/result')
+          }
+				})
 				this.$emit('done')
 			})
 		},
 	}
 }
 </script>
+
+<style lang="less">
+.mark_content_confirm {
+  text-align: left;
+  padding: 0 20px;
+  line-height: 24px;
+  .title_img {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    padding: 5px;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-bottom: 20px;
+    background: #fff;
+    border-radius: 40px;
+  }
+  .title_heder {
+    font-size: 18px;
+    font-weight: lighter;
+    padding-top: 40px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+}
+</style>
