@@ -12,17 +12,18 @@
 			</div>
 		</div> -->
 
-		<div v-if="customers.length">
-			<div class="ta-c">
+		<div v-if="list.length" class="loan_product_wrap">
+			<div class="top_title">
 				借款成功率：<span style="font-size: 30px;">{{ sucPerc || initPerc }}%</span>
 			</div>
-			<p>根据所提供的资料，已匹配以下产品</p>
-			<div class="loan_item" v-for="(item, i) in customers" :key="i" @click.native="checkItem(item)" style="padding-right: 0;">
+			<p class='top_tip'>根据所提供的资料，已匹配以下产品</p>
+			<div class="loan_item" v-for="(item, i) in list" :key="i" @click="checkItem(item)">
 				<div class="item_left_img">
-					<img :src="item.imgUrl.toWidth(150)" class="max-img d-b" slot="icon" style="margin-right: 10px;">
-				</div>
-				<div class="item_middle_text">
-					{{item.title}}
+					<img :src="item.imgUrl" class="icon" style="margin-right: 10px;">
+					<div class="item_middle_text">
+						<h4>{{item.title}}</h4>
+						<p>{{item.desc}}</p>
+					</div>
 				</div>
 				<div class="item_right_check">
 					<img :src="item.check ? 'https://xinkouzi.oss-cn-shanghai.aliyuncs.com/cd720040-8592-11e8-a65b-d3fc43d7a229.png' : 'https://xinkouzi.oss-cn-shanghai.aliyuncs.com/c294c810-8592-11e8-a65b-d3fc43d7a229.png?36_36'" style="width: 20px;">
@@ -52,28 +53,14 @@ export default {
 			isDone: false,
 			initPerc: 20,
 			sucPerc: 0,
-      card: true
+			card: true,
+			list: [{
+				title: '51youqian',
+				desc: '快速下款',
+				imgUrl: '//r.51gjj.com/image/logo/ICBK.png'
+			}]
 		}
 	},
-  // watch: {
-  //   isDone: function(n) {
-  //     if(!n && !this.customers.length) {
-  //       this.card = true
-  //     }else {
-  //       this.card = false
-  //     }
-  //   },
-  //   'customers.length'(n) {
-  //     if(!n && !this.isDone) {
-  //       this.card = true
-  //     }else {
-  //       this.card = false
-  //     }
-  //   }
-  // },
-  components: {
-    alertContain
-  },
 	methods: {
 		checkItem(item) {
 			this.$set(item, 'check', !item.check)
@@ -86,7 +73,6 @@ export default {
 				return
 			}
 			if(this.yysLoading) return this.$toast.show('请等待运营商认证完成')
-
 			this.form.note = null
 			this.form.chooseCids = this.checkLoans.map(it => it.id)
 			this.form.chooseLoans = this.checkLoans.map(it => it.title)
@@ -144,5 +130,43 @@ export default {
     text-align: center;
     margin-bottom: 10px;
   }
+}
+.loan_product_wrap {
+	.top_title {
+		margin: 20px 0;
+		text-align: center
+	}
+	.top_tip {
+		margin-left: 20px;
+		font-size: 14px;
+	}
+	.loan_item {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 15px;
+		margin: 10px 20px;
+		box-shadow: 0 0 5px #eee;
+		background: #fff;
+		border-radius: 5px;
+		.item_left_img {
+			display: flex;
+			align-items: center;
+			h4 {
+				font-size: 16px;
+				color: #333;
+				font-weight: lighter
+			}
+			p {
+				font-size: 13px;
+				color: #999;
+				margin-top: 5px;
+			}
+			img {
+				width: 30px;
+				margin-right: 10px;
+			}
+		}
+	}
 }
 </style>

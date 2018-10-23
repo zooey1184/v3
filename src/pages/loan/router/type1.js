@@ -61,7 +61,7 @@ const router = [
     meta: {
       title: '认证结果'
     },
-    component: () => import('../contain/result.vue')
+    component: () => import('../type1/views/result.vue')
   }
 ]
 export default router
