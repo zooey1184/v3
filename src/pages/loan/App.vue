@@ -66,6 +66,12 @@ export default {
   color: #fff;
   border: 1px solid #ffa100 !important;
 }
+.bg1_dis {
+  .gradient(background, #ffa100, #f0710a);
+  color: #fff;
+  border: 1px solid #ffa100 !important;
+  opacity: 0.7;
+}
 .border1 {
   border: 1px solid #ffa100;
 }

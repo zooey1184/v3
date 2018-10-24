@@ -38,6 +38,7 @@
 import { mapState } from 'vuex'
 import { ruleMap, checkInput } from '@/assets/rule'
 import api from '../api'
+import { log } from 'util';
 
 export default {
   data: ()=> ({
@@ -58,7 +59,7 @@ export default {
 		...mapState({
 			form: s => s.loanForm,
 			h5Config: s => s.h5Config,
-		})
+    })
 	},
   props: {
     bg: {

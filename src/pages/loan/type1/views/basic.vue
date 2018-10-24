@@ -9,7 +9,7 @@
         <card v-model='card' title='基本信息' ref='card'>
           <basic-content slot='contain' @change='reGetRect' ref='basic'></basic-content>
         </card>
-        <button class="basic_btn bg1 border1 btn" @click='submitFn'>下一步</button>
+        <button class="basic_btn border1 btn" :class='{bg1: next, bg1_dis: !next}' @click='submitFn'>下一步</button>
       </div>
     </div>
   </page>
@@ -17,6 +17,7 @@
 
 <script>
 import basicContent from '../../contain/basic.vue'
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -25,6 +26,19 @@ export default {
   data: ()=> ({
     card: false,
   }),
+  computed: {
+    ...mapState({
+			form: s => s.loanForm
+    }),
+    next() {
+      if(this.form.realName && this.form.idcard && this.form.loanYuan) {
+        console.log('ok')
+        return true
+      }else {
+        return false
+      }
+    }
+  },
   methods: {
     reGetRect() {
       let card = this.$refs.card

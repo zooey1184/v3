@@ -36,6 +36,7 @@
 <script>
 import { mapState } from 'vuex'
 import api from '../api'
+import warning from '@/pages/loan/assets/warning.png'
 
 export default {
 	computed: {
@@ -76,31 +77,51 @@ export default {
 			this.form.note = null
 			this.form.chooseCids = this.checkLoans.map(it => it.id)
 			this.form.chooseLoans = this.checkLoans.map(it => it.title)
-			this.$load.show()
-			api.postOrder(this.form).then(res => {
-				this.$load.hide()
-				this.isDone = true
+			
+			if(this.form.zhimaScore && this.form.zhimaScore>580) {
+				this.$load.show()
+				api.postOrder(this.form).then(res => {
+					this.$load.hide()
+					this.isDone = true
+					this.$mark.show({
+						title: '',
+						btn: [{text: '确定', type: 'confirm'}],
+						msg: `
+							<div class='mark_content_confirm'>
+								<img class='title_img' src='https://xinkouzi.oss-cn-shanghai.aliyuncs.com/65d9dde0-858d-11e8-a65b-d3fc43d7a229.png?240_240' alt=''/>
+								<h4 class='title_heder'>您的申请已成功</h4>
+								<p>24小时放款，短信通知到账</p>
+							</div>
+						`,
+						closeFn: ()=> {
+							this.$mark.hide()
+						},
+						confirmFn: ()=> {
+							console.log('confirm')
+							this.$mark.hide()
+							this.$router.push('/result')
+						}
+					})
+					this.$emit('done')
+				})
+			}else {
 				this.$mark.show({
 					title: '',
-					btn: [{text: '确定', type: 'confirm'}],
+					btn: [],
 					msg: `
-						<div class='mark_content_confirm'>
-							<img class='title_img' src='https://xinkouzi.oss-cn-shanghai.aliyuncs.com/65d9dde0-858d-11e8-a65b-d3fc43d7a229.png?240_240' alt=''/>
-							<h4 class='title_heder'>您的申请已成功</h4>
-              <p>24小时放款，短信通知到账</p>
+						<div class='c-mark-content'>
+							<img class='title_img' src=${warning} alt='warning'/>
+							<p class='desc_tip'>
+								很抱歉，因条件不符合，初审被拒
+							</p>
 						</div>
 					`,
 					closeFn: ()=> {
 						this.$mark.hide()
-          },
-          confirmFn: ()=> {
-            console.log('confirm')
-            this.$mark.hide()
-            this.$router.push('/result')
-          }
+					}
 				})
-				this.$emit('done')
-			})
+				return
+			}
 		},
 	}
 }
