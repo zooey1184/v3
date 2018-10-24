@@ -6,33 +6,35 @@
         <card v-model='showModel_0' slot='content_0'  title='基本信息' ref='card'>
           <basic-content slot='contain' bg='bg2' @change='reGetRect'>
             <div class="btn_type2_pane flex">
-              <button class="bg2" @click='nextFn(1)'>xiayibu</button>
+              <button class="bg2" @click='nextFn(5)'>下一步</button>
             </div>
           </basic-content>
         </card>
         <card slot='content_1' v-model='showModel_1' title='紧急联系人'>
           <contact slot='contain'>
             <div class="btn_type2_pane flex">
-              <button class="bg2" @click='nextFn(2)'>xiayibu</button>
+              <button class="bg2" @click='nextFn(2)'>下一步</button>
             </div>
           </contact>
         </card>
         <card slot='content_2' v-model='showModel_2' title='芝麻信用授权'>
-          <zhima slot='contain'>
+          <zhima slot='contain' v-if='showModel_2'>
             <div class="btn_type2_pane flex">
-              <button class="bg2" @click='nextFn(3)'>xiayibu</button>
+              <button class="bg2" @click='nextFn(3)'>下一步</button>
             </div>
           </zhima>
         </card>
         <card slot='content_3' v-model='showModel_3' title='运营商'>
-          <operation slot='contain'>
+          <operation slot='contain' v-if='showModel_3'>
             <div class="btn_type2_pane flex">
-              <button class="bg2" @click='nextFn(4)'>xiayibu</button>
+              <button class="bg2" @click='nextFn(4)'>下一步</button>
             </div>
           </operation>
         </card>
         <card slot='content_4' v-model='showModel_4' title='身份证拍照'>
-          <photo slot='contain'></photo>
+          <photo slot='contain'>
+            <button>完成认证</button>
+          </photo>
         </card>
       </h-step>
     </div>

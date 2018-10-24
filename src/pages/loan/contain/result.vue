@@ -12,12 +12,12 @@
 			</div>
 		</div> -->
 
-		<div v-if="list.length" class="loan_product_wrap">
+		<div v-if="customers.length" class="loan_product_wrap">
 			<div class="top_title">
 				借款成功率：<span style="font-size: 30px;">{{ sucPerc || initPerc }}%</span>
 			</div>
 			<p class='top_tip'>根据所提供的资料，已匹配以下产品</p>
-			<div class="loan_item" v-for="(item, i) in list" :key="i" @click="checkItem(item)">
+			<div class="loan_item" v-for="(item, i) in customers" :key="i" @click="checkItem(item)">
 				<div class="item_left_img">
 					<img :src="item.imgUrl" class="icon" style="margin-right: 10px;">
 					<div class="item_middle_text">

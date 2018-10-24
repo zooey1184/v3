@@ -1,16 +1,19 @@
 <template>
-  <div class="photo__wrap flex align-items-center">
-    <div class="photo_left">
-      <div class="top">
-        <clip-img @change='change1'></clip-img>
+  <div>
+    <div class="photo__wrap flex align-items-center">
+      <div class="photo_left">
+        <div class="top">
+          <clip-img @change='change1'></clip-img>
+        </div>
+        <div class="bottom">
+          <clip-img @change='change2'></clip-img>
+        </div>
       </div>
-      <div class="bottom">
-        <clip-img @change='change2'></clip-img>
+      <div class="photo_right">
+        <clip-img @change='change3'></clip-img>
       </div>
     </div>
-    <div class="photo_right">
-      <clip-img @change='change3'></clip-img>
-    </div>
+    <slot></slot>
   </div>
 </template>
 

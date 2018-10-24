@@ -26,8 +26,6 @@ http.interceptors.push((req, next) => {
 		var body = res.body
 		if (!res.ok) {
 			window.vload.$load.hide()
-			console.log(body)
-			console.log(res.status);
 			if (res.status == 401) {
 				// router.push('/')
 				try {
