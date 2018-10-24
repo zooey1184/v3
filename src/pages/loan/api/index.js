@@ -27,6 +27,7 @@ http.interceptors.push((req, next) => {
 		if (!res.ok) {
 			window.vload.$load.hide()
 			console.log(body)
+			console.log(res.status);
 			if (res.status == 401) {
 				// router.push('/')
 				try {
@@ -36,9 +37,13 @@ http.interceptors.push((req, next) => {
 				}
 			} else if (body.msg && res.status != 404) {
 				if(body.msg.length > 10) {
-					// Vue.$vux.alert.show({
-					// 	content: body.msg,
-					// })
+					window.valert.$alert.show({
+						msg: body.msg,
+						btn: ['确定'],
+						confirmFn: ()=> {
+							window.valert.$alert.hide()
+						}
+					})
 				} else {
 					window.vm.$toast.show(body.msg)
 				}

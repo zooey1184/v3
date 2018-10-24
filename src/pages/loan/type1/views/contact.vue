@@ -17,6 +17,7 @@
 
 <script>
 import contact from '../../contain/contact.vue'
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -25,6 +26,18 @@ export default {
   data: ()=> ({
     card: true
   }),
+  computed: {
+    ...mapState({
+			form: s => s.loanForm
+    }),
+    next() {
+      if(this.form.contact1 && this.form.contact2 ) {
+        return true
+      }else {
+        return false
+      }
+    }
+  },
   methods: {
     submitFn() {
       let contact = this.$refs.contact

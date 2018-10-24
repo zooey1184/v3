@@ -64,7 +64,7 @@ export default {
       type: String,
       default: 'border1'
     }
-  },
+	},
   methods: {
 		async onSubmit(ballback=function(){}) {
 			const msg = checkInput(this.conForm, this.rules)

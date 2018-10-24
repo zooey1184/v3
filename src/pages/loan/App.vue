@@ -76,9 +76,15 @@ export default {
   border: 1px solid #ffa100;
 }
 .bg2 {
-  .gradient(background, #55b7ee, #0aabf0);
+  .gradient(background, #55b7ee, #0a66f0);
   color: #fff;
   border: 1px solid #55b7ee !important;
+}
+.bg2_dis {
+  .gradient(background, #55b7ee, #0a66f0);
+  color: #fff;
+  border: 1px solid #55b7ee !important;
+  opacity: 0.7;
 }
 .border2 {
   border: 1px solid #55b7ee;

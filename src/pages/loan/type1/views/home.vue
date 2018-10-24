@@ -141,6 +141,7 @@ export default {
     box-shadow: 0 2px 5px #eee;
     padding: 0 10px;
     font-size: 15px;
+    background: #fff;
   }
 }
 .protocol {
