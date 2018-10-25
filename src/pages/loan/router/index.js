@@ -37,7 +37,7 @@ const router = new Router({
     {
       path: '*',
       name: 'NotFound',
-      component: () => import('../notFound.vue')
+      component: () => import('../views/notFound.vue')
     },
     {
       path: '/',
@@ -48,6 +48,14 @@ const router = new Router({
       path: '/index',
       name: 'index',
       redirect: '/home'
+    },
+    {
+      path: '/copyright',
+      name: 'copyright',
+      meta: {
+        title: '服务协议'
+      },
+      component: () => import('../views/copyright.vue')
     },
     ...r
   ]

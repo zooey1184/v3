@@ -1,7 +1,7 @@
 <template>
 <page bgWrap='#fff'>
   <div class="home_page">
-    <img class="home_img" src="../../assets/type1_index.jpg" alt="">
+    <img class="home_img" src="../../assets/type1_bg.png" alt="">
     <div class="login_pane">
       <div class="item flex align_items_center">
         <input class='full_item' type="tel" placeholder='请输入手机号'  v-model="form.mobile">

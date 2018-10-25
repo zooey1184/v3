@@ -3,15 +3,28 @@
     <div class="photo__wrap flex align-items-center">
       <div class="photo_left">
         <div class="top">
-          <clip-img @change='change1'></clip-img>
+          <clip-img @change='change1' bg='#58b5ff'>
+            <div>
+              <img class="photo_idcard" src="../assets/idc-1.png" />
+              <p class="idcard_text">上传身份证人像面</p>
+            </div>
+          </clip-img>
         </div>
         <div class="bottom">
-          <clip-img @change='change2'></clip-img>
+          <clip-img @change='change2'>
+            <div>
+              <img class="photo_idcard" src="../assets/idc-2.png" />
+              <p class="idcard_text">上传身份证国徽面</p>
+            </div>
+          </clip-img>
         </div>
       </div>
       <div class="photo_right">
         <clip-img @change='change3'>
-          <img class="photo_full" src="../assets/idc-3.png" />
+          <div class="photo_wrap_content">
+            <img class="photo_header" src="../assets/idc-3.png" />
+            <p class="idcard_handle_text">上传手持身份证照</p>
+          </div>
         </clip-img>
       </div>
     </div>
@@ -130,9 +143,49 @@ export default {
     margin-left: 0;
   }
 }
-.photo_tip {
+.photo_header {
+  width: 60%;
+  display: block;
+  position: relative;
+  top: 46%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.photo_wrap_content {
+  position: absolute;
   width: 100%;
-  margin-top: 10px;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.photo_idcard {
+  width: 48%;
+  display: block;
+  margin: 10px auto;
+}
+.idcard_text {
+  position: absolute;
+  bottom: 8px;
+  font-size: 13px;
+  width: 100%;
+  text-align: center;
+  color: #999;
+}
+.idcard_handle_text {
+  position: absolute;
+  bottom: 18px;
+  font-size: 13px;
+  width: 100%;
+  text-align: center;
+  color: #999;
+}
+.idcard_handle {
+  position: absolute;
+  bottom: 8px;
+  font-size: 13px;
+  width: 100%;
+  text-align: center;
+  color: #999;
 }
 .photo_full {
   width: 100%;

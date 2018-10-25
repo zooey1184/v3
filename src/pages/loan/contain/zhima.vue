@@ -223,7 +223,7 @@ export default {
             `,
             btn: ['返回修改', '确认无误'],
   					cancleFn: () => {
-  						this.$router.back(-2)
+  						this.$emit('backChange')
               this.$alert.hide()
               return
   					},

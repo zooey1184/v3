@@ -5,7 +5,7 @@
 <script>
 import resPage from '@/components/pageWrap/resPage.vue'
 import warning from '@/pages/loan/assets/warning.png'
-import aa from '@/pages/loan/assets/type1_index.jpg'
+import aa from '@/pages/loan/assets/type1_bg.png'
 
 export default {
   components: {

@@ -1,5 +1,5 @@
 <template>
-  <div class="clip_wrap">
+  <div class="clip_wrap" :style='{background: bg}'>
     <img class="after_img" @click='showModelFn' v-if='img' :src="img" alt="">
     <template v-else>
       <slot>
@@ -29,6 +29,12 @@ export default {
     showModel: false,
     showClipper: false
   }),
+  props: {
+    bg: {
+      type: String,
+      default: '#eef3fa'
+    }
+  },
   methods: {
     debounceFn(fn, wait) {
       let t = null
@@ -87,7 +93,9 @@ export default {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: rgb(211, 226, 238);
+  // background: rgb(211, 226, 238);
+  background: #eef3fa;
+  border-radius: 5px;
   .clip_bg_photo {
     height: 100%;
     width: 100%;

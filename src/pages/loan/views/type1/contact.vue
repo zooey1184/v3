@@ -7,6 +7,7 @@
       </div>
       <div class="card_wrap">
         <card title='紧急联系人' v-model='card'>
+          <img style='width: 24px;' src="../../assets/a2.png" alt="">
           <contact slot='contain' ref='contact'></contact>
         </card>
         <button class="btn bg1" @click='submitFn'>下一步</button>

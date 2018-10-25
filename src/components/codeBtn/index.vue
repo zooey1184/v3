@@ -40,7 +40,7 @@ export default {
 			this.$http.get('v6/user/send_vcode/' + mobile, { params }).then(res => {
 				const body = res.body
 				this.$emit('sended');
-				this.sendTxt = '验证码已发送';
+				this.sendTxt = '已发送';
 				this.form.vcode = '';
 				const timing = setInterval(_ => {
 					body.second--;
@@ -49,7 +49,7 @@ export default {
 						this.isSending = false;
 						clearInterval(timing);
 					} else {
-						this.sendTxt = body.second + '秒后可重发';
+						this.sendTxt = body.second + 's后重发';
 					}
 				}, 1e3)
 			}, res => {

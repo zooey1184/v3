@@ -5,7 +5,7 @@ const router = [
     meta: {
       title: '贷贷贷'
     },
-    component: () => import('../type1/views/home.vue')
+    component: () => import('../views/type1/home.vue')
   },
   {
     path: '/basic',
@@ -13,7 +13,7 @@ const router = [
     meta: {
       title: '基本信息'
     },
-    component: () => import('../type1/views/basic.vue')
+    component: () => import('../views/type1/basic.vue')
   },
   {
     path: '/contact',
@@ -21,7 +21,7 @@ const router = [
     meta: {
       title: '联系人信息'
     },
-    component: () => import('../type1/views/contact.vue')
+    component: () => import('../views/type1/contact.vue')
   },
   {
     path: '/zhima',
@@ -29,7 +29,7 @@ const router = [
     meta: {
       title: '芝麻信用'
     },
-    component: () => import('../type1/views/zhima.vue')
+    component: () => import('../views/type1/zhima.vue')
   },
   {
     path: '/operator',
@@ -37,7 +37,7 @@ const router = [
     meta: {
       title: '运营商'
     },
-    component: () => import('../type1/views/operation.vue')
+    component: () => import('../views/type1/operation.vue')
   },
   {
     path: '/photo',
@@ -45,7 +45,7 @@ const router = [
     meta: {
       title: '身份证拍照'
     },
-    component: () => import('../type1/views/photo.vue')
+    component: () => import('../views/type1/photo.vue')
   },
   {
     path: '/fail',
@@ -53,7 +53,7 @@ const router = [
     meta: {
       title: '认证结果'
     },
-    component: () => import('../type1/views/fail.vue')
+    component: () => import('../views/type1/fail.vue')
   },
   {
     path: '/result',
@@ -61,7 +61,7 @@ const router = [
     meta: {
       title: '认证结果'
     },
-    component: () => import('../type1/views/result.vue')
+    component: () => import('../views/type1/result.vue')
   }
 ]
 export default router

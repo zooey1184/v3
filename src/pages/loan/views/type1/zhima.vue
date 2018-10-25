@@ -8,33 +8,21 @@
       </div>
       <div class="card_wrap">
         <card title='芝麻信用授权' v-model='card'>
+          <img style='width: 24px;' src="../../assets/a3.png" alt="">
           <zhima slot='contain' ref='zhima'></zhima>
         </card>
         <button class="btn bg1" @click='submitFn'>下一步</button>
       </div>
     </div>
   </page>
-  <model-pane v-model='showPane'>
-    <div class="zhima_contain">
-      <alert-contain :showClose='false' @cancle='showPane=false'>
-        <div>
-          <p>ssss</p>
-          <p>ssss</p>
-          <p>ssss</p>
-        </div>
-      </alert-contain>
-    </div>
-  </model-pane>
 </div>
 </template>
 
 <script>
-import alertContain from '@/components/alertContain/alertContain.vue'
 import zhima from '../../contain/zhima.vue'
 
 export default {
   components: {
-    alertContain,
     zhima
   },
   data: ()=> ({
@@ -48,6 +36,9 @@ export default {
         this.$router.push('/operator')
       }
       zhima.onSubmit(callback)
+    },
+    backChange() {
+      this.$router.go(-2)
     }
   },
   mounted() {

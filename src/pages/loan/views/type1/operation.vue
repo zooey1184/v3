@@ -8,6 +8,7 @@
       </div>
       <div class="card_wrap">
         <card title='运营商' v-model='card' ref='card'>
+          <img style='width: 18px;' src="../../assets/a4.png" alt="">
           <operation slot='contain' @reGetRect='reGetRect' ref='operator'></operation>
         </card>
         <button class="btn bg1" @click='submitFn'>下一步</button>

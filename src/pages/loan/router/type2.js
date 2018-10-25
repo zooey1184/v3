@@ -5,7 +5,7 @@ const router = [
     meta: {
       title: '贷贷贷'
     },
-    component: () => import('../type2/views/home.vue')
+    component: () => import('../views/type2/home.vue')
   },
   {
     path: '/verify',
@@ -13,7 +13,7 @@ const router = [
     meta: {
       title: '认证授权'
     },
-    component: () => import('../type2/views/verify.vue')
+    component: () => import('../views/type2/verify.vue')
   },
   {
     path: '/result',
@@ -21,7 +21,7 @@ const router = [
     meta: {
       title: '认证结果'
     },
-    component: () => import('../type2/views/result.vue')
+    component: () => import('../views/type2/result.vue')
   }
 ]
 export default router
