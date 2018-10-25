@@ -12,6 +12,9 @@ import result from '../../contain/result.vue'
 
 export default {
   name: 'result-page',
+  data: ()=> ({
+    state: 'fail'
+  }),
   components: {
     result
   },

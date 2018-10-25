@@ -126,20 +126,20 @@ export default {
     margin-right: 3%;
     .top {
       width: 100%;
-      height: 80px;
+      height: 85px;
       position: relative;
       margin-bottom: 10px;
     }
     .bottom {
       width: 100%;
-      height: 80px;
+      height: 85px;
       position: relative;
     }
   }
   .photo_right {
     width: 47%;
     position: relative;
-    height: 170px;
+    height: 180px;
     margin-left: 0;
   }
 }
@@ -147,7 +147,7 @@ export default {
   width: 60%;
   display: block;
   position: relative;
-  top: 46%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

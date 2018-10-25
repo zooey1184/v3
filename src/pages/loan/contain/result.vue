@@ -1,5 +1,5 @@
 <template>
-	<div v-if="list.length" class="loan_product_wrap">
+	<div v-if="customers.length" class="loan_product_wrap">
 		<img class="rs_bg" src="../assets/loan_result_bg.png" alt="">
 		<div class="rs_content">
 			<p class="title_rs">贷贷贷</p>
@@ -7,7 +7,7 @@
 				借款成功率：<span style="font-size: 30px;">{{ sucPerc || initPerc }}%</span>
 			</div>
 			<p class='top_tip'>根据所提供的资料，已匹配以下产品</p>
-			<div class="loan_item" v-for="(item, i) in list" :key="i" @click="checkItem(item)">
+			<div class="loan_item" v-for="(item, i) in customers" :key="i" @click="checkItem(item)">
 				<div class="item_left_img">
 					<img :src="item.imgUrl" class="icon" style="margin-right: 10px;">
 					<div class="item_middle_text">
@@ -75,6 +75,7 @@ export default {
 					this.isDone = true
 					this.$mark.show({
 						title: '',
+						showClose: false,
 						btn: [{text: '确定', type: 'confirm'}],
 						msg: `
 							<div class='mark_content_confirm'>
@@ -89,7 +90,7 @@ export default {
 						confirmFn: ()=> {
 							console.log('confirm')
 							this.$mark.hide()
-							this.$router.push('/result')
+							this.$router.push('/home')
 						}
 					})
 					this.$emit('done')

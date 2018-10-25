@@ -1,10 +1,10 @@
 <template>
   <page>
     <div>
-      <!-- <div class="top_page bg1">
+      <div class="top_page bg1">
         <p class="title">贷贷贷</p>
         <v-step :len='5' :active='4'></v-step>
-      </div> -->
+      </div>
       <div class="card_wrap">
         <card title='身份证拍照' v-model='card'>
           <img style='width: 30px;' src="../../assets/a5.png" alt="">
