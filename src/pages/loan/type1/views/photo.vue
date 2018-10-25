@@ -18,6 +18,8 @@
 <script>
 import photo from '../../contain/photo.vue'
 import warning from '@/pages/loan/assets/warning.png'
+import { mapState } from 'vuex'
+import api from '../../api'
 
 export default {
   components: {
@@ -26,7 +28,29 @@ export default {
   data: ()=> ({
     card: true
   }),
+  computed: {
+		...mapState({
+			form: s => s.loanForm,
+			h5Config: s => s.h5Config,
+			yysLoading: s => s.yysLoading,
+		})
+	},
   methods: {
+    async getCustomers() {
+			if(this.h5Config.cid) return
+			const res = await this.$http.get('v6/credit/apply/auth/loan-choices', {
+				params: {
+					zhimaScore: this.form.zhimaScore,
+					idcard: this.form.idcard,
+				}
+			})
+			this.$store.commit('setData', {
+				customers: res.body.map(it => {
+					it.check = true
+					return it
+				}),
+			})
+		},
     submitFn() {
       let photo = this.$refs.photo
       // let callback = ()=> {
@@ -59,6 +83,7 @@ export default {
           confirmFn: ()=> {
             console.log('confirm')
             this.$mark.hide()
+            this.getCustomers()
             this.$router.push('/result')
           }
 				})

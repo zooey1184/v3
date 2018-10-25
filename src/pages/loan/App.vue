@@ -62,12 +62,12 @@ export default {
   font-size: 15px;
 }
 .bg1 {
-  .gradient(background, #ffa100, #f0710a);
+  .gradient(background, #ffa100, #f0400a);
   color: #fff;
   border: 1px solid #ffa100 !important;
 }
 .bg1_dis {
-  .gradient(background, #ffa100, #f0710a);
+  .gradient(background, #ffa100, #f0400a);
   color: #fff;
   border: 1px solid #ffa100 !important;
   opacity: 0.7;
@@ -123,9 +123,7 @@ export default {
   &:active {
     opacity: 0.8
   }
-  &:hover {
-    opacity: 0.8
-  }
+  
 }
 .c-mark-content {
   padding: 10px;

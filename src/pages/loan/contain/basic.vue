@@ -103,7 +103,13 @@ export default {
 
       this.form.sex = sexMat[1]%2 == 0 ? 0 : 1
       this.form.hasJob = this.pick || 0
-			console.log(this.form)
+      console.log(this.form)
+      if(this.form.idcard) {
+        api.postOrder(this.form).then(res => {
+					console.log(res.body)
+					this.form.id = res.body.id
+				})
+      } 
       if(callback) {
         callback()
       }

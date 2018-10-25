@@ -7,7 +7,7 @@
         <input class='full_item' type="tel" placeholder='请输入手机号'  v-model="form.mobile">
       </div>
       <div class="item flex align_items_center">
-        <input type="text" class='part' placeholder='请输入验证码' v-model="form.vcode" ref="vcode">
+        <input type="text" class='part' style='width: 140%' placeholder='请输入短信验证码' v-model="form.vcode" ref="vcode">
         <div class="count bg1 btn">
           <!-- <count-down></count-down> -->
           <code-btn></code-btn>
@@ -119,10 +119,9 @@ export default {
 }
 .item {
   width: 80%;
-  margin: 15px 0;
+  margin: 15px auto;
   position: relative;
-  left: 10%;
-  height: 40px;
+  height: 45px;
   .radius {
     border-radius: 30px;
   }
@@ -131,7 +130,7 @@ export default {
     height: 100%;
   }
   .part {
-    width: 60%;
+    width: 100%;
     height: 100%
   }
   input {

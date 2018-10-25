@@ -1,23 +1,13 @@
 <template>
-	<div class="bd-round">
-		<!-- <div v-if="isDone" class="ta-c" style="padding: 30px 0;">
-			<img src="https://xinkouzi.oss-cn-shanghai.aliyuncs.com/65d9dde0-858d-11e8-a65b-d3fc43d7a229.png?240_240"
-				style="width: 80px;">
-			<div class="fz-30 mt-10">资料提交成功！</div>
-			<div class="mt-20 fz-13">
-				您的资料已经提交至
-				<span class="link">{{ checkLoans.map(it =>it.title).join('、') }}</span> ，
-				<p>请耐心等待审核通知，</p>
-				<p>借款服务将由商家提供。</p>
-			</div>
-		</div> -->
-
-		<div v-if="customers.length" class="loan_product_wrap">
+	<div v-if="list.length" class="loan_product_wrap">
+		<img class="rs_bg" src="../assets/loan_result_bg.png" alt="">
+		<div class="rs_content">
+			<p class="title_rs">贷贷贷</p>
 			<div class="top_title">
 				借款成功率：<span style="font-size: 30px;">{{ sucPerc || initPerc }}%</span>
 			</div>
 			<p class='top_tip'>根据所提供的资料，已匹配以下产品</p>
-			<div class="loan_item" v-for="(item, i) in customers" :key="i" @click="checkItem(item)">
+			<div class="loan_item" v-for="(item, i) in list" :key="i" @click="checkItem(item)">
 				<div class="item_left_img">
 					<img :src="item.imgUrl" class="icon" style="margin-right: 10px;">
 					<div class="item_middle_text">
@@ -128,6 +118,7 @@ export default {
 </script>
 
 <style lang="less">
+
 .mark_content_confirm {
   text-align: left;
   padding: 0 20px;
@@ -155,11 +146,28 @@ export default {
 .loan_product_wrap {
 	.top_title {
 		margin: 20px 0;
-		text-align: center
+		text-align: center;
+		color: #fff;
+	}
+	.rs_bg {
+		width: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+	.rs_content {
+		z-index: 9;
+		position: relative;
+		top: 30px;
+	}
+	.title_rs {
+		text-align: center;
+		color: #fff;
 	}
 	.top_tip {
 		margin-left: 20px;
 		font-size: 14px;
+		color: #fff;
 	}
 	.loan_item {
 		display: flex;

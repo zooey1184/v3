@@ -10,9 +10,12 @@
         </div>
       </div>
       <div class="photo_right">
-        <clip-img @change='change3'></clip-img>
+        <clip-img @change='change3'>
+          <img class="photo_full" src="../assets/idc-3.png" />
+        </clip-img>
       </div>
     </div>
+    <img class="photo_full" :style='{marginTop: "10px"}' src="../assets/idc-tip.png" alt="">
     <slot></slot>
   </div>
 </template>
@@ -126,5 +129,12 @@ export default {
     height: 170px;
     margin-left: 0;
   }
+}
+.photo_tip {
+  width: 100%;
+  margin-top: 10px;
+}
+.photo_full {
+  width: 100%;
 }
 </style>

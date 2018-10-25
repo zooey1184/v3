@@ -223,13 +223,13 @@ export default {
             `,
             btn: ['返回修改', '确认无误'],
   					cancleFn: () => {
-  						this.$router.back()
+  						this.$router.back(-2)
               this.$alert.hide()
               return
   					},
             confirmFn: ()=> {
               this.$alert.hide()
-              this.getScore(true)
+              // this.getScore(true)
             }
   				})
         }

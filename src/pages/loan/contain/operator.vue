@@ -1,10 +1,12 @@
 <template>
   <form-list :width='100'>
-    <p v-if="authAt || yysLoading" title="验证状态">
-			{{ authAt ? '已完成' : '认证中，可进入下一步' }}
-    </p>
+    <div class="operator_done_pane" v-if="authAt || yysLoading" title="验证状态">
+			<img src="https://xinkouzi.oss-cn-shanghai.aliyuncs.com/65d9dde0-858d-11e8-a65b-d3fc43d7a229.png?240_240" alt="">
+			<p>{{ authAt ? '已完成' : '认证中，可进入下一步' }}</p>
+    </div>
     <template v-else>
-      <ceil :title="item.fieldName" :r_width='item.fieldExtraConfig?90:0'
+      <ceil :title="item.fieldName" 
+				:r_width='item.fieldExtraConfig ? 90 : 0'
         :r_height='(item.fieldExtraConfig && item.fieldExtraConfig.fieldExtraType !="SMS")?40:16'
         v-for="(item, i) in fields" :key="i">
         <input type="text" :disabled="item.field == 'username'" v-model="loginForm[item.field]" :placeholder="item.fieldExtraConfig ? '' : ('请输入' + item.fieldName)">
@@ -180,34 +182,43 @@ export default {
 				}
 			})
 			this.$load.hide()
-			const body = res.body
-			if(body.err) return this.$toast.show(body.err)
-			if(body.authAt) this.authAt = body.authAt.toDate()
-			const formInfo = body.forms ? body.forms[0] : null
-			let hasImg = false
-			if(formInfo) {
-				this.token = body.token
-        this.btmTip = formInfo.loginTips
-        this.$toast.show({
-          msg: this.btmTip,
-          position: 'bottom',
-          duration: 5000
-        })
-				this.resetConfig = formInfo.pwdResetConfig
-				for(const item of formInfo.fields) {
-					const loginForm = {}
-					loginForm[item.field] = ''
-					loginForm.username = this.form.mobile
-					this.loginForm = loginForm
-					if(item.fieldExtraConfig && item.fieldExtraConfig.fieldExtraType == 'PIC') {
-						hasImg = true
+			try {
+				const body = res.body
+				if(body.err) return this.$toast.show(body.err)
+				if(body.authAt) this.authAt = body.authAt
+				const formInfo = body.forms ? body.forms[0] : null
+				let hasImg = false
+				console.log('helo')
+				this.$emit('reGetRect')
+				if(formInfo) {
+					this.token = body.token
+					this.btmTip = formInfo.loginTips
+					this.$toast.show({
+						msg: this.btmTip,
+						position: 'bottom',
+						duration: 5000
+					})
+					this.resetConfig = formInfo.pwdResetConfig
+					for(const item of formInfo.fields) {
+						const loginForm = {}
+						loginForm[item.field] = ''
+						loginForm.username = this.form.mobile
+						this.loginForm = loginForm
+						if(item.fieldExtraConfig && item.fieldExtraConfig.fieldExtraType == 'PIC') {
+							hasImg = true
+						}
 					}
+					
+					this.fields = formInfo.fields
+					this.$emit('reGetRect')
+					
 				}
-        this.fields = formInfo.fields
-        this.$emit('reGetRect')
+			} catch (error) {
+				this.$emit('reGetRect')
+				console.log(error)
 			}
 		},
-		onSubmit() {
+		onSubmit(callback=function(){}) {
 			api.postOrder({
 				id: this.form.id,
 				note: this.authAt ? '完成3(运营商认证)' : '进行中3(运营商认证)',
@@ -218,6 +229,9 @@ export default {
 				this.submitLogin()
 				return
 			}
+			if(callback){
+				callback()
+			}
 			return true
 		},
   }
@@ -225,6 +239,17 @@ export default {
 </script>
 
 <style lang='less'>
+.operator_done_pane {
+	img {
+		width: 100px;
+		display: block;
+		margin: 10px auto;
+	}
+	p {
+		text-align: center;
+
+	}
+}
 .forget_pwd {
   text-align: right;
   color: #1c97f1;

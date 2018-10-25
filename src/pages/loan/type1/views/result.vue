@@ -1,5 +1,5 @@
 <template>
-  <page>
+  <page bgWrap='rgb(240, 240, 240)'>
     <div>
       <result ref='result'></result>
       <button class="btn_bottom bg1" @click='submitFn'>继续借钱</button>

@@ -123,7 +123,7 @@ module.exports = {
   devServer: {
     proxy: {
       "/api/v6": {
-        target: 'https://www.newkouzi.com',
+        target: 'https://www.nizhenpi.com',
         // target: 'http://localhost:4321',
         changeOrigin: true,
       },
