@@ -3,7 +3,7 @@
     <div class="photo__wrap flex align-items-center">
       <div class="photo_left">
         <div class="top">
-          <clip-img @change='change1' bg='#58b5ff'>
+          <clip-img @change='change1'>
             <div>
               <img class="photo_idcard" src="../assets/idc-1.png" />
               <p class="idcard_text">上传身份证人像面</p>
