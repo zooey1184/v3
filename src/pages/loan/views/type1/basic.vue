@@ -58,6 +58,7 @@ export default {
     setTimeout(()=> {
       this.card = true
     }, 500)
+    
   }
 }
 </script>
