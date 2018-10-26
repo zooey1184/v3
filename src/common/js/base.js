@@ -1,15 +1,15 @@
-
+/*eslint-disable*/
 // 获取地址栏地址
-export function getUrlData(search) {
+export function getUrlData (search) {
   let obj = {}
   let dataArr = decodeURIComponent(window.location.search.slice(1)).split("&")
-  dataArr.forEach((e,i) => {
-  	try {
-  		let arr = e.split('=')
-  		obj[arr[0]] = arr[1]
-  	} catch (error) {
-  		console.log(e)
-  	}
+  dataArr.forEach((e, i) => {
+    try {
+      let arr = e.split('=')
+      obj[arr[0]] = arr[1]
+    } catch (error) {
+      console.log(e)
+    }
   })
   return search ? obj[search] : obj
 }
@@ -18,34 +18,32 @@ export function getUrlData(search) {
 export function timeFormate () {
   class TimeFn {
     // 倒计时
-    countDown(time=60, start=function(){}, done=function(){}, over=function(){}) {
+    countDown (time = 60, start = function () {}, done = function () {}, over = function () {}) {
       try {
-        if(Number.isNaN(Number.parseInt(time))) {
-          console.log("非数字");
+        if (Number.isNaN(Number.parseInt(time))) {
+          console.log('非数字')
           return
-        }else {
+        } else {
           let n = Number.parseInt(time)
           let originT = n
-          let s = originT-1
-          let timer = setInterval(()=> {
-            console.log(n);
+          let s = originT - 1
+          let timer = setInterval(() => {
+            console.log(n)
             done()
-            if(originT===n) {
+            if (originT === n) {
               start()
             }
-            if(n<1) {
+            if (n < 1) {
               n = originT
               over()
               clearInterval(timer)
-            }else {
+            } else {
               n--
             }
           }, 1000)
         }
       } catch (e) {
-        console.log(e);
-      } finally {
-        return
+        console.log(e)
       }
     }
     // 格式化
@@ -58,9 +56,9 @@ export function timeFormate () {
       let min = time.getMinutes()<10 ? `0${time.getMinutes()}` : time.getMinutes()
       let sec = time.getSeconds()<10 ? `0${time.getSeconds()}` : time.getSeconds()
       let formate = `${y}${split}${m}${split}${d}`
-      if(date===0) {
+      if (date === 0) {
         return formate
-      }else {
+      } else {
         formate = `${y}${split}${m}${split}${d} ${h}:${min}:${sec}`
         return formate
       }
@@ -71,7 +69,7 @@ export function timeFormate () {
 }
 
 // 获取body的dom位置宽高元素
-export function clientRect() {
+export function clientRect () {
   let posi = {
     w: 375,
     h: 603
@@ -86,11 +84,10 @@ export function clientRect() {
   return posi
 }
 
-
 // 图片预处理
-export function preload() {
+export function preload () {
   class PreloadImg {
-    getImg(success=function(){}) {
+    getImg (success = function () {}) {
       var over = false
       var self = this
       var arr = document.getElementsByTagName('img')
@@ -102,15 +99,15 @@ export function preload() {
         console.log('%c 有'+len+'图片', 'color: rgb(237, 31, 187)')
         try {
           var t = (new Date()).getTime()
-          for(var i=0; i<len; i++) {
+          for (var i = 0; i < len; i++) {
             // console.log('%c 开始加载第'+i+'张图片', 'color: #1395f4')
-            self.imgLoad(arr[i], function() {
+            self.imgLoad(arr[i], function () {
               empty.push(i)
               var earr = empty.length
               if (earr == len) {
                 var t1 = (new Date()).getTime()
-                var tt = t1-t
-                console.log('%c '+len+'张全部加载完, 总耗时'+tt+'毫秒', 'color: #42cb26')
+                var tt = t1 - t
+                console.log('%c ' + len + '张全部加载完, 总耗时' + tt + '毫秒', 'color: #42cb26')
                 over = true
                 success()
                 return over
@@ -129,8 +126,8 @@ export function preload() {
         return over
       }
     }
-    imgLoad(img, callback) {
-      var timer = setInterval(function() {
+    imgLoad (img, callback) {
+      var timer = setInterval(function () {
         if (img.complete) {
           callback(img)
           clearInterval(timer)

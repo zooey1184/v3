@@ -1,14 +1,12 @@
 <template>
   <div class="clip_wrap" :style='{background: bg}'>
-    <transition name='fade'>
-      <img class="after_img" @click='showModelFn' v-if='img' :src="img" alt="">
-      <template v-else>
-        <slot>
-          <img class="clip_bg_photo" src="https://xinkouzi.oss-cn-shanghai.aliyuncs.com/c37a5a40-84db-11e8-a65b-d3fc43d7a229.png?303_216"/>
-        </slot>
-        <!-- <input type="file" ref='upload' @change='getFile'> -->
-      </template>
-    </transition>
+    <img class="after_img" @click='showModelFn' v-if='img' :src="img" alt="">
+    <template v-else>
+      <slot>
+        <img class="clip_bg_photo" src="https://xinkouzi.oss-cn-shanghai.aliyuncs.com/c37a5a40-84db-11e8-a65b-d3fc43d7a229.png?303_216"/>
+      </slot>
+      <!-- <input type="file" ref='upload' @change='getFile'> -->
+    </template>
     <!-- <div class="model_wrap flex align_items_center" v-if='showModel'>
       <span class="icon_span" @click='delImgFn'>
         <i class='icon iconfont icon-delete'></i>

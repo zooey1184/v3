@@ -1,16 +1,16 @@
 <template>
   <page>
     <div>
-      <div class="top_page bg1">
+      <!-- <div class="top_page bg1">
         <p class="title">贷贷贷</p>
         <v-step :len='5' :active='4'></v-step>
-      </div>
+      </div> -->
       <div class="card_wrap">
         <card title='身份证拍照' v-model='card'>
           <img style='width: 30px;' src="../../assets/b5.png" alt="">
           <photo slot='contain' ref='photo'></photo>
         </card>
-        <button class="btn bg1" @click='submitFn'>下一步</button>
+        <!-- <button class="btn bg1" @click='submitFn'>下一步</button> -->
       </div>
     </div>
   </page>
@@ -84,19 +84,19 @@ export default {
 					btn: [{text: '确定', type: 'confirm'}],
 					msg: `
             <div class='mark_content_confirm'>
-              <p>一经提交无法修改，请仔细核对</p>
+              <p style='color: #238FE4'>一经提交无法修改，请仔细核对</p>
               <ul>
                 <li>
-                  本人姓名：贷贷贷
+                  本人姓名：${this.form.realName}
                 </li>
                 <li>
-                  身份证号：33333333
+                  身份证号：${this.form.idcard}
                 </li>
                 <li>
-                  紧急联系人1：是是是 12121212
+                  紧急联系人1：${this.form.contact1}
                 </li>
                 <li>
-                  希望额度：15000
+                  希望额度：${this.form.loanYuan}
                 </li>
               </ul>
 						</div>

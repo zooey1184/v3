@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="photo__wrap flex align-items-center">
-      <div class="photo_left">
+      <!-- <div class="photo_left">
         <div class="top">
           <clip-img @change='change1'>
             <div>
@@ -18,7 +18,7 @@
             </div>
           </clip-img>
         </div>
-      </div>
+      </div> -->
       <div class="photo_right">
         <clip-img @change='change3'>
           <div class="photo_wrap_content">
@@ -28,7 +28,7 @@
         </clip-img>
       </div>
     </div>
-    <img class="photo_full" :style='{marginTop: "10px"}' src="../assets/idc-tip.png" alt="">
+    <!-- <img class="photo_full" :style='{marginTop: "10px"}' src="../assets/idc-tip.png" alt=""> -->
     <slot></slot>
   </div>
 </template>

@@ -269,7 +269,6 @@ export default {
 							<p class='desc_tip'>
 								很抱歉，因条件不符合，初审被拒
 							</p>
-							
 						</div>
 					`,
 					closeFn: ()=> {
