@@ -19,7 +19,7 @@ Toast.install = function (Vue, options) {
   const opt = {
     position: 'top',
     type: 'none',
-    bg: 'rgba(250,100,100,.9)',
+    bg: '#f8bf00',
     color: '#fff',
     isOrigin: false
   }

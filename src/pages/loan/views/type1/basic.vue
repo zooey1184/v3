@@ -7,7 +7,7 @@
       </div>
       <div class="basic_wrap card_wrap">
         <card v-model='card' title='基本信息' ref='card'>
-          <img src="../../assets/a1.png" alt="">
+          <img src="../../assets/b1.png" alt="">
           <basic-content slot='contain' @change='reGetRect' ref='basic'></basic-content>
         </card>
         <button class="basic_btn border1 btn" :class='{bg1: next, bg1_dis: !next}' @click='submitFn'>下一步</button>

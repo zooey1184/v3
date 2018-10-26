@@ -85,7 +85,7 @@ export default {
 	padding: 12px 0;
 	background: rgba(250, 100, 100, .9);
 	color: #fff;
-	font-size: 14px;
+	font-size: 16px;
 	text-align: center;
 	z-index: 1000000;
 }

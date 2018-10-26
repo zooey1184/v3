@@ -7,7 +7,7 @@
       </div>
       <div class="card_wrap">
         <card title='身份证拍照' v-model='card'>
-          <img style='width: 30px;' src="../../assets/a5.png" alt="">
+          <img style='width: 30px;' src="../../assets/b5.png" alt="">
           <photo slot='contain' ref='photo'></photo>
         </card>
         <button class="btn bg1" @click='submitFn'>下一步</button>
@@ -38,19 +38,42 @@ export default {
 	},
   methods: {
     async getCustomers() {
-			if(this.h5Config.cid) return
-			const res = await this.$http.get('v6/credit/apply/auth/loan-choices', {
-				params: {
-					zhimaScore: this.form.zhimaScore,
-					idcard: this.form.idcard,
-				}
-			})
-			this.$store.commit('setData', {
-				customers: res.body.map(it => {
-					it.check = true
-					return it
-				}),
-			})
+      if(this.h5Config.cid) return
+      this.$load.show()
+			try {
+        const res = await this.$http.get('v6/credit/apply/auth/loan-choices', {
+          params: {
+            zhimaScore: this.form.zhimaScore,
+            idcard: this.form.idcard,
+          }
+        })
+        this.$load.hide()
+        this.$store.commit('setData', {
+          customers: res.body.map(it => {
+            it.check = true
+            return it
+          }),
+        })
+        this.$router.push('/result')
+      } catch (error) {
+        // if(window.pass) {
+        //   this.$router.push('/result')
+        // }else {
+          
+        // }
+        api.postOrder({
+          id: this.form.id,
+          note: null
+        }).then(res=> {
+          this.$store.dispatch('showSuc')
+        }, e=> {
+          console.log(e)
+          this.$toast.show(e.body.msg)
+        })
+      }
+      
+      
+			
 		},
     submitFn() {
       let photo = this.$refs.photo
@@ -85,7 +108,7 @@ export default {
             console.log('confirm')
             this.$mark.hide()
             this.getCustomers()
-            this.$router.push('/result')
+            
           }
 				})
       // }

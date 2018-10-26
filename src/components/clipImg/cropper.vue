@@ -10,11 +10,13 @@
 				:src="img">
 			</vue-cropper>
 			<div class="options_pane flex align_items_center" style="bottom: 20px; ">
-				<span @click="showClipper=false">
-					<i class='icon iconfont icon-back1'></i>
+				<span @click="cancleFn">
+					<!-- <i class='icon iconfont icon-back1'></i> -->
+					取消
 				</span>
 				<span @click='doneFn'>
-					<i class='icon iconfont icon-done'></i>
+					<!-- <i class='icon iconfont icon-done'></i> -->
+					确定
 				</span>
 			</div>
 		</div>
@@ -28,17 +30,28 @@ export default {
 		showClipper: false,
 		width: 381*2,
 		height: 216*2,
-		img: null
+		img: null,
+		showLoading: false
 	}),
 	components: {
 		vueCropper,
 	},
 	methods: {
 		doneFn() {
+			// if(this.showLoading){
+			// 	try {
+			// 		this.$load.show()
+			// 	} catch (error) {
+			// 		console.log(error)
+			// 	}
+			// }
 			this.img = this.$refs.cropper.getCroppedCanvas().toDataURL()
 			this.done(this.img)
 		},
-		done() {}
+		done() {},
+		cancleFn() {
+			showClipper=false
+		}
 	}
 }
 </script>

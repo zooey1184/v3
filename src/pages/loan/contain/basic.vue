@@ -13,10 +13,10 @@
       <p class="sub_title">选填信息</p>
       <ceil title='有无工作'>
         <div class="work">
-          <span :class="{[bg]: pick==1}">有工作
+          <span :class="{[border]: true, [bg]: pick=='1'}">有工作
             <input type="radio" @change='change' :value="1" v-model="pick">
           </span>
-          <span :class="{[bg]: pick=='0'}">没工作
+          <span :class="{[border]: true, [bg]: pick=='0'}">没工作
             <input type="radio" @change='change' :value="0" v-model="pick">
           </span>
         </div>
@@ -24,10 +24,10 @@
     </form-list>
     <form-list :width='80' v-if='pick==1'>
       <ceil title='公司名称'>
-        <input type="text" placeholder='请输入公司名称' v-model='form.realName'>
+        <input type="text" placeholder='请输入公司名称' v-model='pageData.company_name'>
       </ceil>
       <ceil title='公司地址'>
-        <input type="text" placeholder='请输入公司地址' v-model='form.realName'>
+        <input type="text" placeholder='请输入公司地址' v-model='pageData.company_address'>
       </ceil>
     </form-list>
     <slot></slot>
@@ -54,6 +54,10 @@ export default {
         reg: ruleMap.idcard,
       }
     },
+    pageData: {
+      company_name: '',
+      company_address: ''
+    }
   }),
   computed: {
 		...mapState({
@@ -65,6 +69,10 @@ export default {
     bg: {
       type: String,
       default: 'bg1'
+    },
+    border: {
+      type: String,
+      default: 'border1'
     }
   },
   methods: {
@@ -102,7 +110,12 @@ export default {
 			const sexMat = /(\d)\S$/.exec(this.form.idcard)
 
       this.form.sex = sexMat[1]%2 == 0 ? 0 : 1
-      this.form.hasJob = this.pick || 0
+      if(this.pick=='1') {
+        this.form.hasJob = `${this.pageData.company_name}(${this.pageData.company_address})`
+      }else {
+        this.form.hasJob = '无'
+      }
+      // this.form.hasJob = this.pick || 0
       console.log(this.form)
       if(this.form.idcard) {
         api.postOrder(this.form).then(res => {
@@ -151,7 +164,7 @@ export default {
     }
     span {
       margin-right: 10px;
-      border: 1px solid;
+      // border: 1px solid;
       border-radius: 20px;
       padding: 2px 10px;
       position: relative;

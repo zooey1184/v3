@@ -5,6 +5,7 @@
  * desc: 插件-选择器
  * use: this.$alert.show({obj}) || this.$alert.show('string') && this.$alert.hide()
  */
+/* eslint-disable */
 import Clip from './cropper.vue'
 var cropper = {}
 cropper.install = function (Vue, options) {
@@ -23,7 +24,11 @@ cropper.install = function (Vue, options) {
           return
 				}
 				$cropper.img = options.img
-				$cropper.done = options.doneFn
+        $cropper.done = options.doneFn
+        if(options.cancleFn) {
+          $cropper.cancleFn = options.cancleFn
+        }
+        
 				setTimeout(() => {
 					$cropper.showClipper = true
 				}, 100)

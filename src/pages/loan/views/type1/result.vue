@@ -23,6 +23,12 @@ export default {
       let result = this.$refs.result
       result.onSubmit()
     }
+  },
+  mounted() {
+    const self = this
+    window.vRouterReplace = ()=> {
+      self.$router.replace('/fail')
+    }
   }
 }
 </script>

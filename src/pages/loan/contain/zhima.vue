@@ -256,7 +256,7 @@ export default {
 				api.postOrder({
 					zhimaScore: score,
 					id: this.form.id,
-					note: '完成2(芝麻分不足)',
+					note: '完成3(芝麻分不足)',
 					state: -3,
 				})
 				// return this.$toast.show('很抱歉，因条件不符合，初审被拒。')
@@ -282,7 +282,7 @@ export default {
 			api.postOrder({
 				zhimaScore: score,
 				id: this.form.id,
-				note: '完成2(芝麻分认证)',
+				note: '完成3(芝麻分认证)',
 			})
       if(callback) {
         callback()

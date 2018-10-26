@@ -8,8 +8,8 @@
       </div>
       <div class="card_wrap">
         <card title='芝麻信用授权' v-model='card'>
-          <img style='width: 24px;' src="../../assets/a3.png" alt="">
-          <zhima slot='contain' ref='zhima'></zhima>
+          <img style='width: 24px;' src="../../assets/b3.png" alt="">
+          <zhima slot='contain' @backChange='backChange' ref='zhima'></zhima>
         </card>
         <button class="btn bg1" @click='submitFn'>下一步</button>
       </div>
@@ -39,6 +39,7 @@ export default {
     },
     backChange() {
       this.$router.go(-2)
+      // window.history.go(-2)
     }
   },
   mounted() {

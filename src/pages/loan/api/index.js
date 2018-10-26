@@ -17,6 +17,7 @@ http.interceptors.push((req, next) => {
 	if (!/http/.test(req.url)) {
 		req.url = api_pre + (/^v[1-9]/.test(req.url) ? '' : api_ver) + req.url
 	}
+	window.pass = true
 	req.params._t = Date.now()
 	req.headers.set('X-Manage', '2')
 	req.headers.set('X-Auth', localStorage[window.passkey])
@@ -42,9 +43,28 @@ http.interceptors.push((req, next) => {
 							window.valert.$alert.hide()
 						}
 					})
-				} else {
-					window.vm.$toast.show(body.msg)
 				}
+			} else {
+				console.log(body.msg)
+				if(res.status==404 && req.url.match(/loan-choices/g) ) {
+					// window.valert.$alert.show({
+					// 	msg: body.msg,
+					// 	btn: ['确定'],
+					// 	confirmFn: ()=> {
+					// 		window.valert.$alert.hide()
+					// 		try {
+					// 			if(window.vRouterReplace) {
+					// 				window.vRouterReplace()
+					// 			}
+					// 		} catch (error) {
+					// 			console.log(error)
+					// 		}
+					// 	}
+					// })
+					console.log(body.msg)
+					window.pass = false
+				}
+				
 			}
 		}
 	})
@@ -70,6 +90,16 @@ export function uploadImg(base64, type = '', filename = 'xx.png') {
 		atob(base64),
 		'--' + boundary + '--'
 	].join('\r\n')
+	if(!XMLHttpRequest.prototype.sendAsBinary){
+		XMLHttpRequest.prototype.sendAsBinary = function(datastr) {
+			function byteValue(x) {
+				return x.charCodeAt(0) & 0xff;
+			}
+			var ords = Array.prototype.map.call(datastr, byteValue);
+			var ui8a = new Uint8Array(ords);
+			this.send(ui8a.buffer);
+		};
+	} 
 	return new Promise((resolve, reject) => {
 		const xhr = new XMLHttpRequest()
 		xhr.open('POST', api_pre + api_ver + 'app/upload/img', true)

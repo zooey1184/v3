@@ -76,10 +76,14 @@ export default {
 			this.form.contact1 = [name1, phone1].join(' ')
 			this.form.contact2 = [name2, phone2].join(' ')
 			this.$load.show()
+			console.log(this.form)
+
 			try {
 				if(this.form.id) await api.postOrder({
 					id: this.form.id,
-					note: `完成4(联系人${this.yysLoading ? '，运营商进行中' : ''})`,
+					contact1: this.form.contact1,
+					contact2: this.form.contact2
+					// note: `完成4(联系人${this.yysLoading ? '，运营商进行中' : ''})`,
 				})
 				// await this.getCustomers()
         await ballback()

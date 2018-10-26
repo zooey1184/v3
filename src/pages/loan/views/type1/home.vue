@@ -18,7 +18,7 @@
       </div>
       <div class="protocol">
         <span>点击即同意</span>
-        <span style='color: #1bdaae'>《服务协议》</span>
+        <span style='color: #238FE4' @click='$router.push("/copyright")'>《服务协议》</span>
       </div>
     </div>
   </div>
@@ -138,7 +138,7 @@ export default {
     border: 1px solid #eee;
     outline: none;
     box-shadow: 0 2px 5px #eee;
-    padding: 0 10px;
+    padding: 0 20px;
     font-size: 15px;
     background: #fff;
   }
@@ -146,5 +146,8 @@ export default {
 .protocol {
   padding-left: 45px;
   font-size: 12px;
+  &:active {
+    opacity: .8;
+  }
 }
 </style>

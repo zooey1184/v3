@@ -2,7 +2,7 @@
   <form-list :width='100'>
     <div class="operator_done_pane" v-if="authAt || yysLoading" title="验证状态">
 			<img src="https://xinkouzi.oss-cn-shanghai.aliyuncs.com/65d9dde0-858d-11e8-a65b-d3fc43d7a229.png?240_240" alt="">
-			<p>{{ authAt ? '已完成' : '认证中，可进入下一步' }}</p>
+			<p style="padding-bottom: 10px">{{ authAt ? '已完成' : '认证中，可进入下一步' }}</p>
     </div>
     <template v-else>
       <ceil :title="item.fieldName" 
@@ -29,12 +29,15 @@
         :is-sms="false">
       </gxb-yys-vcode>
     </ceil>
-    <p class="forget_pwd">忘记密码？</p>
-    <div class="tip">
-      <p class="tip_title">温馨提示：</p>
-      <p>1、请填写本人实名手机号</p>
-      <p>2、预授权成功后会受到运营商的短信通知，这是正常现象无需担心</p>
-    </div>
+		<div v-if='!authAt'>
+			<p class="forget_pwd">忘记密码？</p>
+			<div class="tip">
+				<p class="tip_title">温馨提示：</p>
+				<p>1、请填写本人实名手机号</p>
+				<p>2、预授权成功后会受到运营商的短信通知，这是正常现象无需担心</p>
+			</div>
+		</div>
+    
     <slot></slot>
   </form-list>
 </template>

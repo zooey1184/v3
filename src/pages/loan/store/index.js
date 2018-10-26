@@ -35,5 +35,29 @@ export default new Vuex.Store({
 				if(key in state) state[key] = data[key]
 			}
 		}
+	},
+	actions: {
+		showSuc() {
+			Vue.mark.show({
+				title: '',
+				showClose: false,
+				btn: [{text: '确定', type: 'confirm'}],
+				msg: `
+					<div class='mark_content_confirm'>
+						<img class='title_img' src='https://xinkouzi.oss-cn-shanghai.aliyuncs.com/65d9dde0-858d-11e8-a65b-d3fc43d7a229.png?240_240' alt=''/>
+						<h4 class='title_heder'>您的申请已成功</h4>
+						<p>24小时放款，短信通知到账</p>
+					</div>
+				`,
+				closeFn: ()=> {
+					Vue.mark.hide()
+				},
+				confirmFn: ()=> {
+					console.log('confirm')
+					Vue.mark.hide()
+					// Vue.router.push('/home')
+				}
+			})
+		}
 	}
 })

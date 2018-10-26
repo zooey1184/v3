@@ -11,12 +11,12 @@ mark.install = function (Vue, options) {
   if (document.getElementsByClassName('mark--full').length) {
     return
   }
-  let markTpl = Vue.extend(Mark)
-  let $vmark = new markTpl()
+  let MarkTpl = Vue.extend(Mark)
+  let $vmark = new MarkTpl()
   window.vmark = $vmark
   let tpl = $vmark.$mount().$el
   document.body.appendChild(tpl)
-  Vue.prototype.$mark = {
+  Vue.mark = Vue.prototype.$mark = {
     show: (options) => {
       try {
         if (document.getElementsByClassName('mark--full').length) {

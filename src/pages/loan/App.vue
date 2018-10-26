@@ -63,7 +63,7 @@ export default {
 }
 .bg1 {
   .gradient(background, #ffa100, #f0400a);
-  color: #fff;
+  color: #fff !important;
   border: 1px solid #ffa100 !important;
 }
 .bg1_dis {
@@ -74,10 +74,11 @@ export default {
 }
 .border1 {
   border: 1px solid #ffa100;
+  color: #ffa100;
 }
 .bg2 {
   .gradient(background, #55b7ee, #0a66f0);
-  color: #fff;
+  color: #fff !important;
   border: 1px solid #55b7ee !important;
 }
 .bg2_dis {
@@ -88,6 +89,7 @@ export default {
 }
 .border2 {
   border: 1px solid #55b7ee;
+  color: #55b7ee;
 }
 .top_page {
   position: absolute;
