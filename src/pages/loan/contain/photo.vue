@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="photo__wrap flex align-items-center">
-      <!-- <div class="photo_left">
+      <div class="photo_left">
         <div class="top">
           <clip-img @change='change1'>
             <div>
@@ -18,7 +18,7 @@
             </div>
           </clip-img>
         </div>
-      </div> -->
+      </div>
       <div class="photo_right">
         <clip-img @change='change3'>
           <div class="photo_wrap_content">
@@ -28,7 +28,7 @@
         </clip-img>
       </div>
     </div>
-    <!-- <img class="photo_full" :style='{marginTop: "10px"}' src="../assets/idc-tip.png" alt=""> -->
+    <img class="photo_full" :style='{marginTop: "10px"}' src="../assets/idc-tip.png" alt="">
     <slot></slot>
   </div>
 </template>
@@ -76,7 +76,6 @@ export default {
 					this.form.id = res.body.id
 				})
 				if(ageOut) {
-          // return this.$toast.show('初审未通过：年龄不符')
           this.$mark.show({
             title: '',
             btn: [],
@@ -86,7 +85,6 @@ export default {
                 <p class='desc_tip'>
                   初审未通过：年龄不符
                 </p>
-                
               </div>
             `,
             closeFn: ()=> {

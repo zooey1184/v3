@@ -49,9 +49,6 @@ export default new Vuex.Store({
 						<img style='width:100%' src='https://xinkouzi.oss-cn-shanghai.aliyuncs.com/d6d892a0-d8c3-11e8-8785-d130100656f0.png?769_287'/>
 					</div>
 				`,
-				closeFn: ()=> {
-					Vue.mark.hide()
-				},
 				// confirmFn: ()=> {
 				// 	console.log('confirm')
 				// 	Vue.mark.hide()

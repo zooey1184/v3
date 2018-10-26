@@ -1,16 +1,16 @@
 <template>
   <page>
     <div>
-      <!-- <div class="top_page bg1">
+      <div class="top_page bg1">
         <p class="title">贷贷贷</p>
         <v-step :len='5' :active='4'></v-step>
-      </div> -->
+      </div>
       <div class="card_wrap">
         <card title='身份证拍照' v-model='card'>
           <img style='width: 30px;' src="../../assets/b5.png" alt="">
           <photo slot='contain' ref='photo'></photo>
         </card>
-        <!-- <button class="btn bg1" @click='submitFn'>下一步</button> -->
+        <button class="btn bg1" @click='submitFn'>下一步</button>
       </div>
     </div>
   </page>
@@ -56,11 +56,6 @@ export default {
         })
         this.$router.push('/result')
       } catch (error) {
-        // if(window.pass) {
-        //   this.$router.push('/result')
-        // }else {
-          
-        // }
         api.postOrder({
           id: this.form.id,
           note: null
@@ -71,13 +66,11 @@ export default {
           this.$toast.show(e.body.msg)
         })
       }
-      
-      
-			
 		},
     submitFn() {
       let photo = this.$refs.photo
-      // let callback = ()=> {
+      
+      let callback = ()=> {
         // this.$router.push("/zhima")
         this.$mark.show({
 					title: '请确认您的身份信息',
@@ -105,20 +98,19 @@ export default {
 						this.$mark.hide()
           },
           confirmFn: ()=> {
-            console.log('confirm')
             this.$mark.hide()
             this.getCustomers()
-            
           }
 				})
-      // }
-      // photo.onSubmit(callback)
+      }
+      photo.onSubmit(callback)
     }
   },
   mounted() {
     setTimeout(()=> {
       this.card = true
     }, 500)
+    this.$store.dispatch('showSuc')
   }
 }
 </script>
@@ -126,7 +118,7 @@ export default {
 <style lang="less">
 .mark_content_confirm {
   text-align: left;
-  padding: 0 20px;
+  padding: 0 6px;
   line-height: 24px;
   .title_img {
     position: absolute;

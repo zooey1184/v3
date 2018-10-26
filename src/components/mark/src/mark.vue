@@ -83,9 +83,9 @@ export default {
       console.log('this is from confirmFn');
       this.$emit('confirm')
     },
-    closeFn() {
-      this.$emit('close')
-    },
+    // closeFn() {
+    //   this.$emit('close')
+    // },
     closeFn() {
       console.log('close')
       this.showToast = false
@@ -135,7 +135,7 @@ export default {
     width: 76%;
     left: 12%;
     top: 34%;
-    border-radius: 12px;
+    border-radius: 5px;
     // overflow: hidden;
     // background: rgba(240, 245, 243, 1);
     background: #fff;
