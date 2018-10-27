@@ -26,7 +26,7 @@
 <script>
 import { mapState } from 'vuex'
 import api from '../api'
-import warning from '@/pages/loan/assets/warning.png'
+import warning from '../assets/warning.png'
 
 export default {
 	computed: {

@@ -5,7 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "b": "set pro=@none[loan-v3]&&npm run build",
+    "d": "set pro=@none[loan-v3]&&npm run serve"
   },
   "dependencies": {
     "querystring": "^0.2.0",

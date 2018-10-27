@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { uploadImg } from '../../pages/loan/api'
+import { uploadImg } from '../../pages/loan-v3/api'
 export default {
   data: ()=> ({
     img: null,
