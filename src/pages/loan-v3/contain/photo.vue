@@ -35,7 +35,7 @@
 
 <script>
 import clipImg from '@/components/clipImg'
-import warning from '@/pages/loan/assets/warning.png'
+import warning from '../assets/warning.png'
 import { mapState } from 'vuex'
 
 export default {

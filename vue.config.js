@@ -75,7 +75,7 @@ module.exports = {
       template: `src/pages/${pro_name()}/index.html` ? `src/pages/${pro_name()}/index.html` : `public/index.html`,
       // output as dist/index.html
       // filename: `../pages/${pro_name()}/app.html`
-      filename: decoratorFn(process.env.pro).header=='custom' ? (process.env.NODE_ENV === 'production' ? `../pages/${pro_name()}/index.html` : 'index.html') : `../dist/index.html`
+      filename: decoratorFn(process.env.pro).header=='custom' ? (process.env.NODE_ENV === 'production' ? `../dist/pages/index.html` : 'index.html') : `index.html`
     }
     // when using the entry-only string format,
     // template is inferred to be `public/subpage.html`
@@ -94,11 +94,15 @@ module.exports = {
       // 本地开发配置
     }
   },
+  css: {
+    extract: false
+  },
   configureWebpack: config => {
     // webpack配置，值位对象时会合并配置，为方法时会改写配置
     // console.log(config.plugins);
     if(decoratorFn(process.env.pro).header=='custom') {
       if (process.env.NODE_ENV === 'production') {
+        // console.log(config)
         // 生产开发配置
         const middle = pro_name()
         console.log(`${middle}/js/[name].[chunkhash:8]`);
@@ -115,10 +119,9 @@ module.exports = {
         // config.plugins[8].options.filename = `./pages/${middle}/app.html`
       }
     }
-
   },
   // 输出文件目录
-  outputDir: 'dist',
+  outputDir: `dist/${pro_name()}`,
   lintOnSave: false,
   devServer: {
     proxy: {

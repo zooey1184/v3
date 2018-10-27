@@ -18,7 +18,7 @@
 
 <script>
 import photo from '../../contain/photo.vue'
-import warning from '@/pages/loan/assets/warning.png'
+import warning from '../../assets/warning.png'
 import { mapState } from 'vuex'
 import api from '../../api'
 

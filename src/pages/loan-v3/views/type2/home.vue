@@ -22,7 +22,7 @@
 
 <script>
 import codeBtn from '@/components/codeBtn/index.vue'
-import api from '@/pages/loan/api'
+import api from '../../api'
 import { checkInput } from '@/assets/rule'
 import { mapState } from 'vuex'
 
