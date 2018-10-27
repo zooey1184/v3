@@ -118,7 +118,7 @@ export default {
   margin: 15px 0;
   position: relative;
   left: 10%;
-  height: 40px;
+  height: 45px;
   .radius {
     border-radius: 30px;
   }
@@ -136,7 +136,7 @@ export default {
     outline: none;
     box-shadow: 0 2px 5px #eee;
     background: #fff;
-    padding: 0 10px;
+    padding: 0 20px;
     font-size: 15px;
   }
 }

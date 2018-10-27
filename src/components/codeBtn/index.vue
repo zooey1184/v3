@@ -60,3 +60,11 @@ export default {
 	}
 }
 </script>
+
+<style lang="less">
+.no-click {
+	pointer-events: none;
+	opacity: .7;
+}
+</style>
+

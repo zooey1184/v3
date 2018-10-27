@@ -126,9 +126,8 @@ export default {
 				this.$store.commit('setData', {
 					yysLoading: false,
 				})
-				return this.$alert(extra ? extra.remark : '运营商查询失败', () => {
-					if(emitFail) this.$emit('yys-fail')
-				})
+				if(emitFail) this.$emit('yys-fail')
+				return this.$toast.show(extra ? extra.remark : '运营商查询失败')
 			}
 			if(action == 'OK') {
 				this.$store.commit('setData', {

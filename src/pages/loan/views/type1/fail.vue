@@ -1,5 +1,5 @@
 <template>
-  <res-page title='您的申请被拒绝了' :desc='desc' @change='change'></res-page>
+  <res-page title='您的申请被拒绝了' :desc='desc' @change='change' btn=''></res-page>
 </template>
 
 <script>

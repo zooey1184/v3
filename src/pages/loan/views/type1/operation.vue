@@ -40,7 +40,7 @@ export default {
     submitFn() {
       let operation = this.$refs.operator
       let callback = ()=> {
-        this.$router.push("/photo")
+        this.$router.replace("/photo")
       }
       operation.onSubmit(callback)
     }

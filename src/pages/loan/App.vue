@@ -64,6 +64,9 @@ export default {
   right: 0;
   bottom: 0;
   overflow: hidden;
+  display: block;
+  max-width: 700px;
+  margin: 0 auto;
   &>div {
     position: absolute;
     width: 100%;

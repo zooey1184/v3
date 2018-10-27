@@ -43,7 +43,7 @@ export default {
     submitFn() {
       let contact = this.$refs.contact
       let callback = ()=> {
-        this.$router.push("/zhima")
+        this.$router.replace("/zhima")
       }
       contact.onSubmit(callback)
     }

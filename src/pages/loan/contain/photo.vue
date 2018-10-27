@@ -3,7 +3,7 @@
     <div class="photo__wrap flex align-items-center">
       <div class="photo_left">
         <div class="top">
-          <clip-img @change='change1'>
+          <clip-img @change='change1' :width='600*2' :height='351*2'>
             <div>
               <img class="photo_idcard" src="../assets/idc-1.png" />
               <p class="idcard_text">上传身份证人像面</p>
@@ -11,7 +11,7 @@
           </clip-img>
         </div>
         <div class="bottom">
-          <clip-img @change='change2'>
+          <clip-img @change='change2' :width='600*2' :height='361*2'>
             <div>
               <img class="photo_idcard" src="../assets/idc-2.png" />
               <p class="idcard_text">上传身份证国徽面</p>
@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="photo_right">
-        <clip-img @change='change3'>
+        <clip-img @change='change3' :width='289*2' :height='381*2'>
           <div class="photo_wrap_content">
             <img class="photo_header" src="../assets/idc-3.png" />
             <p class="idcard_handle_text">上传手持身份证照</p>
@@ -108,6 +108,9 @@ export default {
 				this.idcardImgUrl_3 = arr[2]
 			}
     }
+  },
+  mounted() {
+    this.$emit('reGetRect')
   }
 }
 </script>

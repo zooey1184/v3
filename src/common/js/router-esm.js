@@ -2645,7 +2645,12 @@ VueRouter.prototype.push = function push(location, onComplete, onAbort) {
 };
 
 VueRouter.prototype.replace = function replace(location, onComplete, onAbort) {
+  window.directionPage = 'forward'
+  setTimeout(() => {
+    window.directionPage = 'backward'
+  }, 200)
   this.history.replace(location, onComplete, onAbort);
+  
 };
 
 // ================ 新增的模拟返回 使用replace替代 ====================

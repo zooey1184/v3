@@ -5,7 +5,7 @@
       <slot>
         <img src="//r.51gjj.com/resource/common/icon/ali_pay.png" alt="">
       </slot>
-      <p>{{title}}</p>
+      <p :style='{color: (state=="active"|| state=="before") ? "#333" : "#ABC5D9"}'>{{title}}</p>
     </div>
     <div class="slideItem--content" :style="{height: showPane? `${containH}px`:'0'}">
       <div class="contain_loan" ref="contain">
@@ -32,6 +32,10 @@ export default {
     title: {
       type: String,
       default: 'hello'
+    },
+    state: {
+      type: String,
+      default: 'active', // before   after
     }
   },
   watch: {

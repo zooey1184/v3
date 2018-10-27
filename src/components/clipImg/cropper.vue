@@ -1,33 +1,33 @@
 <template lang="">
-	<div class='cropper--full' v-if="showClipper">
+<transition name='fade'>
+	<div class='cropper--full' v-if="showContent">
 		<canvas ref="canvas" style="display: none;"></canvas>
-		<div class="cropper_wrap" style="height: 100%;">
-			<vue-cropper ref="cropper" 
-				:output-size="0.8"
-				:autoCrop="true"
-				:containerStyle='{height: `${wraph}px`}'
-				:autoCropWidth="width/2"
-				:autoCropHeight="height/2"
-				:src="img">
-			</vue-cropper>
-			<div class="options_pane flex align_items_center" style="bottom: 20px; ">
-				<span @click='rotate(90)'>
-					<i class='icon iconfont icon-shunshizhenxuanzhuan'></i>
-				</span>
-				<span @click='rotate(-90)'>
-					<i class='icon iconfont icon-nishizhenxuanzhuan'></i>
-				</span>
-				<span @click="cancleFn">
-					<!-- <i class='icon iconfont icon-back1'></i> -->
-					取消
-				</span>
-				<span class='confirm_btn' @click='doneFn'>
-					<!-- <i class='icon iconfont icon-done'></i> -->
-					确定
-				</span>
+			<div class="cropper_wrap" style="height: 100%;">
+				<vue-cropper ref="cropper" 
+					:output-size="0.6"
+					:autoCrop="true"
+					:containerStyle='{height: `${wraph}px`}'
+					:view-mode='2'
+					:aspectRatio="width/height"
+					:src="img">
+				</vue-cropper>
+				<div class="options_pane flex align_items_center" style="bottom: 20px; ">
+					<span @click='rotate(-90)'>
+						<i class='icon iconfont icon-nishizhenxuanzhuan'></i>
+					</span>
+					<span @click='rotate(90)'>
+						<i class='icon iconfont icon-shunshizhenxuanzhuan'></i>
+					</span>
+					<span @click="cancleFn">
+						取消
+					</span>
+					<span class='confirm_btn' @click='doneFn'>
+						确定
+					</span>
+				</div>
 			</div>
-		</div>
 	</div>
+		</transition>
 </template>
 
 <script>
@@ -37,6 +37,7 @@ import {clientRect} from '@/common/js/base'
 export default {
 	data: ()=> ({
 		showClipper: false,
+		showContent: false,
 		width: 381*2,
 		height: 500*2,
 		img: null,
@@ -46,16 +47,20 @@ export default {
 	components: {
 		vueCropper,
 	},
+	watch: {
+		showClipper: function(n) {
+			if(n) {
+				setTimeout(()=> {
+					this.showContent = true
+				}, 150)
+			}else {
+				this.showContent = false
+			}
+		}
+	},
 	methods: {
 		doneFn() {
-			// if(this.showLoading){
-			// 	try {
-			// 		this.$load.show()
-			// 	} catch (error) {
-			// 		console.log(error)
-			// 	}
-			// }
-			this.$load.show({bg: 'rgba(255,255,255,.7)', stroke: '#238FE4'})
+			this.$load.show()
 			this.img = this.$refs.cropper.getCroppedCanvas().toDataURL()
 			this.done(this.img)
 		},
@@ -64,14 +69,12 @@ export default {
 			showClipper=false
 		},
 		rotate(n) {
-			// guess what this does :)
 			this.$refs.cropper.rotate(n);
 		},
 	},
 	mounted() {
 		let r = clientRect()
 		this.wraph = r.h
-		// console.log(this.wraph)
 	}
 }
 </script>

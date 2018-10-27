@@ -54,7 +54,7 @@ export default {
             return it
           }),
         })
-        this.$router.push('/result')
+        this.$router.replace('/result')
       } catch (error) {
         api.postOrder({
           id: this.form.id,
@@ -110,7 +110,7 @@ export default {
     setTimeout(()=> {
       this.card = true
     }, 500)
-    this.$store.dispatch('showSuc')
+    // this.$store.dispatch('showSuc')
   }
 }
 </script>

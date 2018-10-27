@@ -34,6 +34,14 @@ export default {
     bg: {
       type: String,
       default: '#eef3fa'
+    },
+    width: {
+      type: Number,
+      default: 381*2
+    },
+    height: {
+      type: Number,
+      default: 900*2
     }
   },
   methods: {
@@ -48,8 +56,6 @@ export default {
     },
     getFile(e) {
       if(!e.target.files.length) return
-      
-      // this.$load.show({bg: 'rgba(255,255,255,0)', bgWrap: 'rgba(255,255,255,0)', stroke: '#238FE4'})
 			const file = e.target.files[0]
 			this.fileType = file.type
 			this.fileName = file.name
@@ -57,21 +63,27 @@ export default {
 			reader.onload = ev => {
         const data = ev.target.result
         this.img = data
-        // this.$load.hide()
+        console.log('onload')
+        
         this.cutImgFn()
 			}
 			reader.readAsDataURL(file)
     },
     delImgFn() {
+      let upload = this.$refs.upload
+      upload.value = null
       this.img = null
       this.$emit('change', this.img)
       this.showModel = false
+      
     },
     cutImgFn() {
       const self = this
       this.$cropper.show({
         img: self.img,
         showLoading: true,
+        width: self.width,
+        height: self.height,
         doneFn: (e)=> {
           this.img = e
           const base64 = e.replace(/^.*base64\,/, '')

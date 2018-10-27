@@ -33,12 +33,12 @@ export default {
     submitFn() {
       let zhima = this.$refs.zhima
       let callback = ()=> {
-        this.$router.push('/operator')
+        this.$router.replace('/operator')
       }
       zhima.onSubmit(callback)
     },
     backChange() {
-      this.$router.go(-2)
+      this.$router.back()
       // window.history.go(-2)
     }
   },

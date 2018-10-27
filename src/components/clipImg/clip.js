@@ -3,7 +3,7 @@
  * changer: zooey
  * Date: 18/08/24
  * desc: 插件-选择器
- * use: this.$alert.show({obj}) || this.$alert.show('string') && this.$alert.hide()
+ * use: this.$cropper.show({obj}) || this.$cropper.show('string') && this.$cropper.hide()
  */
 /* eslint-disable */
 import Clip from './cropper.vue'
@@ -28,10 +28,9 @@ cropper.install = function (Vue, options) {
         if(options.cancleFn) {
           $cropper.cancleFn = options.cancleFn
         }
-        
-				setTimeout(() => {
-					$cropper.showClipper = true
-				}, 100)
+        $cropper.width = options.width
+        $cropper.height = options.height
+        $cropper.showClipper = true
       } catch (e) {
         console.log(e)
       }
