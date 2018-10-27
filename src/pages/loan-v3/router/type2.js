@@ -3,7 +3,7 @@ const router = [
     path: '/home',
     name: 'home',
     meta: {
-      title: '贷贷贷'
+      title: '申请借款'
     },
     component: () => import('../views/type2/home.vue')
   },

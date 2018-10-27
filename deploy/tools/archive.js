@@ -7,7 +7,7 @@ var archiver = require('archiver');
 var archiveFilePath = path.join(__dirname, '../../dist.zip');
 var archive = archiver('zip');
 var ora = require('ora')
-const distDir = require('../../config').dir
+const distDir = 'loan-v3'
 console.log(distDir)
 
 if (!process.env.NODE_ENV) {

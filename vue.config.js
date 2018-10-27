@@ -4,7 +4,7 @@ const path = require('path')
 const chalk = require('chalk')
 // 修饰符
 function decoratorFn(s) {
-  if(s.match(/@.*\[.*\]/g)) {
+  if(/@.*\[.*\]/g.test(s)) {
     let a = s.split('[')
     let a0 = a[0]
     let a1 = a[1]
@@ -16,8 +16,8 @@ function decoratorFn(s) {
     }
   }else {
     return {
-      header: 'custom',
-      body: s
+      header: 'none',
+      body: 'loan-v3'
     }
   }
 }
