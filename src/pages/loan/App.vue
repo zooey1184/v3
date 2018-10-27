@@ -170,4 +170,32 @@ export default {
     border-top-right-radius: 0;
   }
 }
+
+.mark_content_confirm {
+  text-align: left;
+  padding: 0 6px;
+  line-height: 24px;
+  ul {
+    padding-left: 20px;
+  }
+  .title_img {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    padding: 5px;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-bottom: 20px;
+    background: #fff;
+    border-radius: 40px;
+  }
+  .title_heder {
+    font-size: 18px;
+    font-weight: lighter;
+    padding-top: 40px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+}
 </style>

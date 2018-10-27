@@ -22,6 +22,7 @@
 import { mapState } from 'vuex'
 import { ruleMap, checkInput } from '@/assets/rule'
 import api from '../api'
+import { setTimeout } from 'timers';
 
 export default {
   computed: {
@@ -109,6 +110,11 @@ export default {
 				}),
 			})
 		},
-  },
+	},
+	mounted() {
+		setTimeout(()=> {
+			this.$emit('reGetRect')
+		}, 50)
+	}
 }
 </script>

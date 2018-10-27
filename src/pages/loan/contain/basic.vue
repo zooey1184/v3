@@ -64,7 +64,12 @@ export default {
 			form: s => s.loanForm,
 			h5Config: s => s.h5Config,
     })
-	},
+  },
+  watch: {
+    'form.id'(n) {
+      console.log('id:',n)
+    }
+  },
   props: {
     bg: {
       type: String,
@@ -105,8 +110,6 @@ export default {
 
 			if(msg && !Param.test) return this.$toast.show(msg)
 
-
-
 			const sexMat = /(\d)\S$/.exec(this.form.idcard)
 
       this.form.sex = sexMat[1]%2 == 0 ? 0 : 1
@@ -116,11 +119,14 @@ export default {
         this.form.hasJob = '无'
       }
       // this.form.hasJob = this.pick || 0
-      console.log(this.form)
       if(this.form.idcard) {
         api.postOrder(this.form).then(res => {
-					console.log(res.body)
-					this.form.id = res.body.id
+          console.log(res)
+          if(!this.form.id) {
+            this.form.id = res.body.id
+            sessionStorage.setItem('formId', res.body.id)
+          }
+          
 				})
       } 
       if(callback) {

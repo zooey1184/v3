@@ -244,7 +244,7 @@ export default {
 			}
 		},
 		onSubmit(callback=function(){}) {
-
+			let self = this
 			const score = this.form.zhimaScore
 			if(!score) {
 				if(!this.token) this.getScore(true)
@@ -255,7 +255,7 @@ export default {
 			if(score < 580 && !this.h5Config.cid) {
 				api.postOrder({
 					zhimaScore: score,
-					id: this.form.id,
+					id: self.form.id,
 					note: '完成3(芝麻分不足)',
 					state: -3,
 				})
@@ -280,16 +280,14 @@ export default {
 			// if(!(score > 350 && score < 950)) return this.$toast('请输入正确的芝麻分')
 			api.postOrder({
 				zhimaScore: score,
-				id: this.form.id,
+				id: self.form.id || sessionStorage.getItem('formId'),
 				note: '完成3(芝麻分认证)',
 			})
-      if(callback) {
-        callback()
-      }
+			if(callback) {
+				callback()
+			}
 			return true
 		},
-
-
 	}
 }
 </script>

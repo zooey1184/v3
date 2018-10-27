@@ -36,6 +36,7 @@
 <script>
 import clipImg from '@/components/clipImg'
 import warning from '@/pages/loan/assets/warning.png'
+import { mapState } from 'vuex'
 
 export default {
   data: ()=> ({
@@ -45,6 +46,13 @@ export default {
   }),
   components: {
     clipImg
+  },
+  computed: {
+		...mapState({
+			form: s => s.loanForm,
+			h5Config: s => s.h5Config,
+			yysLoading: s => s.yysLoading,
+		})
   },
   methods: {
     change1(e) {
@@ -59,18 +67,21 @@ export default {
     onSubmit(callback=function(){}) {
       // if(this.progress == 1) {
         let msg = null
-				if(!this.idcardImgUrl_1) msg = '请上传身份证正面照'
-				else if(!this.idcardImgUrl_2) msg = '请上传身份证背面照'
-				else if(!this.idcardImgUrl_3) msg = '请上传手持身份证照'
-				if(msg && !Param.test) return this.$toast.show(msg)
-				this.form.idcardImg = [this.idcardImgUrl_1, this.idcardImgUrl_2, this.idcardImgUrl_3].join(' ')
+				if(!Global.getUrlData().pass) {
+          if(!this.idcardImgUrl_1) msg = '请上传身份证正面照'
+          else if(!this.idcardImgUrl_2) msg = '请上传身份证背面照'
+          else if(!this.idcardImgUrl_3) msg = '请上传手持身份证照'
+          
+        }
+        if(msg && !Param.test) return this.$toast.show(msg)
+          this.form.idcardImg = [this.idcardImgUrl_1, this.idcardImgUrl_2, this.idcardImgUrl_3].join(' ')
 
-				const ageOut = (this.form.age > 45 || this.form.age < 19) && !this.h5Config.cid
-				this.form.note = `完成1(基础信息)`
-				if(ageOut) {
-					this.form.note = '完成1(年龄不符)'
-					this.form.state = -3
-				}
+          const ageOut = (this.form.age > 45 || this.form.age < 19) && !this.h5Config.cid
+          this.form.note = `完成1(基础信息)`
+          if(ageOut) {
+            this.form.note = '完成1(年龄不符)'
+            this.form.state = -3
+          }
 				if(!this.form.id) api.postOrder(this.form).then(res => {
 					console.log(res.body)
 					this.form.id = res.body.id
@@ -110,7 +121,9 @@ export default {
     }
   },
   mounted() {
-    this.$emit('reGetRect')
+    setTimeout(()=> {
+      this.$emit('reGetRectP')
+    }, 250)
   }
 }
 </script>

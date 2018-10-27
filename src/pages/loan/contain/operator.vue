@@ -77,10 +77,11 @@ export default {
 	},
 	watch: {
 		authAt() {
+			const self = this
 			if(this.authAt && this.token) {
 				this.$toast.show('运营商认证完成')
 				api.postOrder({
-					id: this.form.id,
+					id:  self.form.id || sessionStorage.getItem('formId'),
 					note: '完成3(运营商认证)',
 				})
 			}

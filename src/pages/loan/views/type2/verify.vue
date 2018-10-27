@@ -13,12 +13,12 @@
             </div>
           </basic-content>
         </card>
-        <card slot='content_1' v-model='showModel_1' :state='1<=active?"active":"after"' @click.native.stop='foldFn(active, 1)' title='紧急联系人'>
+        <card slot='content_1' v-model='showModel_1' ref='card_contact' :state='1<=active?"active":"after"' @click.native.stop='foldFn(active, 1)' title='紧急联系人'>
           <div class="pane_img flex align_items_center">
             <img v-if='1<=active' src="../../assets/a2.png" alt="">
             <img v-else src="../../assets/a2-0.png" alt="">
           </div>
-          <contact ref='contact' slot='contain'>
+          <contact ref='contact' slot='contain'  @reGetRect='reGetRect("card_contact")'>
             <div class="btn_type2_pane flex">
               <button class="bg2" @click='submitFn("contact")'>下一步</button>
             </div>
@@ -51,7 +51,7 @@
             <img v-if='4<=active' style="width: 22px" src="../../assets/a5.png" alt="">
             <img v-else style="width: 22px" src="../../assets/a5-0.png" alt="">
           </div>
-          <photo slot='contain' ref='photo' v-if='showModel_4'  @reGetRect='reGetRect("card_photo")'>
+          <photo slot='contain' ref='photo' v-if='showModel_4'  @reGetRectP='reGetRect("card_photo")'>
             <div class="btn_type2_pane flex">
               <button class="bg2" @click='submitFn("photo")'>完成认证</button>
             </div>
@@ -69,7 +69,9 @@ import contact from '../../contain/contact.vue'
 import zhima from '../../contain/zhima.vue'
 import operation from '../../contain/operator.vue'
 import photo from '../../contain/photo.vue'
-import { setTimeout } from 'timers';
+import { setTimeout } from 'timers'
+import { mapState } from 'vuex'
+import api from '../../api'
 
 export default {
   components: {
@@ -92,17 +94,30 @@ export default {
     active: 0,
     pick: ''
   }),
+  computed: {
+		...mapState({
+			form: s => s.loanForm,
+			h5Config: s => s.h5Config,
+			yysLoading: s => s.yysLoading,
+		})
+  },
   watch: {
     pick: function(n) {
       console.log(n);
       let card = this.$refs.card_basic
-      card.getRect()
+      setTimeout(()=> {
+        card.getRect()
+      }, 50)
     }
   },
   methods: {
     reGetRect(ref) {
       let card = this.$refs[ref]
-      card.getRect()
+      console.log(ref)
+      // card.getRect()
+      setTimeout(()=> {
+        card.getRect()
+      }, 50)
     },
     nextFn(index) {
       let a = 5
@@ -120,7 +135,6 @@ export default {
       }
     },
     foldFn(act, index) {
-      console.log(act, index)
       if(index<act) {
         this.nextFn(index)
       }
@@ -192,16 +206,13 @@ export default {
 					btn: [{text: '确定', type: 'confirm'}],
 					msg: `
             <div class='mark_content_confirm'>
-              <p style='color: #238FE4'>一经提交无法修改，请仔细核对</p>
+              <p style='color: #238FE4; text-align:left; margin-left: 20px'>一经提交无法修改，请仔细核对</p>
               <ul>
                 <li>
                   本人姓名：${this.form.realName}
                 </li>
                 <li>
                   身份证号：${this.form.idcard}
-                </li>
-                <li>
-                  紧急联系人1：${this.form.contact1}
                 </li>
                 <li>
                   希望额度：${this.form.loanYuan}

@@ -40,7 +40,7 @@ export default new Vuex.Store({
 		showSuc() {
 			Vue.mark.show({
 				title: '',
-				showClose: true,
+				showClose: false,
 				btn: [],
 				msg: `
 					<div class='mark_content_confirm'>
