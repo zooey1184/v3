@@ -22,10 +22,13 @@
     "@vue/cli-plugin-eslint": "^3.0.0",
     "@vue/cli-service": "^3.0.0",
     "@vue/eslint-config-standard": "^3.0.5",
+    "archiver": "^3.0.0",
     "co": "^4.6.0",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
     "md5": "^2.2.1",
+    "ora": "^3.0.0",
+    "shelljs": "^0.8.2",
     "vue-template-compiler": "^2.5.17",
     "vux-loader": "^1.2.9"
   }
