@@ -62,7 +62,6 @@
   </page>
 </template>
 
-
 <script>
 import basicContent from '../../contain/basic.vue'
 import contact from '../../contain/contact.vue'
@@ -215,7 +214,7 @@ export default {
                   身份证号：${this.form.idcard}
                 </li>
                 <li>
-                  希望额度：${this.form.loanYuan}
+                  期望额度：${this.form.loanYuan}
                 </li>
               </ul>
 						</div>

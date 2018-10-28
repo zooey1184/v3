@@ -1,17 +1,17 @@
 <template>
-	<div>
+	<span>
 		<span
 			v-if="isSms"
 			:class="{ 'disabled': sendTiming1 }"
 			@click="sendVcode1">{{ sendTxt1 }}
 		</span>
-		<div v-else class="pos-r" @click="renewPic">
-			<img :src="validPic" v-if="validPic" class="d-b" style="height: 100%;">
-			<div class="pos-center" v-if="picLoading" style="background: rgba(255, 255, 255, .5)">
-				<!-- <inline-loading></inline-loading> -->
+		<div v-else @click="renewPic">
+			<img :src="validPic" v-if="validPic" style="height: 100%;">
+			<div class="loading_yys_pic" v-if="picLoading" style="background: rgba(255, 255, 255, .9)">
+				<i class="icon iconfont icon-loading1"></i>
 			</div>
 		</div>
-	</div>
+	</span>
 </template>
 
 <script>
@@ -43,8 +43,9 @@ export default {
 			this.picLoading = true
 			const res = await this.$http.get('v6/verify/phone/getPic?token=' + this.token)
 			this.picLoading = false
+			this.$emit('refresh')
 			const { err, image } = res.body
-			if(err) return this.$vux.confirm.show({
+			if(err) return this.$alert.show({
 				content: err,
 				onConfirm: () => {
 					this.renewPic()
@@ -90,3 +91,29 @@ export default {
 }
 </script>
 
+<style lang="less">
+.icon-loading1 {
+	animation: rotate 1s linear infinite;
+}
+@keyframes rotate {
+	0% {
+		transform: rotate(0)
+	}
+	100% {
+		transform: rotate(360deg)
+	}
+}
+.disabled {
+	pointer-events: none
+}
+.loading_yys_pic {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	left: 0;
+	top: 0;
+}
+</style>

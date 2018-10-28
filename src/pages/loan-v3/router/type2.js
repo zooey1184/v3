@@ -22,6 +22,14 @@ const router = [
       title: '认证结果'
     },
     component: () => import('../views/type2/result.vue')
+  },
+  {
+    path: '/test',
+    name: 'test',
+    meta: {
+      title: '认证结果'
+    },
+    component: () => import('../views/type2/test.vue')
   }
 ]
 export default router
