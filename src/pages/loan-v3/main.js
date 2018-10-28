@@ -18,6 +18,7 @@ new Vue({
   router,
   store,
   created() {
+    localStorage.loanForm = ''
 		let channel = Param.refer || Param.c
 		const appMat = /\/app\/(.+)/.exec(location.pathname)
 		if(appMat) channel = appMat[1]
