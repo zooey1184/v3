@@ -96,7 +96,6 @@ export default {
           })
           return 
 				}
-				localStorage.loanForm = JSON.stringify(this.form)
         if(callback) {
           callback()
         }

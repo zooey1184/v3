@@ -11,7 +11,7 @@ export default new Vuex.Store({
 		stopInfo: '',
 		// stopInfo: '系统维护中，预计10月17号01:30前恢复',
 		customers: [],
-		loanForm: localStorage.loanForm ? JSON.parse(localStorage.loanForm) : {
+		loanForm: {
 			realName: '',
 			mobile: '',
 			idcard: '',
