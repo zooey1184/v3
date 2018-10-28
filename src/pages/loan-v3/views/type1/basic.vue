@@ -10,7 +10,7 @@
           <img src="../../assets/b1.png" alt="">
           <basic-content slot='contain' @change='reGetRect' ref='basic'></basic-content>
         </card>
-        <button class="basic_btn border1 btn" :class='{bg1: next, bg1_dis: !next}' @click='submitFn'>下一步</button>
+        <button class="basic_btn border1 btn bg1"  @click='submitFn'>下一步</button>
       </div>
     </div>
   </page>
