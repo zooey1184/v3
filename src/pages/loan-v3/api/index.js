@@ -43,6 +43,8 @@ http.interceptors.push((req, next) => {
 							window.valert.$alert.hide()
 						}
 					})
+				}else {
+					window.vm.$toast.show(body.msg)
 				}
 			} else {
 				console.log(body.msg)
