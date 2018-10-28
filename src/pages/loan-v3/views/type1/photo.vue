@@ -86,7 +86,7 @@ export default {
                   身份证号：${this.form.idcard}
                 </li>
                 <li>
-                  期望额度：${this.form.loanYuan}
+                  期望额度：${this.form.loanYuan}元
                 </li>
               </ul>
 						</div>
@@ -111,31 +111,4 @@ export default {
   }
 }
 </script>
-
-<style lang="less">
-.mark_content_confirm {
-  text-align: left;
-  padding: 0 6px;
-  line-height: 24px;
-  .title_img {
-    position: absolute;
-    width: 70px;
-    height: 70px;
-    padding: 5px;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin-bottom: 20px;
-    background: #fff;
-    border-radius: 40px;
-  }
-  .title_heder {
-    font-size: 18px;
-    font-weight: lighter;
-    padding-top: 40px;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-}
-</style>
 

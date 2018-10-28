@@ -5,12 +5,18 @@
         <input type="text" placeholder='请输入本人姓名' v-model='form.realName'>
       </ceil>
       <ceil title='身份证号'>
-        <input type="tel" placeholder='请输入本人身份证号' v-model='form.idcard'>
+        <input type="tel" placeholder='任意非数字会转为X' v-model='form.idcard'>
       </ceil>
       <ceil title='欲借金额'>
-        <input type="text" placeholder='请输入欲借金额' v-model='form.loanYuan'>
+        <input type="tel" placeholder='请输入欲借金额' v-model='form.loanYuan'>
       </ceil>
       <p class="sub_title">选填信息</p>
+      <ceil title='QQ号'>
+        <input type="tel" placeholder='' v-model='form.qq'>
+      </ceil>
+      <ceil title='微信号'>
+        <input type="text" placeholder='' v-model='form.weixin'>
+      </ceil>
       <ceil title='有无工作'>
         <div class="work">
           <span :class="{[border]: true, [bg]: pick=='1'}">有工作
@@ -105,7 +111,10 @@ export default {
 				else if(!/00$/.test(this.form.loanYuan)) msg = '请输入金额为100的倍数'
 				else if(this.form.loanYuan < 1e3 || this.form.loanYuan > 5e4) {
 					msg = '请输入正确金额（1千-5万）'
-				}
+        }
+        else if(!this.form.qq && !this.form.weixin) msg = 'QQ号和微信号需至少填写一项'
+				else if(this.form.qq && !ruleMap.qq.test(this.form.qq)) msg = '请输入正确的QQ号'
+				else if(this.form.weixin && this.form.weixin.length < 3) msg = '请输入正确的微信号'
 			}
 
 			if(msg && !Param.test) return this.$toast.show(msg)

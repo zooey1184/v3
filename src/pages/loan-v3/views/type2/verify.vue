@@ -214,7 +214,7 @@ export default {
                   身份证号：${this.form.idcard}
                 </li>
                 <li>
-                  期望额度：${this.form.loanYuan}
+                  期望额度：${this.form.loanYuan}元
                 </li>
               </ul>
 						</div>

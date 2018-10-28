@@ -17,7 +17,7 @@ Toast.install = function (Vue, options) {
   let tpl = $vm.$mount().$el
   document.body.appendChild(tpl)
   const opt = {
-    position: 'top',
+    position: 'bottom',
     type: 'none',
     bg: '#f8bf00',
     color: '#fff',

@@ -175,6 +175,7 @@ export default {
   text-align: left;
   padding: 0 6px;
   line-height: 24px;
+  font-size: 13px;
   ul {
     padding-left: 20px;
   }

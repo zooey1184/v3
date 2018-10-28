@@ -5,14 +5,14 @@
       <input type="text" v-model='conForm.name1' placeholder="请填写联系人1姓名">
     </ceil>
     <ceil title='联系人电话'>
-      <input type="text" v-model='conForm.phone1' placeholder="请填写联系人1电话">
+      <input type="tel" v-model='conForm.phone1' placeholder="请填写联系人1电话">
     </ceil>
     <p class="sub_title">紧急联系人2</p>
     <ceil title='姓名'>
       <input type="text" v-model='conForm.name2' placeholder="请填写联系人2姓名">
     </ceil>
     <ceil title='联系人电话'>
-      <input type="text" v-model='conForm.phone2' placeholder="请填写联系人2电话">
+      <input type="tel" v-model='conForm.phone2' placeholder="请填写联系人2电话">
     </ceil>
     <slot></slot>
   </form-list>
