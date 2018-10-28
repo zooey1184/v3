@@ -10,6 +10,8 @@ import api from './api'
 import markYYS from './contain/yysBtnC/index.js'
 Vue.use(egg)
 Vue.use(markYYS)
+import Vconsole from 'vconsole'
+const vconsoel = new Vconsole
 
 
 new Vue({

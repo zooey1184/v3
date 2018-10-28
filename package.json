@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "querystring": "^0.2.0",
+    "vconsole": "^3.2.0",
     "vue": "^2.5.17",
     "vue-cropper": "^0.4.0",
     "vue-cropperjs": "^2.2.2",
