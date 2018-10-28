@@ -9,7 +9,7 @@
     "b": "npm run clean && set pro=@none[loan-v3]&&npm run build",
     "d": "set pro=@none[loan-v3]&&npm run serve",
     "clean": "rm -rf dist dist.zip",
-    "p": "sh deploy/publish.sh"
+    "p": "sh deploy/p1.sh"
   },
   "dependencies": {
     "querystring": "^0.2.0",
