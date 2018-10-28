@@ -77,7 +77,7 @@ export default {
 					btn: [{text: '确定', type: 'confirm'}],
 					msg: `
             <div class='mark_content_confirm'>
-              <p style='color: #238FE4'>一经提交无法修改，请仔细核对</p>
+              <p style='color: #238FE4; margin-left: 20px'>一经提交无法修改，请仔细核对</p>
               <ul>
                 <li>
                   本人姓名：${this.form.realName}
@@ -86,10 +86,7 @@ export default {
                   身份证号：${this.form.idcard}
                 </li>
                 <li>
-                  紧急联系人1：${this.form.contact1}
-                </li>
-                <li>
-                  希望额度：${this.form.loanYuan}
+                  期望额度：${this.form.loanYuan}
                 </li>
               </ul>
 						</div>

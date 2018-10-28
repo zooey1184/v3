@@ -9,6 +9,7 @@
           <h4 class="content__title" v-if='title'>{{title}}</h4>
           <img class="icon_close" v-if='showClose' @click='closeFn' src="./close.png" alt="">
           <p class='content__desc' v-html='msg'></p>
+          <component v-if='tpl' :is='tpl'></component>
           <!-- <div class='btn__group' v-if='btnFn'>
             <p v-for='(item, index) in btn' :class='{ lastBtn: showBtnLine(index)}' @click='actionFn(item, index)' :key='index'>{{item}}</p>
           </div> -->
@@ -32,6 +33,7 @@ export default {
     color: '#fff',
     showClose: true,
     bg: 'rgba(0, 0, 0, 0.5)',
+    tpl: null,
     // w_icon: '//r.51gjj.com/act/release/img/wraning.png',
     // e_icon: '//r.51gjj.com/act/release/img/error.png',
     // s_icon: '//r.51gjj.com/act/release/img/success.png',

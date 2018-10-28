@@ -237,7 +237,7 @@ export default {
 				if(forms && init) {
           this.$toast.show({
             msg: forms[0].loginTips,
-            position: 'bottom'
+            position: 'middle'
           })
         }
 				// this.checkState()

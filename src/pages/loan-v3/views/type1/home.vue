@@ -7,7 +7,7 @@
         <input class='full_item' type="tel" placeholder='请输入手机号'  v-model="form.mobile">
       </div>
       <div class="item flex align_items_center">
-        <input type="text" class='part' style='width: 140%' placeholder='请输入短信验证码' v-model="form.vcode" ref="vcode">
+        <input type="tel" class='part' style='width: 140%' placeholder='请输入短信验证码' v-model="form.vcode" ref="vcode">
         <div class="count bg1 btn">
           <!-- <count-down></count-down> -->
           <code-btn></code-btn>
@@ -73,7 +73,7 @@ export default {
 			this.$load.hide()
 			this.$toast.show({
         msg: '验证成功',
-        bg: 'rgba(255,255,255,.7)'
+        bg: 'rgba(0,0,0,.7)'
       })
 			this.onLoginSuc()
     },

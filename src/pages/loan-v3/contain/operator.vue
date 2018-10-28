@@ -20,7 +20,7 @@
     </template>
 
 
-    <ceil :title="lastAction == 'NEED_IMAGE' ? '图片验证码' :  '短信验证码'" :r_width='80' :r_height='20' v-show='showPop'>
+    <!-- <ceil :title="lastAction == 'NEED_IMAGE' ? '图片验证码' : '短信验证码'" :r_width='90' :r_height='20'>
       <input type="text" placeholder="请输入验证码">
       <gxb-yys-vcode v-if="lastAction == 'NEED_IMAGE'" slot="right"
         :img-data="imgData"
@@ -28,16 +28,15 @@
         :token="token" ref="vcode2"
         :is-sms="false">
       </gxb-yys-vcode>
-    </ceil>
+    </ceil> -->
 		<div v-if='!authAt'>
-			<p class="forget_pwd">忘记密码？</p>
+			<p class="forget_pwd" @click='forget_pwdFn'>忘记密码？</p>
 			<div class="tip">
 				<p class="tip_title">温馨提示：</p>
 				<p>1、请填写本人实名手机号</p>
 				<p>2、预授权成功后会受到运营商的短信通知，这是正常现象无需担心</p>
 			</div>
 		</div>
-    
     <slot></slot>
   </form-list>
 </template>
@@ -46,6 +45,7 @@
 import { mapState } from 'vuex'
 import api from '../api'
 import gxbYysVcode from './yysBtn'
+import { setTimeout } from 'timers';
 
 export default {
   data: ()=> ({
@@ -74,6 +74,10 @@ export default {
   mounted() {
 		if(Param.test > 2) this.authAt = 1
 		else this.initData()
+		this.$route.meta.onchange = ()=> {
+			if(Param.test > 2) this.authAt = 1
+			else this.initData()
+		}
 	},
 	watch: {
 		authAt() {
@@ -81,7 +85,7 @@ export default {
 			if(this.authAt && this.token) {
 				this.$toast.show('运营商认证完成')
 				api.postOrder({
-					id:  self.form.id || sessionStorage.getItem('formId'),
+					id:  self.form.id,
 					note: '完成3(运营商认证)',
 				})
 			}
@@ -104,6 +108,14 @@ export default {
 		clickReset() {
 			this.$toast.show(this.resetConfig.resetTips)
 		},
+		forget_pwdFn() {
+			const self = this
+			this.$toast.show({
+				msg: self.resetConfig.resetTips || '联系运营商找回密码',
+				position: 'middle'
+			})
+			
+		},
 		async submitMore() {
 			if(this.vcode2.length < 4) return this.$toast.show('请输入正确的验证码')
 			this.showPop = false
@@ -117,6 +129,7 @@ export default {
 			}, 1e3);
 		},
 		async checkState() {
+			const self = this
 			if(!this.yysLoading) this.$load.show('加载中.')
 			const res = await this.$http.get('v6/verify/phone/checkState?token=' + this.token)
 			const { action, extra } = res.body
@@ -141,6 +154,19 @@ export default {
 				this.showPop = true
         this.$emit('reGetRect')
 				if(action == 'NEED_IMAGE') this.imgData = extra.remark
+				this.$markyys.show({
+					title: self.lastAction == 'NEED_IMAGE' ? '图片验证码' : '短信验证码',
+					action: self.lastAction == 'NEED_IMAGE' ? true : false,
+					imgData: self.imgData,
+					token: self.token,
+					btn: [{text: 'ddd', type: 'confirm'}],
+					confirmBtn: (e)=> { 
+						self.vcode2 = e
+						setTimeout(()=> {
+							self.submitMore()
+						}, 100)
+					}
+				})
 				return
 			}
 			if(action == 'LOADING') {
@@ -179,9 +205,6 @@ export default {
 					name: this.form.realName,
 					phone: this.form.mobile,
           idcard: this.form.idcard,
-          // name: '张应颖',
-					// phone: '15960018047',
-					// idcard: '350921199101200012',
 				}
 			})
 			this.$load.hide()
@@ -198,7 +221,7 @@ export default {
 					this.btmTip = formInfo.loginTips
 					this.$toast.show({
 						msg: this.btmTip,
-						position: 'bottom',
+						position: 'middle',
 						duration: 5000
 					})
 					this.resetConfig = formInfo.pwdResetConfig
