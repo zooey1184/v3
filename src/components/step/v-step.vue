@@ -76,7 +76,7 @@ export default {
     margin: 0 10px;
   }
   .line_active {
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #fff;
   }
 }
 

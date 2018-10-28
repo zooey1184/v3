@@ -15,6 +15,10 @@
       <div class="item flex align_items_center">
         <button class="full_item bg2 border2 btn" @click='$router.push("/verify")'>立即借钱</button>
       </div>
+      <div class="protocol">
+        <span>点击即同意</span>
+        <span style='color: #238FE4' @click='$router.push("/copyright")'>《服务协议》</span>
+      </div>
     </div>
   </div>
 </page>
@@ -138,6 +142,13 @@ export default {
     background: #fff;
     padding: 0 20px;
     font-size: 15px;
+  }
+}
+.protocol {
+  padding-left: 45px;
+  font-size: 12px;
+  &:active {
+    opacity: .8;
   }
 }
 </style>

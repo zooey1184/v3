@@ -5,7 +5,7 @@
         <input type="text" placeholder='请输入本人姓名' v-model='form.realName'>
       </ceil>
       <ceil title='身份证号'>
-        <input type="text" placeholder='请输入本人身份证号' v-model='form.idcard'>
+        <input type="tel" placeholder='请输入本人身份证号' v-model='form.idcard'>
       </ceil>
       <ceil title='欲借金额'>
         <input type="text" placeholder='请输入欲借金额' v-model='form.loanYuan'>
@@ -66,9 +66,9 @@ export default {
     })
   },
   watch: {
-    'form.id'(n) {
-      console.log('id:',n)
-    }
+    'form.idcard'(val) {
+			if(/\D$/.test(val)) this.form.idcard = val.replace(/\D$/, 'X')
+		},
   },
   props: {
     bg: {
