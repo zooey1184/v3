@@ -38,6 +38,7 @@ export default {
 	},
   methods: {
     async getCustomers() {
+      const self = this
       if(this.h5Config.cid) return
       this.$load.show()
 			try {
@@ -60,10 +61,19 @@ export default {
           id: this.form.id,
           note: null
         }).then(res=> {
-          this.$store.dispatch('showSuc')
+          console.log('hello showSuc')
+          self.$alert.show({
+            msg: '订单提交成功',
+            btn: ['确定'],
+            confirmFn: ()=> {
+              this.$alert.hide()
+            }
+          })
+          self.$store.dispatch('showSuc')
+          console.log('我可以到这了')
         }, e=> {
           console.log(e)
-          this.$toast.show(e.body.msg)
+          self.$toast.show(e.body.msg)
         })
       }
 		},
