@@ -73,7 +73,6 @@ export default {
       let upload = this.$refs.upload
       upload.value = null
       this.img = null
-      this.$emit('change', this.img)
       this.showModel = false
       
     },
@@ -91,7 +90,7 @@ export default {
           uploadImg(base64, this.fileType, this.fileName).then(res => {
             this.$load.hide()
             this.showClipper = false
-            this.$emit('change', this.img)
+            this.$emit('input', res)
             this.$cropper.hide()
             this.showModel = false
           })
