@@ -78,6 +78,9 @@ export default {
 			history.back()
 			throw 'id不存在'
 		}
+		if(/^\d\(/.test(form.note)) {
+			form.note = 'T' + (Param.entry_id || 1) + '-' + form.note
+		}
 		return http.post('v6/credit/apply/auth/loan', form)
 	},
 	logRoute(form) {
