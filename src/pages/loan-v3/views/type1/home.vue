@@ -1,7 +1,10 @@
 <template>
-<page bgWrap='#fff'>
+<page bgWrap='#f2f2f2'>
   <div class="home_page">
-    <img class="home_img" src="../../assets/type1_bg.png" alt="">
+    <img class="home_img" src="https://xinkouzi.oss-cn-shanghai.aliyuncs.com/6967e760-db94-11e8-8785-d130100656f0.png?1125_864" alt="">
+    <div style="color: #FF5E13; font-size: 13px; text-align: center;">
+      日息低至0.1元 随借随还 马上提交 即刻拿钱
+    </div>
     <div class="login_pane">
       <div class="item flex align_items_center">
         <input class='full_item' type="tel" placeholder='请输入手机号'  v-model="form.mobile">
