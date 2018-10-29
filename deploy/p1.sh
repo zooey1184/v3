@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# npm run b
+npm run b
 NODE_ENV=production node deploy/tools/archive
 scp  dist.zip root@www.nizhenpi.com:/root/html
 ssh root@www.nizhenpi.com  << EOF
