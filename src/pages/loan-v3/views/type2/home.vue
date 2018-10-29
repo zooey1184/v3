@@ -7,13 +7,13 @@
         <input class='full_item' type="text" placeholder='请输入手机号' v-model='form.mobile'>
       </div>
       <div class="item flex align_items_center">
-        <input type="text" class='part' style='width: 140%' placeholder='请输入验证码' v-model='pageData.code'>
+        <input type="text" class='part' style='width: 140%' placeholder='请输入验证码' v-model='form.vcode'>
         <div class="count bg2 btn">
           <code-btn></code-btn>
         </div>
       </div>
       <div class="item flex align_items_center">
-        <button class="full_item bg2 border2 btn" @click='$router.push("/verify")'>立即借钱</button>
+        <button class="full_item bg2 border2 btn" @click='login'>立即借钱</button>
       </div>
       <div class="protocol">
         <span>点击即同意</span>
@@ -57,7 +57,8 @@ export default {
     async login() {
 			// if(!this.isAgree) return this.$toast('请先同意协议')
 			// return this.$router.push('/apply')
-			const msg = checkInput(this.form)
+      const msg = checkInput(this.form)
+      console.log(this.form, msg)
 			if(msg) return this.$toast.show(msg)
 			this.$load.show('验证中')
 			const params = {
@@ -69,7 +70,8 @@ export default {
 			this.form.vcode = ''
 			localStorage[window.passkey] = res.body.passkey
 			// await this.$store.dispatch('user/getInfo')
-			localStorage.mobile = this.form.mobile
+      localStorage.mobile = this.form.mobile
+      console.log(localStorage.mobile)
 			this.$load.hide()
 			this.$toast.show({
         msg: '验证成功',
