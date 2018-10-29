@@ -83,10 +83,11 @@ export default {
 		authAt() {
 			const self = this
 			if(this.authAt && this.token) {
-				this.$toast.show('运营商认证完成')
+				this.$toast.show('运营商认证')
 				api.postOrder({
 					id:  self.form.id,
-					note: '完成3(运营商认证)',
+					note: '4(完成运营商)',
+					vTags: 'zmf,yys',
 				})
 			}
 		},
@@ -245,12 +246,12 @@ export default {
 			}
 		},
 		onSubmit(callback=function(){}) {
-			api.postOrder({
+			const body = {
 				id: this.form.id,
-				note: this.authAt ? '完成3(运营商认证)' : '进行中3(运营商认证)',
-			})
-			if(this.yysLoading) return true
-			if(Param.test == 3 || Param.yys) return true
+				note: this.authAt ? '4(已完成运营商)' : '4(运营商认证中)',
+			}
+			if(this.authAt) body.vTags = 'zmf,yys'
+			api.postOrder(body)
 			if(!this.authAt) {
 				this.submitLogin()
 				return

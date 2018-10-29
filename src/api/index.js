@@ -28,15 +28,9 @@ http.interceptors.push((req, next) => {
 			Vue.$load.hide()
 			console.log(body)
 			if (res.status == 401) {
-				router.push('/')
+				router.push('/home')
 			} else if (body.msg && res.status != 404) {
-				if(body.msg.length > 10) {
-					// Vue.$vux.alert.show({
-					// 	content: body.msg,
-					// })
-				} else {
-					Vue.$toast.show(body.msg)
-				}
+				Vue.$toast.show(body.msg)
 			}
 		}
 	})

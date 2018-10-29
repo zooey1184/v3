@@ -119,25 +119,42 @@ export default {
 
 			if(msg && !Param.test) return this.$toast.show(msg)
 
-			const sexMat = /(\d)\S$/.exec(this.form.idcard)
-
+      const sexMat = /(\d)\S$/.exec(this.form.idcard)
       this.form.sex = sexMat[1]%2 == 0 ? 0 : 1
+      
+      const ageOut = (this.form.age > 45 || this.form.age < 19) && !this.h5Config.cid
+      this.form.note = `1(基础信息)`
+      if(ageOut) {
+        this.form.note = '1(年龄不符)'
+        this.form.state = -3
+      }
       if(this.pick=='1') {
         this.form.hasJob = `${this.pageData.company_name}(${this.pageData.company_address})`
       }else {
         this.form.hasJob = '无'
       }
       // this.form.hasJob = this.pick || 0
-      if(this.form.idcard) {
-        api.postOrder(this.form).then(res => {
-          console.log(res)
-          if(!this.form.id) {
-            this.form.id = res.body.id
-            sessionStorage.setItem('formId', res.body.id)
+      api.postOrder(this.form).then(res => {
+        this.form.id = res.body.id
+      })
+      if(ageOut) {
+        this.$mark.show({
+          title: '',
+          btn: [],
+          msg: `
+            <div class='c-mark-content'>
+              <img class='title_img' src=${warning} alt='warning'/>
+              <p class='desc_tip'>
+                初审未通过：年龄不符
+              </p>
+            </div>
+          `,
+          closeFn: ()=> {
+            this.$mark.hide()
           }
-          
-				})
-      } 
+        })
+        return 
+      }
       if(callback) {
         callback()
       }
@@ -145,9 +162,10 @@ export default {
   },
   mounted() {
     this.form.mobile = localStorage.mobile
-		if(Param.must) {
+		if(Param.test > 1) {
 			this.form.realName = '黄谦肆'
-			this.form.idcard = '352225199011192011'
+      this.form.idcard = '352225199011192011'
+      this.form.loanYuan = 1000
 		}
     setTimeout(()=> {
       this.card = true

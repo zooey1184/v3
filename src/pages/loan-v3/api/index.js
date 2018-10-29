@@ -28,13 +28,9 @@ http.interceptors.push((req, next) => {
 		if (!res.ok) {
 			window.vload.$load.hide()
 			if (res.status == 401) {
-				// router.push('/')
-				try {
-					this.$router.push("/")
-				} catch (error) {
-					window.history.back()
-				}
-			} else if (body.msg && res.status != 404) {
+				location = '#/home'
+			}
+			if (body.msg && res.status != 404) {
 				if(body.msg.length > 10) {
 					window.valert.$alert.show({
 						msg: body.msg,
@@ -74,6 +70,14 @@ http.interceptors.push((req, next) => {
 
 export default {
 	postOrder(form) {
+		if(!localStorage.mobile) {
+			location = '#/home'
+			throw '未登录'
+		}
+		if(!form.id && !form.idcard && !form.chooseLoans) {
+			history.back()
+			throw 'id不存在'
+		}
 		return http.post('v6/credit/apply/auth/loan', form)
 	},
 	logRoute(form) {

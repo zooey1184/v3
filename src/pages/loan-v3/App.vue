@@ -41,12 +41,9 @@ export default {
   },
   mounted() {
     if(Global.getUrlData().pass) {
-      this.form.realName = '张应颖',
-      this.form.idcard = '350921199101200012',
-      this.form.loanYuan = '4000',
-      this.form.id = '46362'
-      // this.form.contact1 = '1 1'
-      // this.form.contact2 = '1 1'
+      this.form.realName = '张应颖'
+      this.form.idcard = '350921199101200012'
+      this.form.loanYuan = '4000'
     }
   }
 }

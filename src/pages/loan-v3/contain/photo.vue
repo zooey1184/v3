@@ -66,36 +66,14 @@ export default {
           
         }
         if(msg && !Param.test) return this.$toast.show(msg)
-          this.form.idcardImg = [this.idcardImgUrl_1, this.idcardImgUrl_2, this.idcardImgUrl_3].join(' ')
+        this.form.idcardImg = [this.idcardImgUrl_1, this.idcardImgUrl_2, this.idcardImgUrl_3].join(' ')
 
-          const ageOut = (this.form.age > 45 || this.form.age < 19) && !this.h5Config.cid
-          this.form.note = `完成1(基础信息)`
-          if(ageOut) {
-            this.form.note = '完成1(年龄不符)'
-            this.form.state = -3
-          }
-				if(!this.form.id) api.postOrder(this.form).then(res => {
-					console.log(res.body)
-					this.form.id = res.body.id
-				})
-				if(ageOut) {
-          this.$mark.show({
-            title: '',
-            btn: [],
-            msg: `
-              <div class='c-mark-content'>
-                <img class='title_img' src=${warning} alt='warning'/>
-                <p class='desc_tip'>
-                  初审未通过：年龄不符
-                </p>
-              </div>
-            `,
-            closeFn: ()=> {
-              this.$mark.hide()
-            }
-          })
-          return 
-				}
+				api.postOrder({
+          id: this.form.id,
+          idcardImg: this.form.idcardImg,
+          note: '5(完成证件照)'
+        })
+				
         if(callback) {
           callback()
         }
