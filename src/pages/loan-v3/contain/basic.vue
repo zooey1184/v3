@@ -32,8 +32,8 @@
       <ceil title='公司名称'>
         <input type="text" placeholder='请输入公司名称' v-model='pageData.company_name'>
       </ceil>
-      <ceil title='公司地址'>
-        <input type="text" placeholder='请输入公司地址' v-model='pageData.company_address'>
+      <ceil title='工作职位'>
+        <input type="text" placeholder='请输入工作职位' v-model='pageData.company_address'>
       </ceil>
     </form-list>
     <slot></slot>
