@@ -7,10 +7,10 @@
     </div>
     <div class="login_pane">
       <div class="item flex align_items_center">
-        <input class='full_item' type="text" placeholder='请输入手机号' v-model='form.mobile'>
+        <input class='full_item' type="tel" placeholder='请输入手机号' v-model='form.mobile'>
       </div>
       <div class="item flex align_items_center">
-        <input type="text" class='part' style='width: 140%' placeholder='请输入验证码' v-model='form.vcode'>
+        <input type="tel" class='part' style='width: 140%' placeholder='请输入验证码' v-model='form.vcode'>
         <div class="count bg2 btn">
           <code-btn></code-btn>
         </div>
@@ -76,20 +76,12 @@ export default {
       localStorage.mobile = this.form.mobile
       console.log(localStorage.mobile)
 			this.$load.hide()
-			this.$toast.show({
-        msg: '验证成功',
-        bg: 'rgba(255,255,255,.7)'
-      })
 			this.onLoginSuc()
     },
     onLoginSuc() {
 			this.loanForm.mobile = localStorage.mobile
-			if(this.isHome) {
-        window.directionPage = 'forward'
-        this.$router.replace('/basic')
-      } else {
-        this.$router.back()
-      }
+			window.directionPage = 'forward'
+      this.$router.replace('/verify')
 		},
   },
   mounted() {

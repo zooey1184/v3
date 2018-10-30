@@ -2,7 +2,7 @@
   <page>
     <div>
       <div class="top_page bg1">
-        <p class="title">贷贷贷</p>
+        <p class="title">申请借款</p>
         <v-step></v-step>
       </div>
       <div class="basic_wrap card_wrap">

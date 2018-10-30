@@ -1,7 +1,7 @@
 <template>
   <page>
     <div>
-      <div class="type2_nav_pane bg2 flex align_items_center">贷贷贷</div>
+      <div class="type2_nav_pane bg2 flex align_items_center">申请借款</div>
       <h-step :len='5' :active='active'>
         <card v-model='showModel_0' slot='content_0' :state='0<=active?"active":"after"' @click.native.stop='foldFn(active, 0)'  title='基本信息' ref='card_basic'>
           <div class="pane_img flex align_items_center">
