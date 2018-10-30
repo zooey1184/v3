@@ -45,6 +45,7 @@ import { mapState } from 'vuex'
 import { ruleMap, checkInput } from '@/assets/rule'
 import api from '../api'
 import { log } from 'util';
+import warning from '../assets/warning.png'
 
 export default {
   data: ()=> ({
@@ -134,7 +135,7 @@ export default {
         this.form.hasJob = '无'
       }
       // this.form.hasJob = this.pick || 0
-      api.postOrder(this.form).then(res => {
+      if(!this.form.id) api.postOrder(this.form).then(res => {
         this.form.id = res.body.id
       })
       if(ageOut) {
@@ -145,7 +146,7 @@ export default {
             <div class='c-mark-content'>
               <img class='title_img' src=${warning} alt='warning'/>
               <p class='desc_tip'>
-                初审未通过：年龄不符
+                很抱歉，初审未通过：年龄不符
               </p>
             </div>
           `,
