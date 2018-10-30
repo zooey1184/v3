@@ -2,7 +2,7 @@
 	<div v-if="customers.length" class="loan_product_wrap">
 		<img class="rs_bg" src="../assets/loan_result_bg.png" alt="">
 		<div class="rs_content">
-			<p class="title_rs">贷贷贷</p>
+			<p class="title_rs">申请借款</p>
 			<div class="top_title">
 				借款成功率：<span style="font-size: 30px;">{{ sucPerc || initPerc }}%</span>
 			</div>
