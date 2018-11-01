@@ -12,6 +12,9 @@
         <count-down @change='sendVcode1'>{{sendTxt1}}</count-down>
       </div>
     </ceil>
+		<div style="color: #888; font-size: 13px; margin-top: 5px; min-height: 30px;">
+			{{ btmTip }}
+		</div>
     <slot></slot>
   </form-list>
 </template>
@@ -32,7 +35,7 @@ export default {
     sendTiming: '',
     vcode1Sended: '',
     checkBody: '',
-    btnTip: '',
+    btmTip: '',
     sendTxt1: '发送验证码',
     code: ''
   }),
@@ -140,7 +143,10 @@ export default {
 			this.checkBody = res.body
 		},
 		async submitVcode() {
-			if(this.vcode1.length < 4) return this.$toast('请输入正确的验证码')
+			if(this.vcode1.length < 4) {
+				this.$toast.show('请输入正确的验证码')
+				return
+			}
 			this.$load.show('验证中')
 			const res = await this.$http.post('v6/verify/zms/submitSms', {
 				phone: this.form.mobile,
@@ -205,6 +211,7 @@ export default {
 			const { score, token, err, forms } = res.body
 			if(err) {
 				this.$toast.show(err)
+				if(/身份证/.test(err)) this.$emit('backChange')
 			} else if(score) {
 				this.$set(this.form, 'zhimaScore', score)
 			} else {
@@ -235,10 +242,7 @@ export default {
         }
 				this.token = token
 				if(forms && init) {
-          this.$toast.show({
-            msg: forms[0].loginTips,
-            position: 'middle'
-          })
+          this.btmTip = forms[0].loginTips
         }
 				// this.checkState()
 			}
