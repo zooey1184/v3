@@ -130,7 +130,9 @@ export default {
         this.form.state = -3
       }
       if(this.pick=='1') {
-        this.form.hasJob = `${this.pageData.company_name}(${this.pageData.company_address})`
+        const { company_name, company_address } = this.pageData
+        if(!company_name) this.form.hasJob = '有'
+        else this.form.hasJob = `${company_name}(${company_address})`
       }else {
         this.form.hasJob = '无'
       }
