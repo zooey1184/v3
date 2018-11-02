@@ -25,7 +25,7 @@ export default {
     contact,
   },
   data: ()=> ({
-    card: true
+    card: false
   }),
   computed: {
     ...mapState({
@@ -47,6 +47,11 @@ export default {
       }
       contact.onSubmit(callback)
     }
+  },
+  mounted() {
+    setTimeout(()=> {
+      this.card = true
+    }, 200)
   }
 }
 </script>

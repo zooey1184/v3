@@ -5,6 +5,7 @@ import store from '../store/index.js'
 import querystring from 'querystring'
 import type1 from './type1'
 import type2 from './type2'
+import type3 from './type3'
 let p = window.location.href
 let r = type1
 if(p.match(/entry_id=/g)) {
@@ -15,6 +16,10 @@ if(p.match(/entry_id=/g)) {
     window.localStorage.setItem('entry_id', '1')
     r = type1
   }
+  else if (p.match(/entry_id=3/g)) {
+    window.localStorage.setItem('entry_id', '3')
+    r = type3
+  }
 }else {
   let local_s = window.localStorage.getItem('entry_id')
   if(local_s) {
@@ -24,6 +29,9 @@ if(p.match(/entry_id=/g)) {
         break;
       case '2':
         r = type2
+        break;
+      case '3':
+        r = type3
         break;
       default: r = type1
         break;

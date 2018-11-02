@@ -27,7 +27,7 @@ export default {
   },
   data: ()=> ({
     showPane: false,
-    card: true
+    card: false
   }),
   methods: {
     submitFn() {
@@ -39,13 +39,12 @@ export default {
     },
     backChange() {
       this.$router.back()
-      // window.history.go(-2)
     }
   },
   mounted() {
     setTimeout(()=> {
       this.card = true
-    }, 500)
+    }, 200)
   }
 }
 </script>

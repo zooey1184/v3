@@ -52,6 +52,9 @@ export default {
         self.$router.push('/contact')
       }
       card.onSubmit(nextF)
+    },
+    goNext() {
+      this.$router.push('/contact')
     }
   },
   mounted() {

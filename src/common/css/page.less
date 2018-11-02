@@ -16,7 +16,15 @@
 .page-forward-enter-active,
 .page-backward-enter-active,
 .page-forward-leave-active,
-.page-backward-leave-active {
+.page-backward-leave-active,
+.page2-forward-enter-active,
+.page2-backward-enter-active,
+.page2-forward-leave-active,
+.page2-backward-leave-active,
+.page3-forward-enter-active,
+.page3-backward-enter-active,
+.page3-forward-leave-active,
+.page3-backward-leave-active {
   .transition(transform 0.5s);
   position: absolute;
 }
@@ -27,6 +35,24 @@
 .page-forward-enter,
 .page-backward-leave-active,
 .page-forward-enter-to,
-.page-backward-leave-to {
+.page-backward-leave-to,
+.page2-forward-enter,
+.page2-backward-leave-active,
+.page2-forward-enter-to,
+.page2-backward-leave-to,
+.page3-forward-enter,
+.page3-backward-leave-active,
+.page3-forward-enter-to,
+.page3-backward-leave-to {
   z-index: 2 !important;
 }
+
+.page2-forward-enter,
+.page2-backward-leave-active {
+  .transform(translateY(100%));
+}
+.page3-forward-enter,
+.page3-backward-leave-active {
+  .transform(scale(0));
+}
+

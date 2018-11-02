@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <transition :name='"page-"+get_router'>
+    <transition :name='page+"-"+get_router'>
       <keep-alive>
         <router-view/>
       </keep-alive>
@@ -13,6 +13,9 @@
 import {mapGetters, mapActions, mapState} from 'vuex'
 
 export default {
+  data: ()=> ({
+    page: 'page'
+  }),
   computed: {
     ...mapGetters([
       'get_router',
@@ -40,10 +43,25 @@ export default {
     }
   },
   mounted() {
-    if(Global.getUrlData().pass) {
+    let urlData = Global.getUrlData()
+    if(urlData.pass) {
       this.form.realName = '张应颖'
       this.form.idcard = '350921199101200012'
       this.form.loanYuan = '4000'
+    }
+    let p = window.location.href
+    
+    if(urlData.animate) {
+      let animate = urlData.animate
+      window.sessionStorage.setItem('animate', animate)
+      this.page = animate
+    }else {
+      let local_s = window.sessionStorage.getItem('animate')
+      if(local_s) {
+        this.page = animate
+      }else {
+        this.page = 'page'
+      }
     }
   }
 }
