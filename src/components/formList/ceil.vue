@@ -96,6 +96,7 @@ export default {
   }
   .left {
     .middle_align;
+    color: #333;
   }
   .middle {
     .middle_align;

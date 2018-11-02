@@ -10,14 +10,21 @@
             <img src="../../assets/b1.png" alt="">
             基本信息
           </h4>
-          <button @click='foldFn(1)'>back</button>
-          <button @click='foldFn(2)'>go</button>
+          <div class="sm_contain">
+            <!-- <basic></basic> -->
+          </div>
+          <div class="sm_btm flex align_items_center">
+            <button class="">下一步</button>
+          </div>
         </div>
         <div class="sm_pane sm_top2" :style='sty_2'>
           <h4 class="sm_title bg1">
             <img src="../../assets/b2.png" alt="">
             紧急联系人
           </h4>
+          <div class="sm_contain">
+            <!-- <contact></contact> -->
+          </div>
           <button @click='foldFn(2)'>back</button>
           <button @click='foldFn(3)'>go</button>
         </div>
@@ -26,6 +33,9 @@
             <img src="../../assets/b3.png" alt="">
             芝麻认证
           </h4>
+          <div class="sm_contain">
+            <!-- <zhima></zhima> -->
+          </div>
           <button @click='foldFn(3)'>back</button>
           <button @click='foldFn(4)'>go</button>
           <button @click='foldFn(2)'>bbbbb</button>
@@ -35,6 +45,9 @@
             <img src="../../assets/b4.png" alt="">
             运营商认证
           </h4>
+          <div class="sm_contain">
+            <!-- <operator></operator> -->
+          </div>
           <button @click='foldFn(4)'>back</button>
           <button @click='foldFn(5)'>go</button>
         </div>
@@ -43,6 +56,9 @@
             <img src="../../assets/b5.png" alt="">
             身份认证
           </h4>
+          <div class="sm_contain">
+            <!-- <photo></photo> -->
+          </div>
           <button @click='foldFn(5)'>back</button>
           <button @click='foldFn(1)'>go</button>
         </div>
@@ -53,10 +69,20 @@
 
 <script>
 import formItem from '@/components/formList/formItem.vue'
+import basic from '../../contain/basic.vue'
+import contact from '../../contain/contact.vue'
+import zhima from '../../contain/zhima.vue'
+import operator from '../../contain/operator.vue'
+import photo from '../../contain/photo.vue'
 
 export default {
   components: {
-    formItem
+    formItem,
+    basic,
+    contact,
+    zhima,
+    operator,
+    photo
   },
   data: ()=> ({
     pageState: 'loading',
@@ -186,6 +212,19 @@ export default {
       width: 22px;
       margin-right: 10px;
     }
+  }
+  .sm_contain {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px #eee;
+    width: 90%;
+    display: block;
+    margin: 20px auto;
+  }
+  .sm_btm {
+    height: 40px;
+    width: 100%;
+    color: #fff;
   }
 }
 .sm_top1 {
